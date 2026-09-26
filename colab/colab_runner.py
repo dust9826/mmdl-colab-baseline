@@ -109,6 +109,93 @@ class CheckpointStore:
         print(f'DRIVE_BACKUP_OK checkpoint={number}', flush=True)
 
 
+
+def install_raw_journal(engine, backend_class, local, run_id):
+    """Save generated outputs before the scorer; never label this journal as scored."""
+    from contextlib import closing
+
+    prepare = engine.prepare_request
+    generate = backend_class.generate_stream
+    pending = {}
+
+    def prepare_request(*args, **kwargs):
+        request, record = prepare(*args, **kwargs)
+        pending[request['sample_id']] = record
+        return request, record
+
+    def generate_stream(self, requests):
+        with closing(generate(self, requests)) as stream:
+            for output in stream:
+                record = pending.pop(output['sample_id'])
+                payload = record | output | {'journal_status': 'GENERATED_UNSCORED'}
+                # These paths are outside run/samples; final scoring never consumes them implicitly.
+                target = Path(local) / 'raw_journal' / run_id / (record['inference_id'] + '.json')
+                target.parent.mkdir(parents=True, exist_ok=True)
+                encoded = json.dumps(payload, ensure_ascii=False, allow_nan=False, sort_keys=True)
+                temporary = None
+                try:
+                    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8',
+                            dir=target.parent, prefix='.pending-', delete=False) as stream_file:
+                        temporary = Path(stream_file.name)
+                        stream_file.write(encoded + '\n')
+                        stream_file.flush()
+                        os.fsync(stream_file.fileno())
+                    os.link(temporary, target)  # Local disk: publish atomically without overwrite.
+                finally:
+                    if temporary is not None:
+                        temporary.unlink(missing_ok=True)
+                yield output
+
+    engine.prepare_request = prepare_request
+    backend_class.generate_stream = generate_stream
+
+
+def preflight(repo, model_path, data_root, output):
+    """Validate all pinned inputs on CPU, without constructing a GPU model."""
+    import torch
+    import yaml
+    from transformers import AutoConfig, AutoProcessor
+    from mmdl.evaluation.datasets.mmmu import load_validation, separate_sample
+    from mmdl.evaluation.prompt import build_messages
+    from mmdl.evaluation.backends.input_preparation import prepare_protocol_inputs
+    from mmdl.runtime.artifacts import digest, write_json
+    from mmdl.runtime.contracts import MODEL_REVISION
+
+    torch.set_num_threads(4)
+    repo, output = Path(repo), Path(output)
+    cfg = yaml.safe_load((repo / 'configs/eval/mmmu_val_v8.yaml').read_text())
+    datasets, coverage = load_validation(Path(data_root))
+    processor = AutoProcessor.from_pretrained(str(model_path), revision=MODEL_REVISION,
+                                              local_files_only=True, trust_remote_code=False)
+    model_config = AutoConfig.from_pretrained(str(model_path), revision=MODEL_REVISION,
+                                             local_files_only=True, trust_remote_code=False)
+    processor.image_processor.size = {'shortest_edge': cfg['image']['min_pixels'],
+                                      'longest_edge': cfg['image']['max_pixels']}
+    records = []
+    for subject in sorted(datasets):
+        for row in datasets[subject]:
+            sample, images, _gold = separate_sample(row, subject)
+            if len(images) > 5:
+                raise ValueError(f"{sample['id']}: exceeds fixed vLLM image limit")
+            messages = build_messages(sample, images, repo)
+            item, processed = prepare_protocol_inputs(processor, model_config, messages, images, cfg['image'])
+            if item['input_tokens'] + cfg['generation']['max_new_tokens'] > cfg['execution']['max_model_len']:
+                raise ValueError(f"{sample['id']}: input plus output budget exceeds context")
+            records.append({'id': sample['id'], 'subject': subject, 'images': len(images),
+                            'question_type': sample['question_type'],
+                            'input_tokens': item['input_tokens'], 'input_sha256': item['input_sha256']})
+            del item, processed, messages, images
+        print(f'INPUT_PREFLIGHT {len(records)}/900', flush=True)
+    if len(records) != 900 or len({r['id'] for r in records}) != 900:
+        raise ValueError('Input preflight did not cover exactly 900 unique samples')
+    result = {'status': 'PASS', 'count': 900, 'coverage': coverage, 'protocol_sha256': digest(cfg),
+              'adapter_sha256': sha(__file__), 'model_revision': MODEL_REVISION,
+              'max_input_tokens': max(r['input_tokens'] for r in records),
+              'max_images': max(r['images'] for r in records), 'records': records}
+    write_json(output, result)
+    return result
+
+
 def run():
     import sys
     import mmdl.evaluation.engine as engine
@@ -140,6 +227,10 @@ def run():
                                    'Use the same environment; do not merge different GPUs or delete checks.')
         return result
 
+    from mmdl.evaluation.backends.vllm_backend import VLLMBackend
+    run_id = sys.argv[sys.argv.index('--run-id') + 1]
+    install_raw_journal(engine, VLLMBackend, local, run_id)
+
     original_writer = engine.RunWriter
 
     class DriveWriter(original_writer):
@@ -159,4 +250,13 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    import sys
+    if sys.argv[1:2] == ['preflight']:
+        import argparse
+        parser = argparse.ArgumentParser()
+        for name in ('repo', 'model-path', 'data-root', 'output'):
+            parser.add_argument('--' + name, required=True, type=Path)
+        args = parser.parse_args(sys.argv[2:])
+        preflight(args.repo, args.model_path, args.data_root, args.output)
+    else:
+        run()
