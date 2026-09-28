@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "job_id": "mmmu-l4-full-01",
+  "run_id": "mmmu-l4-full-01-evaluation",
+  "status": "COMPLETE_VERIFIED",
+  "report_date": "2026-09-28",
+  "expected_count": 900,
+  "completed_count": 900,
+  "subject_count": 30,
+  "per_subject": 30,
+  "correct": 564,
+  "denominator": 900,
+  "accuracy": 0.6266666666666667,
+  "macro_average": 0.6266666666666667,
+  "macro_policy": "Arithmetic mean of 30 unrounded subject accuracies; equal 30-sample subjects make this identical to correct/900.",
+  "missing_count": 0,
+  "external_failure_count": 0,
+  "unresolved_failure_count": 0,
+  "parse_status": {
+    "NO_PARSE": 87,
+    "PARSED": 813
+  },
+  "finish_reason": {
+    "length": 81,
+    "stop": 819
+  },
+  "generated_tokens": 3836776,
+  "median_generated_tokens": 464.0,
+  "length_limit": 32768,
+  "length_correct": 10,
+  "length_no_parse": 66,
+  "length_generated_tokens": 2654208,
+  "scoring": {
+    "parser": "team-final-answer-v8",
+    "independent_rescore_count": 900,
+    "changed_samples": 0,
+    "source_predictions_sha256": "4045c82acfc7e8b028248d6896614fa15554854301a798240f1ffa6c333315e7",
+    "scoring_sha256": "b80a28a4b66906d5c4f1ece046bd7c4be2b447445da4b072144e52ce7ee047fa"
+  },
+  "execution": {
+    "wrapper_commit": "1d895d709c395f30ecb76bc661791ef4379e51e8",
+    "upstream_commit": "f1235cf76f1c5637ea61b72a7d36b01c8fbc73a1",
+    "adapter_sha256": "0fb82da1c733b0e8d61391561d4568492150ae55a9b84e14f74376c15de3b966",
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "dtype": "bfloat16",
+    "quantization": null,
+    "dataset_id": "MMMU/MMMU",
+    "dataset_revision": "98e6ac0cb9b7b2cd2c991b85a50762edc4aedc68",
+    "split": "validation",
+    "gpu": "NVIDIA L4",
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.1",
+    "vllm": "0.11.0",
+    "protocol": "configs/eval/mmmu_val_v8.yaml",
+    "scheduling": "continuous",
+    "max_concurrent_requests": 2
+  },
+  "timing": {
+    "first_inference_started_at": "2026-09-26T15:23:58.197818+00:00",
+    "resumed_inference_started_at": "2026-09-27T15:37:13.025108+00:00",
+    "inference_ended_at": "2026-09-27T22:07:17.358727+00:00",
+    "elapsed_including_interruption_seconds": 110599.160909,
+    "total_active_inference_seconds": null,
+    "first_invocation_ended_at": null,
+    "last_invocation_evaluation_seconds": 23407.669732765,
+    "last_invocation_model_load_seconds": 39.59196717000009,
+    "last_invocation_total_seconds": 23488.838947025997,
+    "scope": "The whole elapsed interval includes interruption and recovery. Last-invocation metrics cover resumed 187 samples only. Per-sample latencies overlap; do not sum as total wall time."
+  },
+  "memory": {
+    "max_observed_device_memory_used_bytes": 22951231488,
+    "peak_vram_allocated_bytes": null,
+    "peak_vram_reserved_bytes": null,
+    "scope": "Device-wide observed maximum in run summary, not vLLM allocator peak. Parent-only RAM is not total worker memory."
+  },
+  "billing": {
+    "initial_cu": 98.11,
+    "final_cu": 50.71,
+    "consumed_cu_approx": 47.4,
+    "first_session_cu_approx": 36.88,
+    "second_session_cu_approx": 10.52,
+    "price_per_cu_usd": null,
+    "usd_cost": null,
+    "scope": "Rounded UI balance difference including setup and both L4 sessions. Final observation around 2026-09-28 07:22 KST showed 0 CU/hour and 0 active sessions."
+  },
+  "verification": {
+    "input_preflight": "PASS900",
+    "original_remote": "VERIFIED",
+    "independent_v8_remote": "VERIFIED",
+    "original_local": "VERIFIED",
+    "independent_v8_local": "VERIFIED",
+    "restored_checkpoint_count": 906,
+    "checkpoint_zip_sha256": "ALL_PASS",
+    "raw_journal_count": 900,
+    "previous_713_file_hashes_unchanged": true,
+    "runtime_shutdown_verified": true,
+    "local_checked_at": "2026-09-28T11:20:39.517194+09:00",
+    "v8_relocation_note": "Only the absolute source_run path in a temporary source.json audit copy was normalized for local validation. Original recovered artifacts and scoring code remained unchanged."
+  },
+  "reference": {
+    "course_official_accuracy_percent": 67.4,
+    "difference_percentage_points": -4.733333333333334,
+    "guidance_url": "https://gist.github.com/neur-lab/38deabdfcde9e6dbacf362ab8059eb41",
+    "caveat": "Course-provided reference; not a controlled same-scorer reproduction."
+  },
+  "subject_scores": [
+    {
+      "subject": "Accounting",
+      "correct": 20,
+      "total": 30,
+      "accuracy": 0.6666666666666666,
+      "generation_seconds": 6681.077415899675,
+      "sample_seconds": 13437.836609701
+    },
+    {
+      "subject": "Agriculture",
+      "correct": 14,
+      "total": 30,
+      "accuracy": 0.4666666666666667,
+      "generation_seconds": 131.31909797994103,
+      "sample_seconds": 313.7787195219953
+    },
+    {
+      "subject": "Architecture_and_Engineering",
+      "correct": 14,
+      "total": 30,
+      "accuracy": 0.4666666666666667,
+      "generation_seconds": 11378.46835959889,
+      "sample_seconds": 22776.057191562002
+    },
+    {
+      "subject": "Art",
+      "correct": 19,
+      "total": 30,
+      "accuracy": 0.6333333333333333,
+      "generation_seconds": 1099.9369360090404,
+      "sample_seconds": 2239.913117526008
+    },
+    {
+      "subject": "Art_Theory",
+      "correct": 26,
+      "total": 30,
+      "accuracy": 0.8666666666666667,
+      "generation_seconds": 1075.2208523504723,
+      "sample_seconds": 2211.104111149005
+    },
+    {
+      "subject": "Basic_Medical_Science",
+      "correct": 22,
+      "total": 30,
+      "accuracy": 0.7333333333333333,
+      "generation_seconds": 241.01052117091967,
+      "sample_seconds": 488.2087342519917
+    },
+    {
+      "subject": "Biology",
+      "correct": 16,
+      "total": 30,
+      "accuracy": 0.5333333333333333,
+      "generation_seconds": 748.2602935945379,
+      "sample_seconds": 1513.85434408101
+    },
+    {
+      "subject": "Chemistry",
+      "correct": 11,
+      "total": 30,
+      "accuracy": 0.36666666666666664,
+      "generation_seconds": 3679.9548800037483,
+      "sample_seconds": 7388.53817386799
+    },
+    {
+      "subject": "Clinical_Medicine",
+      "correct": 22,
+      "total": 30,
+      "accuracy": 0.7333333333333333,
+      "generation_seconds": 3180.486698989711,
+      "sample_seconds": 6386.078166041996
+    },
+    {
+      "subject": "Computer_Science",
+      "correct": 19,
+      "total": 30,
+      "accuracy": 0.6333333333333333,
+      "generation_seconds": 3920.6446897572005,
+      "sample_seconds": 7872.617220868997
+    },
+    {
+      "subject": "Design",
+      "correct": 23,
+      "total": 30,
+      "accuracy": 0.7666666666666667,
+      "generation_seconds": 149.35076084218235,
+      "sample_seconds": 327.6125241379559
+    },
+    {
+      "subject": "Diagnostics_and_Laboratory_Medicine",
+      "correct": 10,
+      "total": 30,
+      "accuracy": 0.3333333333333333,
+      "generation_seconds": 1233.124490790844,
+      "sample_seconds": 2537.786033934979
+    },
+    {
+      "subject": "Economics",
+      "correct": 25,
+      "total": 30,
+      "accuracy": 0.8333333333333334,
+      "generation_seconds": 558.2216355347555,
+      "sample_seconds": 1124.287423124013
+    },
+    {
+      "subject": "Electronics",
+      "correct": 12,
+      "total": 30,
+      "accuracy": 0.4,
+      "generation_seconds": 7694.461470714054,
+      "sample_seconds": 15420.928276303013
+    },
+    {
+      "subject": "Energy_and_Power",
+      "correct": 14,
+      "total": 30,
+      "accuracy": 0.4666666666666667,
+      "generation_seconds": 14220.267717609378,
+      "sample_seconds": 28485.11586945896
+    },
+    {
+      "subject": "Finance",
+      "correct": 21,
+      "total": 30,
+      "accuracy": 0.7,
+      "generation_seconds": 2431.047096087128,
+      "sample_seconds": 4893.128866038998
+    },
+    {
+      "subject": "Geography",
+      "correct": 14,
+      "total": 30,
+      "accuracy": 0.4666666666666667,
+      "generation_seconds": 1002.6802359465546,
+      "sample_seconds": 2043.496802758018
+    },
+    {
+      "subject": "History",
+      "correct": 21,
+      "total": 30,
+      "accuracy": 0.7,
+      "generation_seconds": 2238.4049018422047,
+      "sample_seconds": 4526.032149520986
+    },
+    {
+      "subject": "Literature",
+      "correct": 24,
+      "total": 30,
+      "accuracy": 0.8,
+      "generation_seconds": 136.29508078744038,
+      "sample_seconds": 300.11848359301075
+    },
+    {
+      "subject": "Manage",
+      "correct": 22,
+      "total": 30,
+      "accuracy": 0.7333333333333333,
+      "generation_seconds": 950.6776871823931,
+      "sample_seconds": 1939.2100987110025
+    },
+    {
+      "subject": "Marketing",
+      "correct": 24,
+      "total": 30,
+      "accuracy": 0.8,
+      "generation_seconds": 1298.9753126464784,
+      "sample_seconds": 2633.5405112009903
+    },
+    {
+      "subject": "Materials",
+      "correct": 14,
+      "total": 30,
+      "accuracy": 0.4666666666666667,
+      "generation_seconds": 12093.151590865542,
+      "sample_seconds": 24249.735320208973
+    },
+    {
+      "subject": "Math",
+      "correct": 18,
+      "total": 30,
+      "accuracy": 0.6,
+      "generation_seconds": 2702.372022972537,
+      "sample_seconds": 5442.324146367027
+    },
+    {
+      "subject": "Mechanical_Engineering",
+      "correct": 15,
+      "total": 30,
+      "accuracy": 0.5,
+      "generation_seconds": 9551.646609190038,
+      "sample_seconds": 19163.520101746046
+    },
+    {
+      "subject": "Music",
+      "correct": 7,
+      "total": 30,
+      "accuracy": 0.23333333333333334,
+      "generation_seconds": 14034.968452349103,
+      "sample_seconds": 28147.404009025002
+    },
+    {
+      "subject": "Pharmacy",
+      "correct": 22,
+      "total": 30,
+      "accuracy": 0.7333333333333333,
+      "generation_seconds": 1716.9707650093005,
+      "sample_seconds": 3467.462494068004
+    },
+    {
+      "subject": "Physics",
+      "correct": 25,
+      "total": 30,
+      "accuracy": 0.8333333333333334,
+      "generation_seconds": 1114.2847677453174,
+      "sample_seconds": 2279.667022298985
+    },
+    {
+      "subject": "Psychology",
+      "correct": 24,
+      "total": 30,
+      "accuracy": 0.8,
+      "generation_seconds": 302.80506871439866,
+      "sample_seconds": 646.2805525519798
+    },
+    {
+      "subject": "Public_Health",
+      "correct": 27,
+      "total": 30,
+      "accuracy": 0.9,
+      "generation_seconds": 1639.464246056441,
+      "sample_seconds": 3364.0828250809936
+    },
+    {
+      "subject": "Sociology",
+      "correct": 19,
+      "total": 30,
+      "accuracy": 0.6333333333333333,
+      "generation_seconds": 263.0976887065026,
+      "sample_seconds": 534.911011679993
+    }
+  ]
+}
