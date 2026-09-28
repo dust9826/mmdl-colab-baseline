@@ -1,0 +1,2818 @@
+{
+  "audit_id": "no-parse-review-01",
+  "source_run_id": "mmmu-l4-full-01-evaluation",
+  "review_date": "2026-09-28",
+  "reviewer_type": "assistant-assisted retrospective textual review with gold-hidden extraction packets and root adjudication; not independent human certification",
+  "source_predictions_sha256": "4045c82acfc7e8b028248d6896614fa15554854301a798240f1ffa6c333315e7",
+  "source_score": {
+    "correct": 564,
+    "denominator": 900,
+    "accuracy": 0.6266666666666667,
+    "unchanged": true
+  },
+  "reviewed_count": 87,
+  "extraction_counts": {
+    "AMBIGUOUS": 40,
+    "NO_FINAL": 35,
+    "CLEAR": 12
+  },
+  "audit_counts": {
+    "UNRESOLVED": 75,
+    "CLEAR_INCORRECT": 4,
+    "MISSED_CORRECT": 7,
+    "COMPARISON_AMBIGUOUS": 1
+  },
+  "finish_reason_counts": {
+    "length": 66,
+    "stop": 21
+  },
+  "policy": {
+    "version": "no-parse-review-01",
+    "scope": "All 87 V8 NO_PARSE records; response interpretation only, no model inference or scorer changes.",
+    "criteria": [
+      "CLEAR: one unambiguous final committed answer. Mathematical notation may be read when equivalence is transparent.",
+      "A later answer can replace an earlier answer only when the response explicitly corrects/retracts the earlier conclusion; unresolved differing final commitments are AMBIGUOUS.",
+      "Tentative answers (perhaps/maybe/closest despite invalid assumptions), persistent contradictions, label/text disagreement, and incomplete last commitments are AMBIGUOUS.",
+      "A formula or number matching multiple options without a committed label is AMBIGUOUS.",
+      "No committed final answer is NO_FINAL. Merely mentioning an option does not establish a final answer.",
+      "A length-stopped response may be CLEAR only if a complete final answer exists and later text does not retract, contradict, or make it tentative.",
+      "Do not solve the original question to manufacture an answer. Extract only what the saved response commits to.",
+      "Compare gold only after blind extraction; ambiguous/no-final receive no rescued point."
+    ],
+    "limitations": [
+      "Compact views show response head/tail and unique answer-related paragraphs; full gold-blind raw files remain available for targeted inspection.",
+      "This is an assistant-assisted retrospective review, not a new deterministic parser or human-certified score.",
+      "NO_PARSE subset only: PARSED records are not manually re-audited."
+    ]
+  },
+  "records": [
+    {
+      "sample_id": "validation_Accounting_15",
+      "subject": "Accounting",
+      "source_record_sha256": "fc4dc7df0ea5022a6a71133a4b64c6a752a401c0953aa3567cc8bf5d5d4d4290",
+      "raw_response_sha256": "8f96b7344e3cc7f63a4aad1f743b64be8a7b87b050865910ae5049ab9a4b2685",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "$5,040/C를 여러 차례 제안하지만 계속 perhaps로 추정하고 계산을 부정하며, 응답이 미완성으로 끝나 확정된 최종 답이 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 14549,
+          "end_char": 14580,
+          "sha256": "a1e31c1ce09bbfcd9604a9ae11ef5c08d780ca4fe73c2c873b790e337b6a0f82"
+        },
+        {
+          "start_char": 26440,
+          "end_char": 26558,
+          "sha256": "1cffd549b34087a0b73550a559f8d66d55cfa4088848b4904a7283e3cca49384"
+        },
+        {
+          "start_char": 17624,
+          "end_char": 17658,
+          "sha256": "90b90f913af2cf8df86c04c74c399ec67b5b1c88f91a103f3dbfecdf5974ea49"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Accounting_17",
+      "subject": "Accounting",
+      "source_record_sha256": "bf637d3e96fe66563fa66c825c3121adad0a166d2201733f7c8274cc3cd7f4c0",
+      "raw_response_sha256": "e1c8d3656304d420341a89c144495e0077053a9d0a08aa673483151fb408d047",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "응답은 total assets의 의미와 계산법을 계속 추측하며 끝에 “perhaps”로 문장이 끊겼습니다. 확정 답이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 7846,
+          "end_char": 7955,
+          "sha256": "3075a688de9a6c355a1805b8df0cf7ffea5c77f8d2141f2ce345cf52f4280549"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Accounting_21",
+      "subject": "Accounting",
+      "source_record_sha256": "b1b75b9508b2ff0a86ff4e3c9c1fd8c597febdb0b12cc62e3867de8984228116",
+      "raw_response_sha256": "2fc00fb26f8943cc8617e1cec3f4a7b05271c176dec5c6d0aa178907a10a2215",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "응답은 선택지를 확정하지 않은 채 평균 자본비용 해석을 여러 번 ‘Perhaps’로 반복하고, 마지막에는 X를 거부하자는 미완성 계산으로 끝난다. 앞서 ‘no incorrect decisions’라고 했다가 D를 틀렸다고 해석하는 등 결론도 안정되지 않았다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 14511,
+          "end_char": 14564,
+          "sha256": "0df8440b0b454d4e312c5d8c0b295699fcd1b00e4cdeb3a3bb2d5c5a071a5b48"
+        },
+        {
+          "start_char": 10005,
+          "end_char": 10026,
+          "sha256": "c3c6ab536a6f17e7647618fd9d78560079428a7d566ea16a951850d1535af3b8"
+        },
+        {
+          "start_char": 14308,
+          "end_char": 14359,
+          "sha256": "699d48856d31af8222289b2257abfe0ca17715c9e0bdb7c5ca9ac2230ec10e81"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Accounting_22",
+      "subject": "Accounting",
+      "source_record_sha256": "b75af673c2027f296175a48974ee4d408f0fcc962502d7f16351f60034d0f16e",
+      "raw_response_sha256": "4ae2e6ea0519b7f6138ad2aba68dbe6a8b994a28899495bca80b36ec1d45084d",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "계산과 가정만 이어지고 결론이나 최종 선택을 선언하기 전에 응답이 중단된다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 10057,
+          "end_char": 10122,
+          "sha256": "ef889b975884af868b7f30659b54333bf84421eee74cfe1ecf895fd907c761ba"
+        },
+        {
+          "start_char": 3712,
+          "end_char": 3729,
+          "sha256": "b47c13f7abcdf665a298549cd0499e9da140585bd0c7a6089125d7a64c369734"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Accounting_5",
+      "subject": "Accounting",
+      "source_record_sha256": "f9367a8139279c3798fc33319bc33b7bf060afa091eb0c9c66eef6e6a12a0404",
+      "raw_response_sha256": "3b58b311a4df559cc47a8316b43dc9afb6eb80c0a11f765f012be9824b58c943",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "마지막까지 어떤 연도/기간의 equivalent units를 묻는지 추측하고 값들을 배제하는 중이며, 끝은 숫자 “2”에서 잘렸습니다. 최종 선택이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 12871,
+          "end_char": 13013,
+          "sha256": "537b4ee9b4d9a124f7e831481d069fabea056a12587a16812f96f3dd1af03e20"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_10",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "d7199d736d7d298d5a761ed69c1a86b76e8a80d892f5a4f5418eeea156ef031a",
+      "raw_response_sha256": "9497bc8aa3829b1ba9f8a5ed44d4019f5a7d1ec372cf4f9861be6a79d996729a",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "계산 방법과 면적 값이 맞지 않는다고 되풀이하며, 특정 선택지나 최종 결과를 확정하지 않는다. 응답은 D.M.D. 값을 나열하는 도중 길이 종료됐다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 6586,
+          "end_char": 6617,
+          "sha256": "fa3a045885b78e043447eae9c436649f983c8099537a995ce886e01974bfbb6a"
+        },
+        {
+          "start_char": 16357,
+          "end_char": 16451,
+          "sha256": "1b8d28e5237e4e6cf761d927530ae6e7eb16f208017e437d10dac5e4145c41bd"
+        },
+        {
+          "start_char": 9106,
+          "end_char": 9115,
+          "sha256": "132236eccf2f345a0075462a6f148a3344ece97b614ea153381546919ecee4d0"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_12",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "7f982d349baf77503feaaa9604a1eb45f809f0b8b2525947a3f9f0398cb7949a",
+      "raw_response_sha256": "d92f5903073603f63ed329159ef5b5bacc7701cb348cca70eba2f52609238253",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "서로 다른 방위 값을 option A라고 여러 차례 tentative하게 지목하며 어느 값도 명시적으로 확정하거나 앞선 추정을 정정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 35990,
+          "end_char": 36037,
+          "sha256": "b9ef7170f0f2940c9af56f117496135f2b75c050792fa0e83b5968eec26092df"
+        },
+        {
+          "start_char": 39966,
+          "end_char": 40013,
+          "sha256": "ed0fd192b80854f0d50a87b062aac5ad139545a123e962fc35e9042c75aa8435"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_13",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "1a075df3b7c5746af4dc68fd01576b2518783515a06c6c9b1995b9694878bee0",
+      "raw_response_sha256": "32fd45ee02b46d3cd4b1a07a057ec9b130aa92c7aee0215069493a3f70de9f8b",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "5.66 mm와 4.22 mm를 모두 “perhaps”로 제안했고, 최종에도 계산이 맞는지 확정하지 못한 채 답변이 끝났습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 33054,
+          "end_char": 33104,
+          "sha256": "2e1c6b546ac028e6ffd3b6c4d366b194daa2c49d6ffd5e2b36e373972ea78173"
+        },
+        {
+          "start_char": 38228,
+          "end_char": 38299,
+          "sha256": "a40e0e1dfef92d0550851d1459a57a41c51fb8bcb0431804d2a17ab6558bd971"
+        },
+        {
+          "start_char": 33054,
+          "end_char": 33072,
+          "sha256": "ac1708b283c59979cf5420243469b7c2e78f6f417ee5c8df90fe7564668878ea"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_14",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "aecf30bcf73dcaff02389407e407f11c30127257f9d0f4e493474f4330ce917e",
+      "raw_response_sha256": "e7516f4af286118d4e0e4847405f11b0ea357d8790e12fac547a4864a0f3fd30",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_explicit_final",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "1.06",
+      "reason_ko": "끝부분까지 여러 가정을 제안할 뿐 값이나 선택지를 최종 답으로 확정하지 않는다. 마지막 문장도 필요한 관성모멘트가 없다는 가정 검토 도중 끝난다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 25552,
+          "end_char": 25652,
+          "sha256": "3c49312202da72f0066e8d6983706bdf77ed210f7bbdbff25a65baef213e1ee1"
+        },
+        {
+          "start_char": 29391,
+          "end_char": 29511,
+          "sha256": "c5b6d3aa3465d2a65614758f7a9ee8e658d60ed1c56f9bb50dcba5b9b8423d22"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_15",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "3285c330948e4d33a19e8c26e33d1f9c98b1032eaeb17283d996511adfedd96a",
+      "raw_response_sha256": "8b776097a2ab8776b456a3559af879756dd232b27481671f383fd574b45f2a37",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "-1.84 kips를 반복해 perhaps로 제시하지만, 계산상 다른 결과를 계속 내고 마지막도 가설 전개 중 끊겨 답이 확정되지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 26203,
+          "end_char": 26289,
+          "sha256": "8e6702ccc8466d2688480209908ebb403f591a40d58e1c0e54fbc57d76f6bf40"
+        },
+        {
+          "start_char": 24904,
+          "end_char": 24980,
+          "sha256": "230b3da85bce8d78432b5a9b7ecb35c7396ad8a27c6456b4ca7f137e7fd06b5f"
+        },
+        {
+          "start_char": 24904,
+          "end_char": 24938,
+          "sha256": "d77966ef57cc3779a70d1ac6dd3adc4d19c5e7c7e41306aa3f58d01109ff613c"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_18",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "5c4ff7ecf8dc5a255ca2d14954c833358b4b878e63bb1d922cd79e86d58f0042",
+      "raw_response_sha256": "a27f8ccee89f94ddb25535097f63b9f8b488435ae5a0e8cd1624be47b2319c82",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "945.8 m, 216°45′를 반복해서 “perhaps”로만 제시하고, 이어 계산 오류 가능성을 언급하며 마지막 문장도 미완성입니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 21726,
+          "end_char": 21819,
+          "sha256": "144d18a1e6e325c869012f3f1a85bec2ac4f04e84f782969e015c9317811635a"
+        },
+        {
+          "start_char": 28954,
+          "end_char": 29009,
+          "sha256": "0915cf91077587f10ddb2edc66677876b1965a5eabe959fd5fe5187fc8055fdc"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_29",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "06e923b250be451e84363ca4a2d5de039ed0db70314d31175dbb0ebf6af5e745",
+      "raw_response_sha256": "ea976edfc7eef927f12616844f66ba0e030f0fa95fa0dadf884bd12a923794d3",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "수평거리 공식에 대해 맞지 않는다고 반복해서 번복하며 특정 결과를 최종 선택하지 않는다. 종료부도 공식을 다시 쓰는 중 잘려 있다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 8112,
+          "end_char": 8216,
+          "sha256": "141d8e88d496dcb5ce4339fbdd1b5b142c5be6ce54373208e572bc30f73b1649"
+        },
+        {
+          "start_char": 8997,
+          "end_char": 9064,
+          "sha256": "34a23a0e3874daddd612fc7963a3731759a1e735afe7d37e40f3a0147e05651a"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Architecture_and_Engineering_9",
+      "subject": "Architecture_and_Engineering",
+      "source_record_sha256": "29547ddb5f073e5edd0c80282652ed0828d364a9a9df0cf13432d2871d568b06",
+      "raw_response_sha256": "10e3a08fdab93984ae16bed0bd523ec8451d6e4dc2af703f89feb53cb64a692c",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "14,500과 9,446 등 상충 수치를 반복 추정하고, 마지막에는 가장 가까운 답을 고르겠다고만 하며 선택을 완료하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 30628,
+          "end_char": 30873,
+          "sha256": "9aec7e10b2f7781471d5343f5a01c3ea039efcca752adf67db867514ead42e60"
+        },
+        {
+          "start_char": 39071,
+          "end_char": 39115,
+          "sha256": "05a63111a2ddf9d88af6bbc6b79cd18f5777b60af37dac7c45b0a65aeff47eda"
+        },
+        {
+          "start_char": 21296,
+          "end_char": 21409,
+          "sha256": "2074a935907bf41442e8bfd77d399ee19e2b7667fc946828e1b43822ea0b9003"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Art_Theory_5",
+      "subject": "Art_Theory",
+      "source_record_sha256": "2f537c84fd21f2acd2bd5b2e6d97c5020d1e16ec8ceca9ea471ab1853b67f5dd",
+      "raw_response_sha256": "921e0e72eeab29d15276dc91434c3a97ff49f40524e106aa897f0dbfa363ca36",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "article_a",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "응답 안에서 C를 “Final Answer”로 선언한 뒤 A로 바꾸지만, A도 “wrong”이라고 말하고 마지막에는 “But I recall now: Stone”에서 잘립니다. 명시적 정정으로 해소된 최종 결론이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 10579,
+          "end_char": 10603,
+          "sha256": "056ce6e1ef186bd0c8add328df9f128c77fa0980beb653a29a68aa778fcca892"
+        },
+        {
+          "start_char": 9704,
+          "end_char": 9757,
+          "sha256": "98da62ec1277abdd86e66b6dac4bd850788d72d713183ae8b32a8d3e656a5d3a"
+        },
+        {
+          "start_char": 9759,
+          "end_char": 9786,
+          "sha256": "abc93e00e019e4e3308b5d6802a707fc9bb910c688dfa7798022f740b6462e27"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Biology_27",
+      "subject": "Biology",
+      "source_record_sha256": "777f721fc8d14f858dee8de74191c3db91364e7cdcab9b11821c83a5a9589eda",
+      "raw_response_sha256": "84636ff4ef5477099f45ed425f34c7265e9d663dbf25fb500ec3f5cc7e2f2ed7",
+      "finish_reason": "stop",
+      "generated_tokens": 2678,
+      "original_rule": "label_option_conflict",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "B. Aa",
+      "reference_answer": "E",
+      "reason_ko": "마지막 genotype 판단과 명시적 Final Answer가 모두 B. Aa로 일치한다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 8966,
+          "end_char": 9026,
+          "sha256": "43c79709f088d74daa409941e28f41040241c485da991bce7fb22ad2882aa984"
+        },
+        {
+          "start_char": 9033,
+          "end_char": 9058,
+          "sha256": "18c048c521e1421709b72b97095c7736dc2ba41e8e6f197563f55113d10da912"
+        }
+      ],
+      "comparison_value": "B",
+      "comparison_note": "명시적 B와 실제 보기 Aa 일치; AA와 Aa의 대소문자를 구분",
+      "audit_outcome": "CLEAR_INCORRECT"
+    },
+    {
+      "sample_id": "validation_Chemistry_14",
+      "subject": "Chemistry",
+      "source_record_sha256": "4d527a2fd846ad1bd73f0bffa30b10d291b41a9e3cbc519f4f6cf40a40725e0e",
+      "raw_response_sha256": "75fa71ff54c95a3cb1a2ac87c3aff51e1d4f521a7d67bf2bca41d26c9d44c322",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "3이라고 결론짓겠다고 했다가 옵션 때문에 A.4를 고르겠다고 하고 다시 3과 4를 오간다. 최종 꼬리에서도 A.4는 추측형이며 답이 확정되지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 30981,
+          "end_char": 31147,
+          "sha256": "4e4251148b5e6d240edaea6e20b9f31343e21962e8f7de933e0e9a5aba59412c"
+        },
+        {
+          "start_char": 24128,
+          "end_char": 24265,
+          "sha256": "97e91a5a18d9da72dee6f1dd3ddf9039d5e036d3c957c238463b32da9bcbcecf"
+        },
+        {
+          "start_char": 15134,
+          "end_char": 15165,
+          "sha256": "4cff8d3dfedb17cfd860b9b52ff13f17f07296045ae151cda4a13d9520fdc5fc"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Chemistry_19",
+      "subject": "Chemistry",
+      "source_record_sha256": "fbbce6cb2f7120773a29681b03b2bfab4e9e7bc780002e4a29a5ab41505c808a",
+      "raw_response_sha256": "c7a74018de9fa76c88f7e91d0126479492495e79ff205a77dffa72c1089a04e9",
+      "finish_reason": "stop",
+      "generated_tokens": 6300,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "4",
+      "reason_ko": "4와 2를 오가며 끝에는 2를 “final answer”로 적었지만, 앞선 4 결론을 명시적으로 철회했다고 보기 어렵고 여러 차례 상반된 최종 선언이 남습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 20832,
+          "end_char": 20851,
+          "sha256": "8c3ad703f03787febe66104bf843b9f8f07c1558e64620483c6f36e48440b4a9"
+        },
+        {
+          "start_char": 22385,
+          "end_char": 22419,
+          "sha256": "e7fe82c2a4d65c3ac319612f3a123729fe3b83f511b983b85bdc4610343b4dfc"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Chemistry_2",
+      "subject": "Chemistry",
+      "source_record_sha256": "7fb55e59acd5581ada8c9b501151bfa6c332155e60e33e39c0ffab8655ec1c15",
+      "raw_response_sha256": "1d14cf05185f2b41cb19344d0864eec92ffec0b8e5c79078328710916465c6ef",
+      "finish_reason": "stop",
+      "generated_tokens": 1794,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "B",
+      "reference_answer": "B",
+      "reason_ko": "중간에 A를 정답이라고 했으나, 이후 해당 판단을 다시 검토하고 B를 best answer라고 명시한 뒤 마지막 Final Answer에서도 B를 확정한다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 1050,
+          "end_char": 1171,
+          "sha256": "5b028f214c8058a0ce708af8aaba5a442accb3fe692cb2d41be3eade821afb76"
+        },
+        {
+          "start_char": 6621,
+          "end_char": 6649,
+          "sha256": "b2a155de041b2bccd3aa07892055e0d4708da3770b6e1aeb1abf94166846f4d4"
+        },
+        {
+          "start_char": 7089,
+          "end_char": 7108,
+          "sha256": "2601805841d56c6761da5fda2e82c89e87f8dc8d5b8d16f3518cda74e2a5023b"
+        }
+      ],
+      "comparison_value": "B",
+      "comparison_note": "앞선 A를 명시적으로 부정·정정한 뒤 최종 B 선택",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Chemistry_30",
+      "subject": "Chemistry",
+      "source_record_sha256": "2836401dcd8f8fa6a7665cbf6f52d86bde3654620484a3cb14673bfb0ae48943",
+      "raw_response_sha256": "c15bd4803cec1906425b64c0dc8d730e039e134519d92cfc9d9923dd9fdd4872",
+      "finish_reason": "stop",
+      "generated_tokens": 566,
+      "original_rule": "conflicting_or_invalid_boxes",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "MgS",
+      "reference_answer": "['$MgS$', 'MgS']",
+      "reason_ko": "처음에는 일반식 MS를 상자에 넣었지만, 뒤에서 M이 Mg임을 명시하고 화합물을 MgS로 확정해 일반식을 구체화했다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 1294,
+          "end_char": 1313,
+          "sha256": "3ae5e5c518657e411179a12b303afe188bd7930cf4373815a214f2d367a464a0"
+        },
+        {
+          "start_char": 1624,
+          "end_char": 1674,
+          "sha256": "4e2251d39b317fbabddf2612d1e4dbee67ebea13667eace6a0e0e351e434fe4b"
+        },
+        {
+          "start_char": 1775,
+          "end_char": 1795,
+          "sha256": "f16245e4e6bbb398b4a284766708ef05dda2efe626d5f5b7db0c147285767f8d"
+        }
+      ],
+      "comparison_value": "MgS",
+      "comparison_note": "M을 Mg로 특정한 최종 화학식 그대로 비교",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Chemistry_4",
+      "subject": "Chemistry",
+      "source_record_sha256": "3670f08b21de808e2f09e9ffd9c8717c5feac8178942c3ee1e394b7ff0e88959",
+      "raw_response_sha256": "fc05e47f9f0050bd60f6a3f882ade84179448c6a3cf926f84af981d134e59e8b",
+      "finish_reason": "stop",
+      "generated_tokens": 783,
+      "original_rule": "multiple_numeric_values",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "cis-1-chloro-2-methylcyclohexane",
+      "reference_answer": "trans-1-Chloro-4-methylcyclohexane",
+      "reason_ko": "마지막에 동일한 분자명을 답으로 반복해 확정합니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 2805,
+          "end_char": 2871,
+          "sha256": "2bcbf28ac5bb0124aae0e0128c0357cbe09fea2e0031a1466eed42a1f35ddbbe"
+        },
+        {
+          "start_char": 2873,
+          "end_char": 2919,
+          "sha256": "81b1dc1a218714fd34c9a5df4ee8c29747e2dc4e0deb921d500e75a79c131bf6"
+        }
+      ],
+      "comparison_value": "cis-1-chloro-2-methylcyclohexane",
+      "comparison_note": "명시된 분자명 전체 비교; 위치 번호·cis/trans를 지우지 않음",
+      "audit_outcome": "CLEAR_INCORRECT"
+    },
+    {
+      "sample_id": "validation_Clinical_Medicine_15",
+      "subject": "Clinical_Medicine",
+      "source_record_sha256": "550108a6cde496f2898ad9f66bf6d8de45781a0da2f2adde7129f194cc860edb",
+      "raw_response_sha256": "250381e18d3a2379678cd891f203034d461c15a96f4ed1fdac4adf6363994509",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "정상 영상이라 선택지 없음이라는 판단과 A 또는 D를 고르자는 추측이 계속 교차한다. 끝에서도 ‘none of the…’로 잘려 유일하게 확정된 선택지가 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 6081,
+          "end_char": 6147,
+          "sha256": "c4e41c00863ca2340de03bf394d723f7a8530c1cb2319f1147cb3e6cfc91d801"
+        },
+        {
+          "start_char": 19001,
+          "end_char": 19098,
+          "sha256": "76d04a5b0259aeda0ebf1ce15eccabd54ae65c12da4f37e6078bd37f0618492f"
+        },
+        {
+          "start_char": 24546,
+          "end_char": 24837,
+          "sha256": "18828e1c9176119c282d7325209d6c186017d345624079a015cc97ee0fa04e14"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Computer_Science_1",
+      "subject": "Computer_Science",
+      "source_record_sha256": "64077a4a406fe85c35139fe257f31ad5a2b07ffe5449c5d402e01cad11800b5a",
+      "raw_response_sha256": "c116ff824ea050f4b9695c5d7f16685e71d35a6467076447ee2708481771bd71",
+      "finish_reason": "stop",
+      "generated_tokens": 6064,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "앞부분에서 E가 의도된 답이라고 여러 번 제시한 뒤 D라고 바꾸지만, E를 명시적으로 철회하는 정정 없이 서로 다른 최종 후보가 남는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 16676,
+          "end_char": 16802,
+          "sha256": "3f454934da60a0feef0408e71a6009b4915ee7b207e7bbebc176755372cf98f8"
+        },
+        {
+          "start_char": 18280,
+          "end_char": 18366,
+          "sha256": "f9134e0b7da394a212b9aca5c01067c0f8449ad1482f35aa2e1239dd3af61560"
+        },
+        {
+          "start_char": 20891,
+          "end_char": 20931,
+          "sha256": "5026d23afa81e847bcdf400970a2a78ed576ea590abccb2adb3c19a4158aafd8"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Computer_Science_11",
+      "subject": "Computer_Science",
+      "source_record_sha256": "e56ae426c7edbd053b5aa3a3796db7fe053b48b3dd4724c2618458364f04422d",
+      "raw_response_sha256": "5464e0cda9e8717883ae05fdd85e802f50c25505098b02522722fe546ea62965",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "multiple_choice_alternatives",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "A,B,D가 가능하다고 하면서 단일 선택 문제라고 A를 박스 처리했지만, 곧바로 C일 수도 있다고 하고 “that would be wrong”에서 끊깁니다. 최종 선택이 안정적으로 확정되지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 22313,
+          "end_char": 22357,
+          "sha256": "daf7dad67f3ad7466866f63bb1cf7c3ac899aa1fbe257dc83575f4e32cffa132"
+        },
+        {
+          "start_char": 28234,
+          "end_char": 28247,
+          "sha256": "46e4ebff8f79ff9af2ea354b6ae610cf8e11b27bde801f1d59a83c8924ace0da"
+        },
+        {
+          "start_char": 27140,
+          "end_char": 27197,
+          "sha256": "c2d4c1b1cde747556d772136de93fd18b88738b5622c66370222a98f96b149d4"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_1",
+      "subject": "Electronics",
+      "source_record_sha256": "ea315f70ceab2ef07ae1b9b8b75a3e88fe47c9bcaae61dda36ca31154d482865",
+      "raw_response_sha256": "268583d3ae52cff1f7691c1e0959b370f3b668548660894ae5a51f3a3d05aa8d",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "회로 상태를 분석하던 중 기초 가정을 번복하고, 마지막에는 전류 식의 V 항을 쓰다 끝난다. 포화 여부를 최종 답으로 선언하지 않았다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 12153,
+          "end_char": 12275,
+          "sha256": "884dd584de172687a32fb824b28483b9961fafa05e6e6f3c0ecb0e1c885317f2"
+        },
+        {
+          "start_char": 12277,
+          "end_char": 12395,
+          "sha256": "806827db0a69d68ae5c8c910ff73b42b952315515239e9819c6cb4102c0e168a"
+        },
+        {
+          "start_char": 7048,
+          "end_char": 7086,
+          "sha256": "4daa553dc7c8e8c998036ecbd9d85c9e68f8a2338a5bb16c380e09ef112911fe"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_10",
+      "subject": "Electronics",
+      "source_record_sha256": "37410f70cd206070a9f7beba73ab9e66522a66fd1a36988ddb4b0fecb462508e",
+      "raw_response_sha256": "241a3f3a16cf2608e01c4b6a5b591e35cbff89b0c7585b338b142729ff36c98e",
+      "finish_reason": "stop",
+      "generated_tokens": 22820,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "D를 여러 차례 고르지만 근거 문맥에서 perhaps로 계속 의심하고 값이 옵션과 맞지 않는다는 상충이 해소되지 않는다. 최종 표기만으로는 정책상 모호성이 해소되지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 44007,
+          "end_char": 44054,
+          "sha256": "343b29aa6eaf60ea47e434a5a979952c82afde9f42446c812a4fbddeacdb9e0f"
+        },
+        {
+          "start_char": 44080,
+          "end_char": 44216,
+          "sha256": "9068de1bb4b241e1659b3190e1a811db86dce7044d1fbb9d9042cdb8e3faa99e"
+        },
+        {
+          "start_char": 45056,
+          "end_char": 45090,
+          "sha256": "5ed93579e16076ee8b1bda175b6483951fe33cc0d059aaab518855750582842d"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_11",
+      "subject": "Electronics",
+      "source_record_sha256": "1686ec7ab0977c4928f0272ab2bb2a3fd922c09a250e53d2c0db472983173983",
+      "raw_response_sha256": "ce78e6a2c00042206390b57bf8d4f2297381a67dd1550c8048dbb529eb92c6af",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_explicit_final",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "0.3",
+      "reason_ko": "응답은 노드 전류 방정식을 세우는 중간에 “So”에서 끊겼습니다. 최종 물리량이나 답은 제시되지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 25489,
+          "end_char": 25538,
+          "sha256": "69e8939d82d7461dd143bd3ff1cc9c968844e8558b2dda6d63fa5fb2b2849930"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_13",
+      "subject": "Electronics",
+      "source_record_sha256": "5dfdec37f5ceb7cf51f1af8af373d4ea27ef91b060313c9085bebc92585eaa4e",
+      "raw_response_sha256": "e3f6662f5d240039e79106d0eed6485046148eb67bb531a0f4b97b30341f41ff",
+      "finish_reason": "stop",
+      "generated_tokens": 450,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "C",
+      "reference_answer": "C",
+      "reason_ko": "주기함수 라플라스 변환 유도를 마친 뒤 Final Answer에서 C와 공식을 함께 제시한다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 988,
+          "end_char": 1070,
+          "sha256": "89555ac7ff042d97fe809fba0e5b9702f46888763fed273de3fa07e6455a5f9f"
+        }
+      ],
+      "comparison_value": "C",
+      "comparison_note": "수식 안에 명시된 최종 보기 C; C 보기 수식과 일치",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Electronics_17",
+      "subject": "Electronics",
+      "source_record_sha256": "b657348e5b6864409657126b58d827bb19134f550050c1ac7b44212e253e3cad",
+      "raw_response_sha256": "5e99f0f3f1d3844b2974fee5fe15a00381c59b821b0e6abc7d2b13d1da5313a0",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "가능한 회로 해석과 값을 추측할 뿐 답 선택이나 최종 답 선언 없이 문장 중간에서 끝난다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 26559,
+          "end_char": 26617,
+          "sha256": "5615d7ad0a5545053c39f655038e15611e2a9279190025f99e82afa1027b9dc4"
+        },
+        {
+          "start_char": 27022,
+          "end_char": 27139,
+          "sha256": "c0c6810bb0ad1f4caad987c01046c0d691b10d85da285ceb7badb198ba6c4e6f"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_2",
+      "subject": "Electronics",
+      "source_record_sha256": "b79c9c25123af4379cb6a4d600d8ed438aa87b78a0c4afe53fa6f1cd1e898fe0",
+      "raw_response_sha256": "d4bebf77225c00452a00bc0d758b3c13f963fb6e59f7dd90279ac375eb5cb47b",
+      "finish_reason": "stop",
+      "generated_tokens": 505,
+      "original_rule": "multiple_numeric_values",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "2√2 A",
+      "reference_answer": "2.83",
+      "reason_ko": "최종 답 섹션과 마지막 문장에서 같은 RMS 값을 확정적으로 제시합니다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 1243,
+          "end_char": 1295,
+          "sha256": "afc89bdd84a484533a8d9c53a17b57f90489846de5195511a2fb220d796b9757"
+        },
+        {
+          "start_char": 1578,
+          "end_char": 1631,
+          "sha256": "620985aec6708b02b8e4ad40ab6c422fb33d322d86d74acf95c9a96f8990a84b"
+        }
+      ],
+      "comparison_value": 2.83,
+      "comparison_note": "2√2 A를 계산하면 2.828427… A; 문항의 A 단위와 일치하며 소수 둘째 자리로 2.83",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Electronics_26",
+      "subject": "Electronics",
+      "source_record_sha256": "81e5fa2a42fe2c301593fccb1bb44b6adbadb2f542603fb0068f62c8e63adf3c",
+      "raw_response_sha256": "4e136f26991b1982f37b508d86d70897740e46fd3ffbc2a0988a31c96fce20f4",
+      "finish_reason": "stop",
+      "generated_tokens": 4503,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "11 μF",
+      "reference_answer": "6.333",
+      "reason_ko": "여러 차례 해석을 검토하지만, 마지막에 11 μF를 선택하고 boxed Final Answer로 확정한다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 17486,
+          "end_char": 17542,
+          "sha256": "ae07bfc51c552a23ca2e809a37ab6179858757ab2e107435df48fc31ebc2612a"
+        },
+        {
+          "start_char": 17564,
+          "end_char": 17611,
+          "sha256": "cf115c061f194533619806ea33184d403665c986e10c2cb4f631313c6a6c1183"
+        }
+      ],
+      "comparison_value": 11.0,
+      "comparison_note": "문항이 요구한 μF 단위의 최종 11 μF",
+      "audit_outcome": "CLEAR_INCORRECT"
+    },
+    {
+      "sample_id": "validation_Electronics_28",
+      "subject": "Electronics",
+      "source_record_sha256": "9516fdb91d8dccccb3da52046004c6e26c5d85af4713b2ffd2e95835c85ccf5c",
+      "raw_response_sha256": "af9e084377cbe9f9890c8ed055ac121b4dc6da4b38268350482edbabdc04191e",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "A를 수차례 perhaps라고 제안하며 120V, 75V 등 서로 맞지 않는 주장과 함께 반복한다. 꼬리에도 잠정 문장만 반복되고 확정된 최종 답이 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 29935,
+          "end_char": 30031,
+          "sha256": "0a6c062655b0a3bc19b6fc9d1251b1155dd2d6813a94def17c421e64581595c0"
+        },
+        {
+          "start_char": 36399,
+          "end_char": 36640,
+          "sha256": "84b378cce10199d9ae7274c8efd54dc5feacf27c5223d58433fa34b2a8104aa5"
+        },
+        {
+          "start_char": 34282,
+          "end_char": 34305,
+          "sha256": "b2f5a1398ab63afc4f518719ab95d9fe1b2ba4b87e48c5eba5567db13397feaf"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_30",
+      "subject": "Electronics",
+      "source_record_sha256": "f3fb533c7c639d1107fb602d69c22b45a8cd96f663e8a6ce1353c1a935ba5548",
+      "raw_response_sha256": "335474d49a434151180e2cb5b013834b138f6c538adaf2ca37e028e720354b60",
+      "finish_reason": "stop",
+      "generated_tokens": 6765,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "−106.26°",
+      "reference_answer": "-141",
+      "reason_ko": "위상값을 여러 번 동일하게 선언하고, 최종 표기의 단위 생략은 바로 앞 문맥에서 phase로 특정되어 값이 분명합니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 17800,
+          "end_char": 17841,
+          "sha256": "e607ad1bd64a9b38da85f1c657e4fce08e9872a81f307ad5699e6489a11134a2"
+        },
+        {
+          "start_char": 17848,
+          "end_char": 17884,
+          "sha256": "0c770900e523e811ce63bb9b8dfd3dd64cd293f2d12288ff3b113951a24d158f"
+        }
+      ],
+      "comparison_value": -106.26,
+      "comparison_note": "명시된 위상 각도 그대로 비교",
+      "audit_outcome": "CLEAR_INCORRECT"
+    },
+    {
+      "sample_id": "validation_Electronics_6",
+      "subject": "Electronics",
+      "source_record_sha256": "b748a0d90796a79421e693418fc6fbbd18a03dc981f2a011acc2e4e3c923c556",
+      "raw_response_sha256": "d253889ea92c7308f0e34bbbdf991f1cb262cdad8cae59630b4f6ec3ac81fe4b",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "multiple_numeric_values",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "71.6",
+      "reason_ko": "회로를 직렬·병렬로 해석하는 여러 시도를 하다가 마지막에 분기 하나를 쓰는 도중 끝난다. 최종 수치나 선택지를 확정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 22022,
+          "end_char": 22132,
+          "sha256": "14463d1a5d8fde2d5933514b97aa7d2de0a469fa13edc5ed86cb735db597a46e"
+        },
+        {
+          "start_char": 22134,
+          "end_char": 22252,
+          "sha256": "aa0a23a51931dd922433377a202f1bf079705b2f59cfe5c7104ed3ea07b9563b"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Electronics_7",
+      "subject": "Electronics",
+      "source_record_sha256": "eed980f390ca447a4f607cf6cca9571230c0de77c59dc37b049f5f21a28f7df0",
+      "raw_response_sha256": "747665ec6b7a7543892642a61256cc8ba4d8eb2eaa01d97a11e92c528eaa1a61",
+      "finish_reason": "stop",
+      "generated_tokens": 15856,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "앞서 A, B, C를 서로 다른 위상·진폭으로 추정하고 C를 고른다고 반복하지만, 근거에서도 가장 가깝다는 식으로 잠정 선택한다. 마지막 C 상자는 이를 해결하는 명시적 정정이 아니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 36245,
+          "end_char": 36298,
+          "sha256": "71a5095f30383d9891d49ceea1e7d802d7312ea441a46acd9f2a5ce36982e812"
+        },
+        {
+          "start_char": 36322,
+          "end_char": 36387,
+          "sha256": "c97b4fd62c660569500d69a48dd54749df79c7de29de34906244dd7144dc2683"
+        },
+        {
+          "start_char": 36745,
+          "end_char": 36779,
+          "sha256": "dc02d464993b390114e46b7fd263c4ca6e19a453d574e8c763596e3e0bfee2ad"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_1",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "b9d17b8c9067b43833bb50a81bd0b47399bfd1bf11778b51b00b84ba8effc698",
+      "raw_response_sha256": "e99cb587476f408e231354f471d4c5394ee53ab878b6cd69827036b84545367c",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "반구 열전달식과 반경 단위를 계속 재검토하지만 마지막은 “Let me try” 계산 시작에서 끊깁니다. 답을 확정하지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 16838,
+          "end_char": 16925,
+          "sha256": "90dfb63065fd92c783f3b216834027dfc5cce54e27ecdfbbd174c75fb6925b55"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_12",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "b93347c7858417613f0a8bb0dad6feb2d17b26b8d358772539013968507a83ad",
+      "raw_response_sha256": "f2440c41ad13de2372b25424423edc4843433d6ca8cf2cbfe41da9bfbf8805e4",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "210이라는 수를 반복 언급하지만 매번 ‘Perhaps’로 제시하고 선택지에 없다고 덧붙인다. 다른 공식·단위 해석을 검토하며 확정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 18205,
+          "end_char": 18260,
+          "sha256": "a5dfbff496acf56e64ac71813d05d97a0a4812e6fe451d6f506d50d8606dfe59"
+        },
+        {
+          "start_char": 18938,
+          "end_char": 19141,
+          "sha256": "0bf1a4a5c168d9c731d0db6425426019e8c48338a9fa1610deeb02754cc77085"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_13",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "e376187c3f2c5d594d79156df0ecb8df4fb8d7bf14f4a2563f5bd6e5e1839385",
+      "raw_response_sha256": "9b9c912fafb7653e6d959ae7fb000ec1e7f48107c7bd64662ed0aaba50f1f2c5",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "품질 값을 정하는 데 필요한 미지수가 남았다고 설명하다가 계산 중간에서 끝나며, 최종 값이나 선택을 선언하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 29800,
+          "end_char": 29861,
+          "sha256": "7ba1366119ac8df33ea3493c4008ccbc32eb6847788b4c647b9aa997a5fec3f2"
+        },
+        {
+          "start_char": 29769,
+          "end_char": 29798,
+          "sha256": "eadf3338fc2162befdca00a768e0526b8b5ac26722d2732949b1bf63c3802955"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_14",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "5d682ece8fd0f9fcb7b7469e582963aafac77e4f0a69b124b871011b43dd3348",
+      "raw_response_sha256": "0357f1dd7dafa613d664c8ccce965cc7f9d562b6d97a15a84c1b6d926bb3cb93",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "끝부분은 h의 의미를 1 m 또는 0.5 m라고 추측하고 “not matching”이라며 끝나며, 앞에서도 0.5 m를 tentative로 제시합니다. 확정 답이 아닙니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 15918,
+          "end_char": 15986,
+          "sha256": "85d9bb88564467ebbdf54afaca37e88e518794095ca124ae19f566be3f72e1cb"
+        },
+        {
+          "start_char": 15918,
+          "end_char": 15986,
+          "sha256": "85d9bb88564467ebbdf54afaca37e88e518794095ca124ae19f566be3f72e1cb"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_15",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "0840e7bcdd95d6ed098e775eecdbc1831f04801178bb80e49103851e19030bd8",
+      "raw_response_sha256": "ded681e6fad13940df8a4df01d15e664d1e5190fbf309f94d5921dedb9088a05",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "에너지 방정식이 순환적이거나 불가능하다고 검토하고 다른 접근을 찾는 중 끝난다. 최종 답이 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 16049,
+          "end_char": 16072,
+          "sha256": "8b3f41645cee9bce3cad5f33b9790608c6ec07908d8387549bd05935dbe66735"
+        },
+        {
+          "start_char": 28694,
+          "end_char": 28796,
+          "sha256": "3512a23028c8cbcea0feea94bdec391176c92f1b58334dbde35d4529587115a8"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_17",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "f5f7410e73b35cd135675b95b09131256d06b4c1cda4e0ce6c34095deaf1b043",
+      "raw_response_sha256": "29680c795ff91036b2b91c0f063a57ebdd5bfc1bdaa2803cb1daa328da1ceaa2",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "100m라고 주장하면서 50m를 선택할 수도 있다고 말하고, 100m도 50m도 확정된 최종 선택으로 일관되게 유지하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 34296,
+          "end_char": 34402,
+          "sha256": "4e4e21bb7cd618b6e1f36f056cd3bcea43d7d0ea8a58c19cb2b5c738fafaea16"
+        },
+        {
+          "start_char": 23182,
+          "end_char": 23216,
+          "sha256": "d5e0aa93e5552a18acd59469c9d23d896e4a7ccd8e8704bbc0bd947eb17b73e8"
+        },
+        {
+          "start_char": 29425,
+          "end_char": 29460,
+          "sha256": "c4582a1359890a222ea7fac74e264614642347a917b6e4f10bd42deff6ac33bd"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_20",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "d0721413a004a8d6c57b34f6eefd293fc2ee06671ad6bf547c37b4f8ac52b9fa",
+      "raw_response_sha256": "ac2f36c2e6e23510598ed794626f240a93ac3df4c04aa5c7bbcf89eb018d3dc2",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "압력 해석을 여러 가능성으로 추측하다가 “Perhaps”로 끝났고, 계산 결과나 답을 확정하지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 13726,
+          "end_char": 13829,
+          "sha256": "247eb77bd85852c1cfa12c1154d84a9226cbadda1841ffc7da269e2af0e32ad9"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_22",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "ce98d54df29c3d5cc0fd47068c0c4bf839be04cf528afc3def7e63020d39f7ea",
+      "raw_response_sha256": "357be784c520c0f392f1cce34856b4b5d66bdf9dabda500f30066d395be12c68",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "818 kPa와 약 232 kPa처럼 서로 다른 계산 결과를 서로 다른 추정 조건으로 제시하면서 어떤 것을 답으로 확정하지 않는다. 마지막 부분도 높이 해석을 계속 추측한다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 14359,
+          "end_char": 14508,
+          "sha256": "7a9b77f53b1f0904dd1fbb91ab68eb108d91ca9bbf262d1178b4a909ca37267b"
+        },
+        {
+          "start_char": 22935,
+          "end_char": 23007,
+          "sha256": "f34328edf20e1cb36621bef9831f09db1c072202d18b75438203de789a70435b"
+        },
+        {
+          "start_char": 13895,
+          "end_char": 14063,
+          "sha256": "f4fd7083eea1741860685159ef354a2d65d11b4b2dfda10c68073ddb8e890d20"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_26",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "a6e83be5244cc71ff2b9bead741cd6d248098161d83d1901cc9fd54e92f84b22",
+      "raw_response_sha256": "2d180f60ff7f93aa9189a32256e8597f8af55fa697864a9944bd2a0dc0728600",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "계산으로 약 3900을 얻었다고 한 뒤 3400과 3600 중 어느 쪽인지 tentative하게 오가지만 최종 선택은 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 17072,
+          "end_char": 17183,
+          "sha256": "535a4632eda399b7cdf01cd72ca4c62438f590e903a671b6ba0c9d2f31bab717"
+        },
+        {
+          "start_char": 24278,
+          "end_char": 24372,
+          "sha256": "2dcbc01769397817c2c30e195c46da0f200ef0068655407eb8aa788eddc2b4fc"
+        },
+        {
+          "start_char": 22056,
+          "end_char": 22191,
+          "sha256": "b294fbb6e5a600908af056e2a16770f683a2f510974c0d551994428b24e0fade"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_4",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "b23cc6c5b601b98c4e5df6d050fc29d95ebbcb9bf43acde6e5122e488b962037",
+      "raw_response_sha256": "c2c804abd7a0feb096c30ccc0f2d8982daa48d1302f66308ab520dd809e34e0e",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "0.1769, 옵션 C의 0.00247, 옵션 A의 0.00147 등을 tentative로 번갈아 제시합니다. 끝도 계산 중간에 잘려 최종 선택이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 18567,
+          "end_char": 18633,
+          "sha256": "1fc6abed1eddcd3bf5711d0fdaf5c4f65dbbda1d81ff440cba634268e906e831"
+        },
+        {
+          "start_char": 22426,
+          "end_char": 22492,
+          "sha256": "d658ead3ed7c3b242aed0970fcd1d28aeaec9d98eb5cee41df1c8e595afa84b8"
+        },
+        {
+          "start_char": 20716,
+          "end_char": 20779,
+          "sha256": "2b7d59b261895d3f646fbbcbac3c04a49306dcb991b10ff97c509134f7ba8598"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_7",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "e05c51c11383a1b5f84059c3243ff51454811cda9167dee2284c09c13f6c8d79",
+      "raw_response_sha256": "503b3cf641d9cf87215d4bcbe9330254a02e4f518e170b1bbe959efdaa67837c",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "마지막에는 표 값이 틀렸다고 인정하면서도 93.4 kJ/kg을 사용하겠다고 진행한다. 앞뒤 값이 모순되고 결론으로 이어지지 않은 채 응답이 끝난다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 7554,
+          "end_char": 7602,
+          "sha256": "986d39fdeedca6453e1b6e04a31df00d4c2cce2c3f5c3af2b242bfd037c8124f"
+        },
+        {
+          "start_char": 10236,
+          "end_char": 10336,
+          "sha256": "f4b7856ea86c6b0700e6a997cc8fa72892d2efd64531e522412199ab0e929083"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_8",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "b6802e55cd101fd213b2cad2c129705e6a8021c2902eb478a3ebef92a406fcb0",
+      "raw_response_sha256": "b7d5b1a4b10d488288ea27fc090578643f373facb68bdef8d63f449313a5e0a3",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "수두계 해석과 압력식을 추측하고 '포기한다'고 한 뒤 보기 값에 대입하기 시작하지만, 답 선택 전에 중단된다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 26868,
+          "end_char": 26878,
+          "sha256": "6725a004ed64c852600ee3e45e181091a717dea20523b1a88f11e19583b88a9f"
+        },
+        {
+          "start_char": 19097,
+          "end_char": 19125,
+          "sha256": "a5f79d6d514b601416b9fd55ef008ec3592affc461f4f765f721a539cb065ff9"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Energy_and_Power_9",
+      "subject": "Energy_and_Power",
+      "source_record_sha256": "79c2f5745d819052d967107ce30b0934e2771950fb5c049646bc61f6c1be522f",
+      "raw_response_sha256": "5c32be8ade69637ff4ed3f0ec91a7b54ac2c59c2879192392d0598a7e58e203e",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "압력 차가 16000 Pa라는 중간 결과가 옵션과 맞지 않는다고 말한 뒤 다른 방법을 추측하며 종료합니다. 이를 답으로 확정하지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 13027,
+          "end_char": 13073,
+          "sha256": "4dd238a2b543102a0df0d50127b28877fffb574194bac91fb7b4ca8a5dbda5a2"
+        },
+        {
+          "start_char": 7436,
+          "end_char": 7511,
+          "sha256": "a4f37eb44c1af923c89f66e139048ef930e22cfc44502c9d3b24c3bf13eaf89a"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Finance_14",
+      "subject": "Finance",
+      "source_record_sha256": "179ed1a0af1b8b4dc40bd85ab32a2eba8c64ead33b994b308551ecebc9e89681",
+      "raw_response_sha256": "fd603c80b45f17f98e773cf66e55c1e6bbb3afa2d5ebd537c364180b99f02b54",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "투자자본 공식을 물음표와 함께 여러 번 재검토하고, 최종 계산이나 선택지를 확정하기 전에 길이 종료됐다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 1612,
+          "end_char": 1707,
+          "sha256": "5a3ac70b1a3b8d2348945c3ceba384e82f779044acd7047e165caaa855c68752"
+        },
+        {
+          "start_char": 7967,
+          "end_char": 8043,
+          "sha256": "027825c4d265bc60b4d4b39b3a43a4a73541899651ef5d06cec09d0400421be4"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Finance_28",
+      "subject": "Finance",
+      "source_record_sha256": "776d3707e4c6bf86516b62bcb8011d4dfc09f7157219be19196a6f699d19d2e0",
+      "raw_response_sha256": "9032dcdae017b42c7a273490cfbf012df0a0ac3693c8cf308d760edb0ec28aa7",
+      "finish_reason": "stop",
+      "generated_tokens": 10202,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "14.19%라고 계산한 값과 C.15.18을 고르는 말을 함께 반복하며, 서로 맞지 않는 숫자를 옵션 오류로 추정한다. 마지막 C 표기는 앞선 충돌을 명시적으로 정정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 24186,
+          "end_char": 24321,
+          "sha256": "80ff35bd708d543cfbe2babb14eeb54ee624ffe1455641936eea7171643171c4"
+        },
+        {
+          "start_char": 27182,
+          "end_char": 27214,
+          "sha256": "0513d076a96a433373d1194aea4e7e8d2adacc14b2f260cca83a3a9098f61d07"
+        },
+        {
+          "start_char": 26468,
+          "end_char": 26480,
+          "sha256": "26a0fcffe36d424d20227fd90b505620b375ef2b4d3cbab3d568c32cab7f3376"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Geography_4",
+      "subject": "Geography",
+      "source_record_sha256": "d401a7fe265e30e7f2c4ea716a8039859566c0f8735426f7539c00156f0cc2ce",
+      "raw_response_sha256": "b9c2f4f13ff006d86e962a5e3dfe7703a92134b014b89b663a80882bb26be0f5",
+      "finish_reason": "stop",
+      "generated_tokens": 225,
+      "original_rule": "no_explicit_final",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "Clearwater, Florida",
+      "reference_answer": "['Tampa', 'Florida']",
+      "reason_ko": "질문은 장소를 묻고 응답은 끝에서 해당 지역이 Clearwater, Florida라고 단정적으로 특정합니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 842,
+          "end_char": 997,
+          "sha256": "46623381a34222ee7adca433f2cd41c18dbf5df7ec89852cae5b74da908ec177"
+        }
+      ],
+      "audit_outcome": "COMPARISON_AMBIGUOUS",
+      "comparison_note": "최종 답 Clearwater, Florida는 기준의 Tampa와 도시가 다르지만 기준 별칭에 Florida도 있다. 지명 범위·별칭 허용 기준에 따라 달라져 정오 판정 유보."
+    },
+    {
+      "sample_id": "validation_History_30",
+      "subject": "History",
+      "source_record_sha256": "6896a8a069d2f84152010e423c3e2d46d37d7cdbb3beb23220a33254efb4cf88",
+      "raw_response_sha256": "27fa64e68147593e02b866398bf802148012510faa07302c10b0c23792748490",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "A를 ‘perhaps’로 제안하며 맞지 않는다는 점을 인정하고, none-of-the-above와 A 사이를 오간다. tail 끝도 A를 확정하는 문장을 완성하지 못한다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 12933,
+          "end_char": 12985,
+          "sha256": "78c7dae335112c2c94dd437010345182d680a22c9079a11990346942a9666359"
+        },
+        {
+          "start_char": 15756,
+          "end_char": 15878,
+          "sha256": "9eb0131ad8bb732dec437a872f9868414d613a7778976b55497c4a47c2b4bf4b"
+        },
+        {
+          "start_char": 17527,
+          "end_char": 17649,
+          "sha256": "564b1d16ca8f8b2eaa5acc691a628aba62922450ac180842badf6e0735d3785d"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Marketing_12",
+      "subject": "Marketing",
+      "source_record_sha256": "3ce6216b8d70dd941384dbdaaa63c4e70883cd47c05fc6e3ce8b4485d9d46abc",
+      "raw_response_sha256": "f6281b556b9a0f2b527c10b48e4240acac629f936dcdf2916f928b49aea09233",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "4.91 계산과 D.4.8963 근접성을 연결하지만, D를 고르겠다는 문장도 반복적으로 perhaps로 제시되고, 계산 선택을 명시적으로 확정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 23532,
+          "end_char": 23595,
+          "sha256": "1615a2c0ae0b54426b80f9e4af5775c28bd01d0c8355e7f8827a7ab5ff678119"
+        },
+        {
+          "start_char": 33291,
+          "end_char": 33348,
+          "sha256": "afcb55ca53d1624568757b0baf892b6d1f52243ccea6550246bdf1ad5c15d06b"
+        },
+        {
+          "start_char": 33291,
+          "end_char": 33348,
+          "sha256": "afcb55ca53d1624568757b0baf892b6d1f52243ccea6550246bdf1ad5c15d06b"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_1",
+      "subject": "Materials",
+      "source_record_sha256": "36e28858cc53a9f5c96721281729e80ee43dd0c0fe62a6b7d48896769a4e72d6",
+      "raw_response_sha256": "7f3874cfb5892c963c284de5c0da228a18b1ed6a858773c6f3b1eaecb8b087e4",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "1.17을 가장 가까운 선택지로 박스 처리하겠다고 한 뒤 “perhaps”로 선택하고, 바로 다음에는 플라스틱 단면계수와 관성모멘트를 다시 의심합니다. 최종값이 확정되지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 36480,
+          "end_char": 36569,
+          "sha256": "a2662abbbb834767e5c3a9f047631228bbf0ae1b5b57f9e3d494bdfece9b2036"
+        },
+        {
+          "start_char": 39038,
+          "end_char": 39092,
+          "sha256": "519a170fc92b520a016659c0f6be82c3eff12a9b2e8bcc9a20630e0dc245ae31"
+        },
+        {
+          "start_char": 21027,
+          "end_char": 21066,
+          "sha256": "c7b493f7d5656cf2e8dde17583e181e36a2488895f6da7ff1d799f0a390c612b"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_10",
+      "subject": "Materials",
+      "source_record_sha256": "4cc3464adbc506cf11ac7f5f8d804c202bf3d0c05ded7700bcffe47451ec451e",
+      "raw_response_sha256": "ab5bf2f6c64384ee2540150109117c5b54855469a62afa005eb8f28ddb3de6be",
+      "finish_reason": "stop",
+      "generated_tokens": 610,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "A",
+      "reference_answer": "A",
+      "reason_ko": "처음의 D 선언은 이후 명시적으로 재검토되어 A로 수정된다. 설명과 마지막 Correct Answer가 A로 일치한다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 0,
+          "end_char": 39,
+          "sha256": "4f0dbd0b4eceba12dbbce00abe504135a44759c2a44fed10a7f83dad1e5cda5b"
+        },
+        {
+          "start_char": 2035,
+          "end_char": 2179,
+          "sha256": "453fcd49b7b12515b8cef4a9e614e5949dde183c67303c41a51e9aa4b7a509e8"
+        },
+        {
+          "start_char": 2473,
+          "end_char": 2496,
+          "sha256": "6d0167ac9897a6ee25b00efc0ffca229052ad78a950272829bd58679d432af26"
+        }
+      ],
+      "comparison_value": "A",
+      "comparison_note": "초기 D의 오류를 명시적으로 정정한 뒤 최종 A 선택",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Materials_20",
+      "subject": "Materials",
+      "source_record_sha256": "03b49c883bc1f1c33d772eb50170e84111ccc66add002a2b4808aa4142761c05",
+      "raw_response_sha256": "8655c384ba3c68904c331ee513ee193b008039a303e8ee0e2e75ef353ec187ab",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "B:-0.00680을 가능성으로만 제시하고 이를 확정하는 최종 선언 없이 계산을 계속하며 응답이 중단된다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 23278,
+          "end_char": 23425,
+          "sha256": "41234b5efd5ac7b04b76b152ee83aff328e7e20d237666db64246245802475b4"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_27",
+      "subject": "Materials",
+      "source_record_sha256": "61dbc8075676f5251d7a9364709403372d9cd772e8ed6820cfe85faebc83f362",
+      "raw_response_sha256": "21191d31b143b663556a50b254a3b996e4c96a6b7c5050337e0e8eae7564c153",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "절단면과 전단응력 해석을 계속 추측하고 “it’s a”에서 끝납니다. 답이나 선택지가 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 9942,
+          "end_char": 9996,
+          "sha256": "a384656deb23959851498b0ba3d37a013698a7b0fe7a5ff95c8c7e3541139021"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_3",
+      "subject": "Materials",
+      "source_record_sha256": "12bec6da2adaaa6409b90fad581864454c37358ec4b748d4bfcaf10b476b6595",
+      "raw_response_sha256": "0f568cdc9bfb615ca3737097c058c7ddd9e1a2b48f1ba901ccbb632bc9319595",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "invalid_label",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "bearing area의 여러 해석과 응력 계산이 선택지와 맞지 않는다고 검토할 뿐, 최종 답을 선언하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 5462,
+          "end_char": 5469,
+          "sha256": "30a26f75233defde2a88d8163a40aff738cb82bc54db0ea38ca8b1e123a823d0"
+        },
+        {
+          "start_char": 12620,
+          "end_char": 12653,
+          "sha256": "b0abd33358d21fa732517468ff96181823174f7145f7096a80d03c340b90fd5a"
+        },
+        {
+          "start_char": 18894,
+          "end_char": 18950,
+          "sha256": "29c590562b8a37b5d7bbf04fe9ca98b0267ee98c2f395af78d4617349288de07"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_30",
+      "subject": "Materials",
+      "source_record_sha256": "6c584bac28c5c9b937a73ba6215d7bd8c3573f97130ecdff1b8ac67dede6c4cc",
+      "raw_response_sha256": "aaadf35bb8b2359e9c8e8d28f91852fc4dddf90a5200678c6815bedb0d728f18",
+      "finish_reason": "stop",
+      "generated_tokens": 9274,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "앞서 A:0.00443을 여러 번 맞는 답 또는 가장 가능성 높은 의도로 제시한 뒤, 뒤에서 D:0.00884로 결론을 바꾼다. 전환부는 D 해석이 타당하다고 전개하지만 앞선 결론을 명시적으로 철회하거나 정정하지 않아 정책상 명료한 수정으로 보기 어렵다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 26279,
+          "end_char": 26468,
+          "sha256": "f00cf0c7ff4c087675e53bdc81e063ef7d2aa1fe26aaffdf978ec31cc6b54998"
+        },
+        {
+          "start_char": 30910,
+          "end_char": 31122,
+          "sha256": "cd6bbfdfc8d159139f74e4c04e61ad0bd528ea88174f174a6f53298be79e3aca"
+        },
+        {
+          "start_char": 31791,
+          "end_char": 31808,
+          "sha256": "3ce523a9a34e647329c4dcca69f8f7a13377379bf98bdc9066c7daa1921a3969"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_4",
+      "subject": "Materials",
+      "source_record_sha256": "a6e684e0049dede974cb001bff148bcf5f7bc056d24f4de8780dee7ea07bb2cd",
+      "raw_response_sha256": "18926f0d89e75d3b54f18f1b7db2e4319e54ac8a2b6e162d849b9f8093a340a4",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "응답은 단면 치수와 응력 계산의 대안들을 나열한 뒤 “Perhaps the 2”에서 끝나며 최종 결과가 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 16401,
+          "end_char": 16414,
+          "sha256": "51c816b063159ab007b8a6c63f5cfd6996670cee8d11204fcc096ec6f45f63d1"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_5",
+      "subject": "Materials",
+      "source_record_sha256": "700b71942d6c8c70c6e3e6acd87b7955acae4facd7290459e2f8fdfce99ae88e",
+      "raw_response_sha256": "420ac444a1b34e7c7219864241c16730508f01ea89405cbdc4327a967fd1aa8d",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "148 kg를 여러 번 ‘perhaps’로 제안하지만 근거·계산이 계속 바뀌고 끝에는 질량 계산이 미완성이다. 확정된 최종 답으로 볼 수 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 15341,
+          "end_char": 15403,
+          "sha256": "ebe7056e125024757374ad82a609cae064f755a30e7de241a4f47644db4f797d"
+        },
+        {
+          "start_char": 21076,
+          "end_char": 21133,
+          "sha256": "6f27979cee247af2b81c6dac7f0d73c5fffec95f5bfeea69149a8d610e35ebbc"
+        },
+        {
+          "start_char": 21135,
+          "end_char": 21337,
+          "sha256": "de4d2280735db3968540bc003d7487212192c010ae4b20f9619c7b9093ac86ae"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Materials_9",
+      "subject": "Materials",
+      "source_record_sha256": "3c83fb12e199e98ad8c90ff2b8d2db9fcfce904e232a4be1d6bce28edbb11add",
+      "raw_response_sha256": "bad5859a632f9c077bccbf484e150883024f9d72f221dbe581cce7974c806f84",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "60.5MPa를 tentative하게 언급하지만 계산도 56.16MPa와 맞지 않으며, 이후 핀 힘 분석으로 넘어가 응답 중단 전 최종 답을 선택하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 28822,
+          "end_char": 28905,
+          "sha256": "8879eb4cd91e3038ce4ae91ff707e040a73ad5e2c1299f124ea679a1bfaa3270"
+        },
+        {
+          "start_char": 33195,
+          "end_char": 33261,
+          "sha256": "2e7a0fa4b063c1e1a0e0662aa4cd6196a6b4a9f8ade03c91f7c40bbdb5309f43"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Math_15",
+      "subject": "Math",
+      "source_record_sha256": "82aa4bbba39103c7339e9ac3d9b8c7118a6fa28afac11bff394c7d4bde5c26ae",
+      "raw_response_sha256": "8b119c8aa5d8aa854673c9aeb7eb78d4656840b07c4e07a802d35d26c4d15d04",
+      "finish_reason": "stop",
+      "generated_tokens": 536,
+      "original_rule": "multiple_numeric_values",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "24/7 ft/sec",
+      "reference_answer": "['24/7', '3.429']",
+      "reason_ko": "최종 답 섹션에 24/7 ft/sec를 명시했고 끝까지 그 값과 의미를 유지합니다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 1255,
+          "end_char": 1315,
+          "sha256": "a1fc38c8958916458b58fff30b1c4ed6f5ae08905f37c6e982e244d4928eb869"
+        }
+      ],
+      "comparison_value": 3.43,
+      "comparison_note": "24/7 ft/sec는 3.428571…; 정답의 24/7 별칭과 정확히 같음",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Math_2",
+      "subject": "Math",
+      "source_record_sha256": "ea582f6bc229e0b9e2b79c25ab221a85a79ce98a3e49459b2ad65413cbe7024b",
+      "raw_response_sha256": "95cec0b0b048801556aa039a1bc6e183148435679f76be03c1b53ba979273e0d",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "최소 간선 수 계산을 진행하며 2라는 값을 tentative하게 제시했다가 6, 7로 재계산한다. 마지막도 ‘Perhaps the answer is 2 for (’로 끝나므로 확정 결론이 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 18191,
+          "end_char": 18202,
+          "sha256": "85dc7ba0fc9e88cdd98cb632e31e4c360bb51d648a14295931155acdae14696c"
+        },
+        {
+          "start_char": 18448,
+          "end_char": 18473,
+          "sha256": "40c2a069da66432608e33c7dccddad931d28a684a7dfccf2af231877625dd787"
+        },
+        {
+          "start_char": 20036,
+          "end_char": 20065,
+          "sha256": "20307029d2e0929cfaa608e96b03d4b395880b823bdccb335ec1d4abcd8ea9d9"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_18",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "97c3934dac1b084cf003ad76c72c53b30ace28f1a45935d81db865e690e9336e",
+      "raw_response_sha256": "44802c21f97da6cdf6c6d40c24bd17257dd3d7571c2dc9f004b9cfa5a876c13f",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "각속도와 각가속도 가능성을 전개하다가 'At the instant shown'에서 끊기며 최종 답이나 보기를 선언하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 15091,
+          "end_char": 15119,
+          "sha256": "a46b6594d8f509f148f859a85a0093d6d4549ab387df30d8c02b78ffa531aa7c"
+        },
+        {
+          "start_char": 11460,
+          "end_char": 11480,
+          "sha256": "12e6cbd0bc7fc219ade40cfffbdafd97a4b4dae1a53ec0c4699852fb2eac3bad"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_21",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "d65ff57b9275f27046da63af6a74206d36a58676d349ec15116827cf169a2095",
+      "raw_response_sha256": "160d290fb7fc55ed8f1da603c499c1b45a5ddc6af19000429bd90d91e37702e7",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "낙하산 전개 후 운동을 여러 방식으로 가정하지만 수치가 맞지 않는다고 하며 설명 중간에서 끝납니다. 확정된 답이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 8106,
+          "end_char": 8139,
+          "sha256": "ee480dd65b69869104d1b064582ed2f59216145c28bb9a7605bf4557041ffe16"
+        },
+        {
+          "start_char": 6577,
+          "end_char": 6659,
+          "sha256": "33d3148e6d2f25558080c2045454fc0919f2bf29045f2d3314e7fd9fc4305a3c"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_23",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "68a182cfe2228bf127ddb62fb4065dab3f266cb28839568d00897976ef72ce89",
+      "raw_response_sha256": "f2c8d65d12edf84bd1f17b0186fa7af2c05254b396d65d510cbc6b80828345aa",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "14,700 lb는 가정으로만 언급되고, 이후 계산한 37.5 kips도 선택지에 없다고 한 뒤 더 해석하기 전에 잘렸다. 어느 답도 최종 확정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 7488,
+          "end_char": 7524,
+          "sha256": "2103d6c1e2df8a88c1bcdec6b72739f49900fdff47ccc4c06a9bce7eeefe33a2"
+        },
+        {
+          "start_char": 14622,
+          "end_char": 14684,
+          "sha256": "5d26424711147a1ac37bb74c090c436d1f2b28b615f4bf82a55c1e5a7027c46a"
+        },
+        {
+          "start_char": 19656,
+          "end_char": 19745,
+          "sha256": "08d48402558707c5ef4fd2008ebf3859843bf5f7da4b777cbd4cf11edfd6c949"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_27",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "d2b5080bc362d5bda9e1c00889f7352d29c7378bc602f9026cfc70b441d4c5b6",
+      "raw_response_sha256": "1338b3ae66f0316d69cb29b75984aa9f9b242f1a113a039a6cfa1a52f7476a37",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "A:7490과 A 상자를 제시한 뒤 방향과 모멘트 부호를 계속 의심하며, 마지막은 '생각해야 한다'에서 끝난다. 반복된 tentative 답으로 최종 확정이 아니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 43593,
+          "end_char": 43642,
+          "sha256": "af0eb02bb97ec4267e81032d6ca8cee47d7ec3edd99c7498ed1ce73825b0fa20"
+        },
+        {
+          "start_char": 43644,
+          "end_char": 43656,
+          "sha256": "5c354a708787405b5c83f60583ee4f273e2b651ffba9619057e1084a3f556271"
+        },
+        {
+          "start_char": 34468,
+          "end_char": 34482,
+          "sha256": "8c7cf5d972332120b3c6b366555f85b06831e1ddc9bcd6c14dda6102e88ee6d3"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_4",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "028fb470c0d4273d3ed624dd992310b8503987f7a4aec288e468196d794c073a",
+      "raw_response_sha256": "5de3ab90136be8090d95f854b6280daab7b5e103aae3205ad8f601e69aa7d6f2",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "끝에서 250.74를 “perhaps”로만 던졌고, 앞서도 최대응력/하중 해석을 재검토하며 가장 가까운 옵션 선택 가능성만 추측했습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 18295,
+          "end_char": 18365,
+          "sha256": "544b6fc27210cc07d3f0bb97bfb6992c38617c0916c3580b8932e107405c9c88"
+        },
+        {
+          "start_char": 18295,
+          "end_char": 18323,
+          "sha256": "56759fba98c9d39231ce4c56346e1b541cf57dc98cdc51911da8194898e4bb1a"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_8",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "02405411911fe6e1eb30a2246c0a131c976013a597d33778e761616c0bef4312",
+      "raw_response_sha256": "b0395c0d8d86d130481a8128e9ac32603642a5930032474eaace99718cb1f9bb",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "346 km를 답으로 삼겠다고 여러 번 말하지만 계속 ‘perhaps’로 유보하고 선택지와 맞지 않는다고 한다. 마지막도 다른 거리 해석을 이어가다 잘려 최종 선택이 확정되지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 26329,
+          "end_char": 26476,
+          "sha256": "a300ba7b72724adc292b6a13ad8b65d22e71ef58fc329b823c11c97667c164f5"
+        },
+        {
+          "start_char": 23551,
+          "end_char": 23661,
+          "sha256": "391d02c52fa627f51518be6b6e3c074bb92f7555cb0554d6ed9b660935a7332f"
+        },
+        {
+          "start_char": 17979,
+          "end_char": 18052,
+          "sha256": "289c66979a268d54ad065842f5f8eb80978c981aad7ff42ec8455ba0a30a4a73"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Mechanical_Engineering_9",
+      "subject": "Mechanical_Engineering",
+      "source_record_sha256": "1260d035c459f33738c137f443dd4286a2b1568b64f32209de9caeace48543ab",
+      "raw_response_sha256": "89e3c9c6845351dcaedd722137a3abe6027008e17e0160e6e79d401bb8e780e9",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "응답은 표 형태의 반복 텍스트로 끝나며 선택이나 최종 답 선언이 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 1242,
+          "end_char": 1382,
+          "sha256": "fc40944745872a487d9648c602df2dde1cc8ebd733a82dd5af38062c9ea2e452"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_14",
+      "subject": "Music",
+      "source_record_sha256": "689f6a8338bb477712636d43e7debd582a6cd249f1f37960dba27d5da9ed961c",
+      "raw_response_sha256": "badcdd28b61723ad95d27c38b0f94959d77c3411f1667cec9ef6ea2c90d99e88",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "음정 이름과 음정 간격을 계속 의심하며 “minor 7th” 문구를 반복하는 중간에 끊깁니다. 확정된 답이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 6945,
+          "end_char": 7074,
+          "sha256": "5f5951cf9832d78427e3632a97ccbef7bba5ced0f70251ab0484a38efee536af"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_21",
+      "subject": "Music",
+      "source_record_sha256": "421f9aa8fd8e2296e99fc10bd760a947aed309761dd88639fc67e3b199bf3390",
+      "raw_response_sha256": "44acadd423a14cd5cc3889768105fa5e5c5ce132f2361b5230b9a0eb743afe0d",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "article_a",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "maj2nd가 선택지에 없다고 판단한 뒤, 잘못 표기되었다고 스스로 말하면서도 B를 가장 좋은 선택으로 제안한다. 답 확정이 아니라 조건부 추측이며 끝에는 음정 재검토가 미완성이다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 3266,
+          "end_char": 3376,
+          "sha256": "96c4995048ffe981b136d5f8b6ef6ed39723bb279cde44e14cf013e4b096ecbd"
+        },
+        {
+          "start_char": 3378,
+          "end_char": 3608,
+          "sha256": "f161674ab0f6bfc16dcfcc95ed60f88644c09c110a1ac285e82024d443b0cbec"
+        },
+        {
+          "start_char": 4059,
+          "end_char": 4198,
+          "sha256": "5dcff2edc5d1004f66eb26de5c9d53e75d9ad77c0a511e398d6446f24cf13b0b"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_23",
+      "subject": "Music",
+      "source_record_sha256": "604df147a5916aeedd94cd47276b389e62a27e24c1c953166c420fe51e88dcf6",
+      "raw_response_sha256": "b28a3155a5f07dd1f479d4d6f7f7c8b714c2934ccf20af5c3c9734bf5da6f67a",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "none of the above를 잠시 제안하는 문구 외에 확정된 답이 없고, 악보 해석을 반복하다 문장 중간에서 끝난다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 2852,
+          "end_char": 2953,
+          "sha256": "4a4b84089c50cbb4c917adb899722b168ae455bf76b5429e37361a66c92457af"
+        },
+        {
+          "start_char": 4849,
+          "end_char": 4927,
+          "sha256": "48f7a04b921397fcfd6baffab9edeba674bd78e43d52ff083fe84a03c9d27bd8"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_24",
+      "subject": "Music",
+      "source_record_sha256": "f4788ca16eccd8d7443fa0e6e5398cd1048fdd672174e760f22fb9bb463208b8",
+      "raw_response_sha256": "bbc98ef51f3c48a89a4896fc564f96be68b456e72c4de4f27f5518ad726c2912",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "여러 음 세트를 “perhaps”로 나열하고 끝에는 A–E–B를 제시하는 도중 끊겼습니다. 확정된 화음 답이 없습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 5161,
+          "end_char": 5205,
+          "sha256": "2f47dc3ed2dd3abf03b99ec8b13143966d92fbb15a8a0d5af664918f2257dea0"
+        },
+        {
+          "start_char": 5161,
+          "end_char": 5236,
+          "sha256": "11c812fc5b9237da7c46f1ac875e70ba7f6e0fda2cdf459a7ad878c2cdd72a61"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_25",
+      "subject": "Music",
+      "source_record_sha256": "55132a188157734294598b6fc2b7bd654b457e01920f16643e0aad6a58c8f99a",
+      "raw_response_sha256": "9279b2dff70c5761f56df5f92ee69ac31d79b57cd5759efe68e6fc8ae999dbe9",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "반음 수를 세는 도중 여러 번 자기 모순을 내고, 마지막 문장이 ‘But that’로 끊긴다. 선택지나 최종 음정을 확정하지 않는다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 13998,
+          "end_char": 14042,
+          "sha256": "417b0c194134576076e8666b9cf95c091602aa331369440979177179a1e6fd79"
+        },
+        {
+          "start_char": 11425,
+          "end_char": 11514,
+          "sha256": "3fa595dab472e9598e0926f7dfd1407e0c4987bf2b9d032fdf44b2f1896582be"
+        },
+        {
+          "start_char": 13998,
+          "end_char": 14052,
+          "sha256": "21462f73579f27f0159c1b061f5fd4be14308ab05d6e4e7d3261c4a04b31ee5d"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_27",
+      "subject": "Music",
+      "source_record_sha256": "5d694ec5cbafea0037d86238d6a29d2029474d79c2f72bc273af042240f030ff",
+      "raw_response_sha256": "f731bad9bb3f96838c67723b1ae507bf863e9ee0a8f9275c107818b518984487",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "응답 전체가 반복되는 기호 진행뿐이며 답 선택이나 최종 선언이 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 1444,
+          "end_char": 1471,
+          "sha256": "05490e61249dd8daec8f0654cab89ccebbdeb809920b84ae6a70031d4d06a0d3"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_28",
+      "subject": "Music",
+      "source_record_sha256": "c1a08ca88acf5fba7be479ae8edc834a9bd1c8a59f03b1910ed3d9a7cdcdac59",
+      "raw_response_sha256": "cb8874c038105487e64caacaa7cd3df046331c5e8ca75ee2fc76fa2b5983296b",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "C–G♭를 minor 6th라고 추측하면서 선택지에 없으므로 틀렸을 수 있다고 반복하고, 그 문장 중간에서 끝납니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 9244,
+          "end_char": 9309,
+          "sha256": "a7d86516d5cf586e85aab0fe78122fd753567070a9a47ace870dc108456249f1"
+        },
+        {
+          "start_char": 4376,
+          "end_char": 4439,
+          "sha256": "d4ee2698cf05150c45bb63ae600cdca884dc0e9579fc68a5249ed64657b5ddce"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_3",
+      "subject": "Music",
+      "source_record_sha256": "dcdded8246c973bf0ee29a1e8254bf0040b268c2973a8f8e615951958797b390",
+      "raw_response_sha256": "05ffba932c2895637e49d7c53dc93364026b48f5d326b05de5a26713a7211eec",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "끝부분에서 완전5도라고 하다가 C–E 장3도라고 다시 말하고, 최종 정정이나 선택지 확정 없이 끝난다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 5293,
+          "end_char": 5366,
+          "sha256": "18eef840f03f615365ae38e7dd5049d55f0810aeeed084f6761cd823afc26a5f"
+        },
+        {
+          "start_char": 4604,
+          "end_char": 4786,
+          "sha256": "a67dfa84061ad19e627842a0ce560877bac93046ee196a96a94e251ff3ab3d72"
+        },
+        {
+          "start_char": 454,
+          "end_char": 457,
+          "sha256": "8005869283b97178d56d6dd155c08e23d4d1d03d4af2abdbf3b3591070353671"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_5",
+      "subject": "Music",
+      "source_record_sha256": "01ba5f1d223367ec159edef32c4d2d26933de3d2eb9dad53ab12b7662d7c1d92",
+      "raw_response_sha256": "f6815149b472f80ad5cfa6650a15a81fba8ed6465c44f46142624f9cc1b0c31f",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "음표 이름 후보를 계속 질문형으로 바꾸고 사과하며 멈춘다. 최종 답 선언이나 선택은 없다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 3828,
+          "end_char": 3910,
+          "sha256": "3aded11fad339060d0c984c8e3cfab8d19e284a605090c3bfb9d1b77d9dd28a2"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_7",
+      "subject": "Music",
+      "source_record_sha256": "06bdd39b242970fa3eb0afcd8042f78aa1618399ca8181eb8bb6d9e6dccf0464",
+      "raw_response_sha256": "27077f5efa76733b8db6e694d7ce25c54259f23cf7c4a7dabfa3d9bd631197b9",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "상성부 음을 적은 뒤 “That’s”에서 잘렸으며, 그 앞에서 화음 해석도 “This is not working”이라며 미확정 상태입니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 10378,
+          "end_char": 10398,
+          "sha256": "bc0f671cfc7068165feb7630f2ffd600aa2547bd0b2ff2b309ecab702cbc8588"
+        },
+        {
+          "start_char": 8931,
+          "end_char": 8937,
+          "sha256": "a946281346ac9b1ddf43a28b1f481e6ea98677a22c10dae1b33015927e3d0466"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Music_8",
+      "subject": "Music",
+      "source_record_sha256": "81b3a9c6584291dcd8005d0ad8b61539e8c50a97556eb60f94b27a51de6a38b6",
+      "raw_response_sha256": "8319f9b8ab527343983b8d6cc00ebc5ea9838ab32be422a28e2f4ed6b98b61b7",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "화음 기호인지 음표인지와 조성을 추측하는 반복 설명만 있고, 조성/화음을 답으로 확정하지 않는다. 마지막도 추측 문장 중간에서 끝난다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 1980,
+          "end_char": 2061,
+          "sha256": "676b1a7f363f28fb455a8cdb1aadc17f42d305da75d891141b2b59db5708c6f6"
+        },
+        {
+          "start_char": 2475,
+          "end_char": 2611,
+          "sha256": "46f54a81b582581b7b88f2dedbe3ec0b7f7a3209f6df9e8553a68c5fed6cd985"
+        },
+        {
+          "start_char": 2363,
+          "end_char": 2449,
+          "sha256": "1febacdf514dae30bcb961762da20433720f5998bdccc4361e6bb7fb2dbe4e82"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Pharmacy_12",
+      "subject": "Pharmacy",
+      "source_record_sha256": "9cfc8c996ae9ffeb6435277edcedd068671a58fe18a2e333f8cc95101050f508",
+      "raw_response_sha256": "7f8fbd992dd86a6d391c63634f76642a0eb4bcc89b2571219fc8d96981f8eea6",
+      "finish_reason": "stop",
+      "generated_tokens": 2213,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "CLEAR",
+      "candidate": "A. True",
+      "reference_answer": "A",
+      "reason_ko": "초기 B.False를 직접 틀렸다고 밝히고 override한다고 명시한 뒤 A.True로 반복 확정한다. 뒤의 False 가능성도 검토 후 부정하고 마지막 답은 일관되게 A.True다.",
+      "reviewed_scope": "full_response_confirmed_in_integration",
+      "evidence_spans": [
+        {
+          "start_char": 7466,
+          "end_char": 7588,
+          "sha256": "27c3fc809b1d767f7bcd822d4543e8c2fcea644da8e642db9dc722a0aeca4a69"
+        },
+        {
+          "start_char": 7873,
+          "end_char": 7984,
+          "sha256": "5ff37e7b6a21e1aa584cab2390a48c6ea2d77467f2a067cce60601c16450bae2"
+        },
+        {
+          "start_char": 6713,
+          "end_char": 6743,
+          "sha256": "68309bb2834ff472a45b7c9ba73cca0b20817dbd1ae2e7f33be4f817fc44119c"
+        }
+      ],
+      "comparison_value": "A",
+      "comparison_note": "True에 대응하는 명시적 보기 A",
+      "audit_outcome": "MISSED_CORRECT"
+    },
+    {
+      "sample_id": "validation_Pharmacy_19",
+      "subject": "Pharmacy",
+      "source_record_sha256": "45987e0e72c1dc2b0314103f2b0dc89aa5db59ac85b31cf779cdd385fab9a3d2",
+      "raw_response_sha256": "2cf47c623cc4649559b1b2c52aa0e16a2082eeae37af71976255fdda7db31e57",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "B",
+      "reason_ko": "Step A를 최종 선언하지만, 설명은 “regioselective”와 “no regioselectivity”를 동시에 주장하고 있으며 Step B도 답으로 제시됩니다. 결론과 근거의 모순이 해소되지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 19621,
+          "end_char": 19698,
+          "sha256": "dbcd0bc7835a98f71504422de3385052dffd1a714025544625648c6d381a6b3d"
+        },
+        {
+          "start_char": 16404,
+          "end_char": 16432,
+          "sha256": "36e5018e59f57f1cbd10b999985f14736607aaaab5540a891c4dff207f50a067"
+        },
+        {
+          "start_char": 13676,
+          "end_char": 13834,
+          "sha256": "65cb7551822bf7f6918ceb57cf7dc82418bc82e515bdee29f1031fdb2af9db7e"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Physics_12",
+      "subject": "Physics",
+      "source_record_sha256": "324fe974de7401726853028403cdaedeb0dfd33cf51c3429910e7e43b42e42b2",
+      "raw_response_sha256": "c10d9a9e23bc39330f63384666af5f3a1b5add17ffe8a259b39ff57a9a9f8594",
+      "finish_reason": "stop",
+      "generated_tokens": 5546,
+      "original_rule": "conflicting_declarations",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "D를 여러 번 정답이라 했고 마지막 Final Answer도 D지만, 응답 곳곳에서 D의 전제와 현상 설명을 스스로 모순이라고 지적하고 B도 정답이라고 명시한다. 모순을 해결하지 않은 채 끝나므로 정책상 ambiguous다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 18731,
+          "end_char": 18794,
+          "sha256": "49da26b8fe21546f10a2ea215f4603e7c0dc61843a2b204ee45ad582d772afd6"
+        },
+        {
+          "start_char": 22808,
+          "end_char": 23023,
+          "sha256": "b87a062bfb800f0c38357868ada40171fed15c2bbb069d530df634b1cd018cfc"
+        },
+        {
+          "start_char": 25566,
+          "end_char": 25593,
+          "sha256": "b01e8b80b197606c66780c48eb832a70acf2cf320332aca93b72446c52cf4138"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Physics_2",
+      "subject": "Physics",
+      "source_record_sha256": "f3407e5efc9b6b7c71091f33e239dbc1b7995d35848c724476fa7d8fd3da3c35",
+      "raw_response_sha256": "8e8c7249e650fe7a458bdecd187c1b411414fec75fcca027f95880fb01b29798",
+      "finish_reason": "stop",
+      "generated_tokens": 1183,
+      "original_rule": "label_option_conflict",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "A",
+      "reason_ko": "최종 문구는 A를 답이라 하지만 실제 보기 A는 두 방향 모두 오른쪽이고, 응답은 두 번째 방향을 왼쪽이라고 쓴다. label과 option wording이 충돌하므로 모호하다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 4853,
+          "end_char": 4905,
+          "sha256": "e082bfcb15013d5ad23c3a1e802e39fb997b95af562a6c0ec31d142e701e216c"
+        },
+        {
+          "start_char": 4937,
+          "end_char": 4976,
+          "sha256": "ab416cfa1e1b2ad9f86c9c319b4a7c5f95d119bb7c6b3fd4c47b51bdc43e2075"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Public_Health_24",
+      "subject": "Public_Health",
+      "source_record_sha256": "7f3bdd133009e14a23d137a0b36fd7b35c1e3f8f47eabb1745cb20041df3c7ec",
+      "raw_response_sha256": "50fb58d5d81792c1add91a783e7ff8af26afa698c4ebcc2874e6fa121d2f3814",
+      "finish_reason": "length",
+      "generated_tokens": 32768,
+      "original_rule": "no_asserted_declaration",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "NO_FINAL",
+      "candidate": null,
+      "reference_answer": "D",
+      "reason_ko": "사건 수와 분모를 계속 다시 세다가 마지막에 “But”에서 끊겼습니다. incidence 수치나 선택지를 확정하지 않았습니다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 12112,
+          "end_char": 12173,
+          "sha256": "73a4209d0591ab7925d89c156c4b78ded518d7ae1d079e31305caac4ceaaa590"
+        }
+      ],
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    },
+    {
+      "sample_id": "validation_Sociology_12",
+      "subject": "Sociology",
+      "source_record_sha256": "12a154e4053f641ec804a48e8eea5035d4dc16d78c3c711da0b7d84bb79e2112",
+      "raw_response_sha256": "a1a20ea5a7d614dbccd9a1186cb8f8e67cd48daa8610201caaca231191ea9f28",
+      "finish_reason": "stop",
+      "generated_tokens": 430,
+      "original_rule": "unsupported_mcq_expression",
+      "original_status": "NO_PARSE",
+      "original_correct": false,
+      "extraction_judgement": "AMBIGUOUS",
+      "candidate": null,
+      "reference_answer": "C",
+      "reason_ko": "응답은 어떤 보기도 직접 적용되지 않는다고 선언한 뒤, 질문 의도를 가정할 때 A가 가장 그럴듯하다고 선택한다. 기존 none-of-the-above 판단을 명확히 철회하지 않은 조건부 답이므로 보수적 기준에서는 유보한다.",
+      "reviewed_scope": "head_tail_declarations_and_targeted_context",
+      "evidence_spans": [
+        {
+          "start_char": 1624,
+          "end_char": 1829,
+          "sha256": "abb90abc959569ffdf9a8c8f93c703f07f836ade3cfb05689d4ece671344627b"
+        },
+        {
+          "start_char": 1931,
+          "end_char": 1980,
+          "sha256": "dbd519db60562435ffa7197dfd23574e2202548a9ffe91d449374291edc9f0dc"
+        },
+        {
+          "start_char": 1776,
+          "end_char": 1800,
+          "sha256": "e84436e9bf67cdae9baa6a981bd3b2c79a0f901d66e242c1e16b5ef9adc87099"
+        }
+      ],
+      "root_adjudication": "CLEAR → AMBIGUOUS: conditional forced choice and unresolved none-of-the-above declaration.",
+      "audit_outcome": "UNRESOLVED",
+      "comparison_note": "최종 답을 확정하지 못해 정답 여부 판정 유보"
+    }
+  ],
+  "analysis": {
+    "missed_correct_count": 7,
+    "missed_correct_share_of_no_parse": 0.08045977011494253,
+    "missed_correct_percentage_points_of_900": 0.7777777777777778,
+    "format_or_math_expression_cases": [
+      "validation_Math_15",
+      "validation_Electronics_2",
+      "validation_Electronics_13"
+    ],
+    "resolved_correction_cases": [
+      "validation_Chemistry_2",
+      "validation_Chemistry_30",
+      "validation_Materials_10",
+      "validation_Pharmacy_12"
+    ],
+    "unresolved_or_comparison_ambiguous_count": 76,
+    "new_official_score": null,
+    "new_gpu_inference": false,
+    "new_parser_version": false,
+    "caveat": "Seven matching cases under this retrospective reading are not an exhaustive count of scorer errors. No full900 rescoring with a revised deterministic parser has been performed."
+  }
+}
