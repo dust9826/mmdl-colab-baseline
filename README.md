@@ -19,6 +19,11 @@
 - [전체 실험 보고서](reports/mmmu_baseline.md)
 - [전체·과목별 집계 JSON](results/l4-full-20260928/summary.json)
 - [과목별 정답 수와 정확도 CSV](results/l4-full-20260928/subject_scores.csv)
+- [출력 토큰 한도별 V8 절단 분석](reports/token_budget_v8.md) · [집계 JSON](results/token-budget-v8-20260930/summary.json)
+
+추가 토큰 분석은 저장된 응답의 앞부분만 남긴 CPU 재채점입니다. 2,048토큰에서 **485/900 = 53.89%**,
+8,192토큰에서 **552/900 = 61.33%**였으며, 각 한도로 모델을 새로 실행한 결과는 아닙니다.
+원본 baseline은 유지하며, [재현 스크립트](scripts/analyze_token_budget.py)는 복원한 원본 artifacts와 고정 토크나이저를 필요로 합니다.
 
 이번 결과는 한 번의 sampling 실행이며, 팀의 규칙 기반 V8 채점 결과입니다. 과제에서 인용한 67.4%와의 차이는 보고서에 비교 조건과 한계를 함께 적었습니다. 이는 공식 평가 실행의 완전한 재현 또는 모든 팀원의 최종 제출 승인을 뜻하지 않습니다.
 
