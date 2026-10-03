@@ -150,7 +150,34 @@ def install_raw_journal(engine, backend_class, local, run_id):
     backend_class.generate_stream = generate_stream
 
 
-def preflight(repo, model_path, data_root, output):
+def validate_budget_2048(cfg, hw, baseline, original_validate):
+    """Allow one named output-budget experiment, retaining every upstream guard."""
+    import copy
+    expected = copy.deepcopy(baseline)
+    expected['protocol_id'] = 'mmmu-val-v8-2048'
+    expected['generation']['max_new_tokens'] = 2048
+    if cfg != expected:
+        raise ValueError('2048 experiment may change only protocol_id and max_new_tokens')
+    original_validate(baseline, hw)
+
+
+def install_budget_2048_protocol():
+    """Register a strict adapter extension without editing the pinned checkout."""
+    import yaml
+    import mmdl.runtime.contracts as contracts
+    repo = Path(contracts.__file__).resolve().parents[3]
+    baseline = yaml.safe_load((repo/'configs/eval/mmmu_val_v8.yaml').read_text())
+    original_validate = contracts.validate_configs
+
+    def validate(cfg, hw):
+        if cfg.get('protocol_id') == 'mmmu-val-v8-2048':
+            return validate_budget_2048(cfg, hw, baseline, original_validate)
+        return original_validate(cfg, hw)
+
+    contracts.validate_configs = validate
+
+
+def preflight(repo, model_path, data_root, output, protocol=None):
     """Validate all pinned inputs on CPU, without constructing a GPU model."""
     import torch
     import yaml
@@ -163,7 +190,7 @@ def preflight(repo, model_path, data_root, output):
 
     torch.set_num_threads(4)
     repo, output = Path(repo), Path(output)
-    cfg = yaml.safe_load((repo / 'configs/eval/mmmu_val_v8.yaml').read_text())
+    cfg = yaml.safe_load(Path(protocol or repo / 'configs/eval/mmmu_val_v8.yaml').read_text())
     datasets, coverage = load_validation(Path(data_root))
     processor = AutoProcessor.from_pretrained(str(model_path), revision=MODEL_REVISION,
                                               local_files_only=True, trust_remote_code=False)
@@ -202,6 +229,7 @@ def run():
     from mmdl.evaluation.cli import main
     from mmdl.runtime.artifacts import write_json
 
+    install_budget_2048_protocol()
     local = Path(os.environ['MMDL_ARTIFACT_ROOT'])
     remote = Path(os.environ['MMDL_COLAB_BACKUP'])
     store = CheckpointStore(local, remote)
@@ -256,7 +284,8 @@ if __name__ == '__main__':
         parser = argparse.ArgumentParser()
         for name in ('repo', 'model-path', 'data-root', 'output'):
             parser.add_argument('--' + name, required=True, type=Path)
+        parser.add_argument('--protocol', type=Path)
         args = parser.parse_args(sys.argv[2:])
-        preflight(args.repo, args.model_path, args.data_root, args.output)
+        preflight(args.repo, args.model_path, args.data_root, args.output, args.protocol)
     else:
         run()

@@ -19,12 +19,68 @@ NOTEBOOK = json.loads((ROOT/'colab/L4_MMMU.ipynb').read_text())
 
 class ColabTests(unittest.TestCase):
     def test_notebook_syntax_and_exact_embedded_adapter(self):
-        for i, cell in enumerate(NOTEBOOK['cells']):
-            if cell['cell_type'] == 'code':
-                ast.parse(''.join(cell['source']), filename=f'cell-{i}')
-                self.assertFalse(cell['outputs'])
-        tree = ast.parse(''.join(NOTEBOOK['cells'][8]['source']))
-        self.assertEqual(ast.literal_eval(tree.body[0].value), (ROOT/'colab/colab_runner.py').read_text())
+        notebooks = [NOTEBOOK]
+        budget_notebook = ROOT/'colab/L4_MMMU_2048.ipynb'
+        if budget_notebook.exists():
+            notebooks.append(json.loads(budget_notebook.read_text()))
+        runner_source = (ROOT/'colab/colab_runner.py').read_text()
+        for notebook in notebooks:
+            for i, cell in enumerate(notebook['cells']):
+                if cell['cell_type'] == 'code':
+                    ast.parse(''.join(cell['source']), filename=f'cell-{i}')
+                    self.assertFalse(cell['outputs'])
+            tree = ast.parse(''.join(notebook['cells'][8]['source']))
+            self.assertEqual(ast.literal_eval(tree.body[0].value), runner_source)
+
+    def test_2048_budget_accepts_only_named_output_limit_change(self):
+        import copy
+
+        baseline = {
+            'protocol_id': 'mmmu-val-v8',
+            'generation': {'max_new_tokens': 32768, 'temperature': 0.7, 'top_p': 0.8},
+            'execution': {'max_model_len': 40960, 'batch_size': 2},
+            'image': {'min_pixels': 1003520, 'max_pixels': 4014080},
+            'parser': 'team-final-answer-v8',
+            'model': {'id': 'Qwen/Qwen3-VL-4B-Instruct', 'revision': 'pinned'},
+            'dataset': {'revision': 'pinned', 'expected_total': 900},
+        }
+        baseline_before = copy.deepcopy(baseline)
+        candidate = copy.deepcopy(baseline)
+        candidate['protocol_id'] = 'mmmu-val-v8-2048'
+        candidate['generation']['max_new_tokens'] = 2048
+        hw = {'name': 'colab_gpu'}
+        calls = []
+
+        def original_validate(cfg, passed_hw):
+            calls.append((cfg, passed_hw))
+
+        adapter.validate_budget_2048(candidate, hw, baseline, original_validate)
+        self.assertEqual(len(calls), 1)
+        self.assertIs(calls[0][0], baseline)
+        self.assertIs(calls[0][1], hw)
+        self.assertEqual(baseline, baseline_before)
+
+        drift_paths = (
+            ('protocol_id',),
+            ('image', 'max_pixels'),
+            ('execution', 'max_model_len'),
+            ('generation', 'temperature'),
+            ('parser',),
+            ('model', 'revision'),
+            ('dataset', 'revision'),
+            ('generation', 'max_new_tokens'),
+        )
+        for path in drift_paths:
+            with self.subTest(path=path):
+                invalid = copy.deepcopy(candidate)
+                section = invalid
+                for key in path[:-1]:
+                    section = section[key]
+                key = path[-1]
+                section[key] = 'changed' if isinstance(section[key], str) else section[key] + 1
+                with self.assertRaisesRegex(ValueError, 'only protocol_id and max_new_tokens'):
+                    adapter.validate_budget_2048(invalid, hw, baseline, original_validate)
+        self.assertEqual(len(calls), 1, 'invalid protocol drift must not reach upstream validation')
 
     def test_incremental_restore_ignores_unpublished_uploads_and_rejects_corruption(self):
         with tempfile.TemporaryDirectory() as td:
