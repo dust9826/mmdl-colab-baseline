@@ -6218,7 +6218,8 @@
     "failure-analysis.json": "53b2d8cdd750c211b7856b109b765e3f992fe84e61404ffeb923d8c7f1df86a9",
     "manual-reviews.json": "ddcf5bc8264f6cf48b86a13c479785a9b53bbe8942ff8d7843eaa0f123c386d2",
     "independent-audit.json": "6c7dba67a30d17b9a89cbc53dbca23bc6ea5e37748a4c90c19cacb323cb40348",
-    "local-recovery-verification.json": "d7cb7faf89ca8db8065ebc0e2f2985986052ef2859c00d3ef2ac005096dfaf08"
+    "local-recovery-verification.json": "d7cb7faf89ca8db8065ebc0e2f2985986052ef2859c00d3ef2ac005096dfaf08",
+    "engineering-reasoning-review.json": "903fbc769c553d44b2c0b5a43d297ee43a17ab1402aa3492542b43d595bff5e7"
   },
   "conclusion_ko": "일부 문항의 풀이와 최종 답은 개선됐지만, 이번 소규모 학습 설정에서 전체 정확도 향상·토큰 절감 효과는 확인되지 않았다. DITTO2024 일반의 효과나 점수 차이의 학습 인과 효과는 단정할 수 없다.",
   "training_goal_audit": {
@@ -6272,12 +6273,342 @@
       "denominator_each": 900,
       "limitation": "Only a string-format proxy. Does not verify final position, correctness, reasoning presence, or step validity; not used to alter V8 scores."
     },
-    "evaluation_gap_ko": "900문항의 풀이 존재율과 각 단계 타당성을 사전 정의된 기준으로 전수 평가하지 않았으므로 풀이 스타일 습득 여부는 미입증. 원문 대표 사례의 개선과 악화, 최종 정답률은 별도로 관측했다.",
+    "evaluation_gap_ko": "900문항 전체의 풀이 존재율과 각 단계 타당성을 사전 정의한 기준으로 전수 평가하지 않았다. 후속 사후 검토에서는 기존 공학 중심 210문항의 전후 원문을 읽고 핵심 풀이·최종 답 연결·완결을 구분했다. 일부 개선과 악화가 함께 나타나 일관된 풀이 품질 향상은 확인하지 못했으며 독립 전문가 검증은 아니다.",
     "training_evidence_sha256": {
       "colab_support/data/train.json": "57e672f87edfe18b036568688a2a9352dc461ca0c88c5729d3308cf0815bcc03",
       "colab_support/train_ditto2024.py": "1a5a0a8278e907cdc136819929fde90b9b93d97a20ee4851052d7fa7b830fba5",
       "training/ditto2024/result.json": "625b089aec9cea5448f885b73d84a58b9d7bf71d5e02e71227a9753d65206886",
       "training/ditto2024/data_alignment.json": "d675baf9de35af1918c327b4e215582d1a722c2af0a05207431a4223ceee5ada"
     }
+  },
+  "engineering_reasoning_review": {
+    "date": "2026-10-11",
+    "review_type": "model_assisted_content_audit_of_saved_responses",
+    "scope_ko": "프로젝트 기존 7분야 210문항의 저장된 전후 응답 420개 사후 내용 검토. 추가 생성·파서 수정·점수 보정 없음.",
+    "subjects": [
+      "Agriculture",
+      "Architecture_and_Engineering",
+      "Computer_Science",
+      "Electronics",
+      "Energy_and_Power",
+      "Materials",
+      "Mechanical_Engineering"
+    ],
+    "summary": {
+      "count": 210,
+      "correct_before": 57,
+      "correct_after": 57,
+      "paired_correctness": {
+        "same_correct": 44,
+        "wrong_to_correct": 13,
+        "correct_to_wrong": 13,
+        "same_wrong": 140
+      },
+      "mean_tokens_before": 1416.7904761904763,
+      "mean_tokens_after": 1425.7666666666667,
+      "cap_before": 116,
+      "cap_after": 118,
+      "no_parse_before": 118,
+      "no_parse_after": 120,
+      "longer": 50,
+      "shorter": 42,
+      "same_token_count": 118,
+      "identical_raw_response_count": 14,
+      "both_at_cap": 103,
+      "source_explanations_available": 43,
+      "rows_with_image_inspection": 115
+    },
+    "criteria_ko": [
+      "출력 설명 유무",
+      "핵심 조건·공식·계산의 타당성",
+      "최종 답과 설명의 일치",
+      "토큰 제한 내 완결"
+    ],
+    "limitations": [
+      "AI 보조 검토이며 독립 전공 전문가의 이중 판정이 아니다.",
+      "210개 전후 원문을 검토하되 모든 전문 문제를 독립적으로 완전 해결한 것은 아니다. 확신·미해결 사항을 문항별 기록했다.",
+      "데이터 정답/해설의 모순이나 도면·물성 미확정 사례는 품질 향상 근거로 사용하지 않았다.",
+      "실행조건(engine seed, MP0)이 이전 기준과 달라 관측된 변화를 학습의 단독 인과효과로 볼 수 없다.",
+      "SFT-only 900 대조군이 없어 warmup과 DPO의 효과를 분리하지 못한다.",
+      "분량 상한에 잘린 응답의 자연스러운 최종 길이는 알 수 없다.",
+      "기존 V8 점수와 파서는 유지한다. 내용 검토는 사후 점수 보정이 아니다.",
+      "판정 대상은 저장된 출력 설명이며, 모델 내부 계산 과정을 직접 관측하거나 입증한 것은 아니다.",
+      "대표 9개는 사후 설명용 선정이며, 사례 비율은 전체 개선율이 아니다.",
+      "이 공유 추출본에는 210개 전체 원문·이미지·상세 판정이 포함되지 않는다. 원본 해시로 식별하며 공개 JSON만으로 독립 재검증을 모두 재현할 수 없다."
+    ],
+    "representative_cases": [
+      {
+        "id": "validation_Computer_Science_9",
+        "subject": "Computer_Science",
+        "gold_answer": "60",
+        "question_type": "open",
+        "v8_group": "wrong_to_correct",
+        "interpretation": "core_reasoning_improved",
+        "finding_ko": "빠뜨린 60 Mbps 수신 링크를 포함해 min(80,300/4,60)=60 Mbps로 바로잡았다. 토큰은 늘고 재확인도 남았다.",
+        "baseline": {
+          "answer": "75",
+          "correct": false,
+          "parse_status": "PARSED",
+          "generated_tokens": 681,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": "60",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 936,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "fd0d84284ce2590738eb9efc9ad8dcf1f0e6d11a616a975a3bd1e6826a945a11",
+          "ditto2024": "8a874f3381279d264b908e9e69ae971ccec043b512e705c9d30735c84fd40c5a"
+        },
+        "review_limit_ko": ""
+      },
+      {
+        "id": "validation_Computer_Science_22",
+        "subject": "Computer_Science",
+        "gold_answer": "A",
+        "question_type": "multiple-choice",
+        "v8_group": "wrong_to_correct",
+        "interpretation": "core_reasoning_improved",
+        "finding_ko": "빈 문자열을 받아들이지 않는 최소 길이 조건을 반영해 a* 또는 b*인 D에서 aa* 또는 bb*인 A로 수정했다. 같은 조건의 재확인으로 출력은 길어졌다.",
+        "baseline": {
+          "answer": "D",
+          "correct": false,
+          "parse_status": "PARSED",
+          "generated_tokens": 566,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": "A",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 1434,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "53a5c1f05de73739464939064d23a20277496e15218d55e3b52b6e458639a59b",
+          "ditto2024": "b876e5e5c9f3391bb21d50564d0abeab7469358c59bbbaef26c325cecd504d21"
+        },
+        "review_limit_ko": ""
+      },
+      {
+        "id": "validation_Materials_5",
+        "subject": "Materials",
+        "gold_answer": "B",
+        "question_type": "multiple-choice",
+        "v8_group": "wrong_to_correct",
+        "interpretation": "core_reasoning_and_completion_improved",
+        "finding_ko": "평형식은 유지하고 원형 단면적 계산 오류를 고쳤다. AB 허용력 약 707→1060 N, 질량 약 98→147.6 kg으로 바뀌어 B 148 kg까지 완결했다.",
+        "baseline": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 2048,
+          "finish_reason": "length",
+          "at_token_cap": true
+        },
+        "ditto2024": {
+          "answer": "B",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 1522,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "3b51d3f906d292af84357db028a8443de05b96b454a20462ea20da6b61ec36ea",
+          "ditto2024": "c1866c44176e0c39ef62a737b812a95ab94334d1b0acb597a48f37f7b9db8985"
+        },
+        "review_limit_ko": ""
+      },
+      {
+        "id": "validation_Computer_Science_23",
+        "subject": "Computer_Science",
+        "gold_answer": "253.75",
+        "question_type": "open",
+        "v8_group": "wrong_to_correct",
+        "interpretation": "answer_extraction_not_reasoning_gain",
+        "finding_ko": "양쪽 모두 첫 estimatedRTT 0.875×250+0.125×280=253.75 ms를 계산하고 답으로 명시했다. V8 추출 결과만 달라졌고 이후 RTT 산술 오류는 양쪽에 남았다.",
+        "baseline": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 1148,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": "253.75",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 1254,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "3efd534a9cba5f9b353d6408853ff80cc63bcc2dedea240b1b1620f269553634",
+          "ditto2024": "1eb13f7913d0e809091e5168aa90f7f1b6ff201ca9c59e044e15336ea4bf2a9f"
+        },
+        "review_limit_ko": "두 번째 이후 업데이트의 후속 오류는 첫 예측값에 영향 없음."
+      },
+      {
+        "id": "validation_Electronics_2",
+        "subject": "Electronics",
+        "gold_answer": "2.83",
+        "question_type": "open",
+        "v8_group": "same_wrong",
+        "interpretation": "verbosity_without_reasoning_gain",
+        "finding_ko": "양쪽 모두 제공된 한 파형에서 Irms=4/√2=2√2≈2.83 A를 구했다. 주기 재확인과 적분 설명으로 약 3.9배 길어졌다. V8상 모두 오답이며 점수는 변경하지 않았다.",
+        "baseline": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 505,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": "since only one waveform is shown, and assuming the question meant to ask for this one, the rms value is",
+          "correct": false,
+          "parse_status": "PARSED",
+          "generated_tokens": 1967,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "d4bebf77225c00452a00bc0d758b3c13f963fb6e59f7dd90279ac375eb5cb47b",
+          "ditto2024": "7fe72e00740470d3d58ae6c40ad14c52b43db1652401f9693fcc4c6772a49728"
+        },
+        "review_limit_ko": "질문은 세 파형을 말하지만 제공 이미지에는 한 파형만 있다. 채점 변경은 하지 않았다."
+      },
+      {
+        "id": "validation_Electronics_5",
+        "subject": "Electronics",
+        "gold_answer": "62.6",
+        "question_type": "open",
+        "v8_group": "same_wrong",
+        "interpretation": "longer_with_core_error_retained",
+        "finding_ko": "소스 저항의 (β+1) 반영 항을 양쪽 모두 누락해 약 50Ω으로 결론냈다. 독립 계산은 약 62.61Ω. 후 응답은 분모 표기를 고쳤지만 잘못된 출력 저항 정의와 반복 설명도 추가했다.",
+        "baseline": {
+          "answer": "50 \\omega",
+          "correct": false,
+          "parse_status": "PARSED",
+          "generated_tokens": 804,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 1306,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "e76e272189b61be4fa44e8fa71edcf976b17de596c478f5131881eac29cc1e7f",
+          "ditto2024": "96b4a050b0fbac4a8faed2666fe6bb48b25e4048fda650edd3160891e69c0391"
+        },
+        "review_limit_ko": ""
+      },
+      {
+        "id": "validation_Mechanical_Engineering_14",
+        "subject": "Mechanical_Engineering",
+        "gold_answer": "A",
+        "question_type": "multiple-choice",
+        "v8_group": "correct_to_wrong",
+        "interpretation": "completion_worsened",
+        "finding_ko": "전에는 에너지와 정지 토크를 모두 계산하고 A를 선택했다. 후에는 에너지와 선택지 수치 차이 재검토 중 토크·최종 답 전에 상한으로 끝났다. 독립 계산과 선택지는 정확히 같지 않아 단순 반올림이라고 단정하지 않는다.",
+        "baseline": {
+          "answer": "A",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 1674,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 2048,
+          "finish_reason": "length",
+          "at_token_cap": true
+        },
+        "raw_response_sha256": {
+          "baseline": "168642f900a214ddbbf8cf98ffcbb5e23d593a2095197ce3bd7a99a5f7a22857",
+          "ditto2024": "bb0ccada742c6adf42f19b860f486810401fb41117776626bc2ff0d07138d693"
+        },
+        "review_limit_ko": "차이를 반올림으로 무시하지 않음."
+      },
+      {
+        "id": "validation_Electronics_10",
+        "subject": "Electronics",
+        "gold_answer": "A",
+        "question_type": "multiple-choice",
+        "v8_group": "same_wrong",
+        "interpretation": "core_reasoning_worsened_same_score",
+        "finding_ko": "전에는 각 가지의 직렬 임피던스를 올바르게 세웠으나 불필요한 전체 등가 계산과 산술 오류로 미완결됐다. 후에는 가지 안 직렬 소자를 병렬로 해석했다. 양쪽 V8 오답·상한이어도 풀이 모델은 악화했다.",
+        "baseline": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 2048,
+          "finish_reason": "length",
+          "at_token_cap": true
+        },
+        "ditto2024": {
+          "answer": null,
+          "correct": false,
+          "parse_status": "NO_PARSE",
+          "generated_tokens": 2048,
+          "finish_reason": "length",
+          "at_token_cap": true
+        },
+        "raw_response_sha256": {
+          "baseline": "e92aa2155a855f04774b72e6be9d9e7a166574fffe736f1d96a5f135d0d68798",
+          "ditto2024": "f6fcf7659906e974101cb12a6623057b1902d81db526b36f16b92410473c9ae5"
+        },
+        "review_limit_ko": ""
+      },
+      {
+        "id": "validation_Energy_and_Power_11",
+        "subject": "Energy_and_Power",
+        "gold_answer": "B",
+        "question_type": "multiple-choice",
+        "v8_group": "same_correct",
+        "interpretation": "shorter_correct_answer_with_explanation_errors",
+        "finding_ko": "양쪽 최종 B는 맞다. 전의 일 부호 혼동은 스스로 정정됐으며, 후에는 짧아졌지만 보기 C의 Q=0 조건 및 출력 내부 부피 설명과 모순이 남았다. 이미지 좌표를 재확인한 판정은 아니다.",
+        "baseline": {
+          "answer": "B",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 1260,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "ditto2024": {
+          "answer": "B",
+          "correct": true,
+          "parse_status": "PARSED",
+          "generated_tokens": 385,
+          "finish_reason": "stop",
+          "at_token_cap": false
+        },
+        "raw_response_sha256": {
+          "baseline": "20c73bf98be8ace26b6c7d7a262dea253a78525db924368ee6841c316196cc20",
+          "ditto2024": "43572fb6f70a97bda21e0e53206682521a804c76f86ce3c1decd3c2fd04cc54f"
+        },
+        "review_limit_ko": "이미지의 상태 좌표는 재검토하지 않았으며, 텍스트 안의 상태/선택지 모순만 판정했다."
+      }
+    ],
+    "source_review_sha256": "903fbc769c553d44b2c0b5a43d297ee43a17ab1402aa3492542b43d595bff5e7",
+    "conclusion_ko": "핵심 제약·계산을 고치고 답까지 완결한 사례는 있지만, 공학 분야 전반의 풀이 정확성·완결성 향상은 확인하지 못했다. 설명만 늘거나 회로 모델이 악화하고 정답이어도 설명 오류가 남은 사례가 함께 관측됐다. 학습만의 인과 효과는 분리되지 않는다."
   }
 }
