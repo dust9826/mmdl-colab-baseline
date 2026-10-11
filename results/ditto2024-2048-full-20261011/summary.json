@@ -6220,5 +6220,64 @@
     "independent-audit.json": "6c7dba67a30d17b9a89cbc53dbca23bc6ea5e37748a4c90c19cacb323cb40348",
     "local-recovery-verification.json": "d7cb7faf89ca8db8065ebc0e2f2985986052ef2859c00d3ef2ac005096dfaf08"
   },
-  "conclusion_ko": "일부 문항의 풀이와 최종 답은 개선됐지만, 이번 소규모 학습 설정에서 전체 정확도 향상·토큰 절감 효과는 확인되지 않았다. DITTO2024 일반의 효과나 점수 차이의 학습 인과 효과는 단정할 수 없다."
+  "conclusion_ko": "일부 문항의 풀이와 최종 답은 개선됐지만, 이번 소규모 학습 설정에서 전체 정확도 향상·토큰 절감 효과는 확인되지 않았다. DITTO2024 일반의 효과나 점수 차이의 학습 인과 효과는 단정할 수 없다.",
+  "training_goal_audit": {
+    "intended_behavior_ko": "문제에 맞는 설명·풀이를 제시하고 최종 답으로 마무리하는 시범 응답을 모방하도록 유도",
+    "demonstrations_include_explanation_and_final_answer": true,
+    "completion_only_supervision": true,
+    "separate_step_correctness_labels": false,
+    "separate_reasoning_presence_reward": false,
+    "separate_length_or_repetition_penalty": false,
+    "expert_target_token_counts_including_terminal_token": {
+      "17522": 91,
+      "9081": 73,
+      "296": 74,
+      "20181": 238,
+      "9512": 80,
+      "18545": 91,
+      "1548": 73,
+      "15783": 80
+    },
+    "expert_target_mean_tokens": 100,
+    "optimization": {
+      "status": "TRAINED_MERGED_RELOAD_VERIFIED",
+      "updates": 20,
+      "finite_losses_and_finite_nonzero_gradients": true,
+      "adapter_delta_l2": 0.03513807561115391,
+      "reference_unchanged": true,
+      "merged_reload_probe_logp_exact_match": true,
+      "loss_min": 0.6526411771774292,
+      "loss_max": 0.7253018617630005,
+      "round_update_batch_metrics": [
+        {
+          "round": 0,
+          "mean_loss": 0.6987697720527649,
+          "mean_preference_margin": -0.21620874404907225
+        },
+        {
+          "round": 1,
+          "mean_loss": 0.6865746021270752,
+          "mean_preference_margin": 0.27744221687316895
+        }
+      ],
+      "interpretation": "Optimization ran and weights changed. Different pairs/batches/online samples make these metrics unsuitable as a controlled final-policy or held-out effectiveness test."
+    },
+    "format_marker_proxy": {
+      "pattern": "final\\s+answer\\s*:",
+      "preprocessing": "remove all '**' and backtick characters; re.IGNORECASE; count a response once if match anywhere",
+      "counts": {
+        "baseline": 320,
+        "ditto2024": 307
+      },
+      "denominator_each": 900,
+      "limitation": "Only a string-format proxy. Does not verify final position, correctness, reasoning presence, or step validity; not used to alter V8 scores."
+    },
+    "evaluation_gap_ko": "900문항의 풀이 존재율과 각 단계 타당성을 사전 정의된 기준으로 전수 평가하지 않았으므로 풀이 스타일 습득 여부는 미입증. 원문 대표 사례의 개선과 악화, 최종 정답률은 별도로 관측했다.",
+    "training_evidence_sha256": {
+      "colab_support/data/train.json": "57e672f87edfe18b036568688a2a9352dc461ca0c88c5729d3308cf0815bcc03",
+      "colab_support/train_ditto2024.py": "1a5a0a8278e907cdc136819929fde90b9b93d97a20ee4851052d7fa7b830fba5",
+      "training/ditto2024/result.json": "625b089aec9cea5448f885b73d84a58b9d7bf71d5e02e71227a9753d65206886",
+      "training/ditto2024/data_alignment.json": "d675baf9de35af1918c327b4e215582d1a722c2af0a05207431a4223ceee5ada"
+    }
+  }
 }
