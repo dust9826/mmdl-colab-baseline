@@ -24,7 +24,7 @@ def recover(text_path, directory):
         raise ValueError('No complete checkpoint in visible output')
     header, section = chosen
     seq = header['sequence']
-    if (not isinstance(seq, int) or seq < 1 or header['stage'] not in ('train_A','train_B','compare','final')
+    if (not isinstance(seq, int) or seq < 1 or header['stage'] not in ('diagnosis','train_A','train_B','compare','final')
             or Path(header['archive']).name != header['archive']
             or not re.fullmatch(r'[a-f0-9]{64}',header['sha256'])
             or not 0 < header['bytes'] <= 128*1024*1024
