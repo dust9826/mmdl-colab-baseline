@@ -1,0 +1,3535 @@
+{
+  "schema": "finish-sft-project-unseen-test-summary-v1",
+  "status": "INDEPENDENTLY_VERIFIED_COMPLETE",
+  "evaluation_date_KST": "2026-11-19",
+  "documentation_updated_KST": "2026-11-20",
+  "protocol": {
+    "MP": 0,
+    "adapter_sha256": "90f0afaf72f22c622fd7e533514b02efd0b650d07589ff5773f6864b952188f8",
+    "answer_commit": "b26bdefc7e5e007962fde8f93b2bb53c99c8d13d",
+    "answer_file": "mmmu/answer_dict_test.json",
+    "answer_repository": "MMMU-Benchmark/MMMU",
+    "arms": [
+      "base",
+      "sft"
+    ],
+    "batch_invariant": false,
+    "cap": 2048,
+    "context": 12288,
+    "dataset": "MMMU/MMMU",
+    "exclusions": [
+      "prior_project_test_ID",
+      "normalized question exact/near to validation900 or synthetic bank",
+      "image RGB exact/dHash<=4 with comparable aspect against validation900 or synthetic bank",
+      "duplicate selected question exact/near",
+      "unsupported/absent/noncontiguous image reference"
+    ],
+    "forced_cue": false,
+    "fresh_process_per_arm": true,
+    "frozen_before_model_outputs": true,
+    "job": "finish-sft-unseen-test-20261119",
+    "limitations": [
+      "Public MMMU test: Qwen pretraining exposure is unknown; project-unseen only",
+      "one inference per arm; no outcome-based model/protocol changes or model selection",
+      "900 may not establish a small gain; no promise of statistical significance"
+    ],
+    "max_num_seqs": 8,
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "n": 900,
+    "n_per_subject": 30,
+    "new_training_updates": 0,
+    "parser": "pinned V8",
+    "primary": "paired accuracy difference, gains and losses, exact McNemar and paired interval",
+    "prompt": "unchanged P0",
+    "revision": "98e6ac0cb9b7b2cd2c991b85a50762edc4aedc68",
+    "secondary": [
+      "engineering210 subset fixed prior manifest",
+      "30subjects",
+      "tokens",
+      "cap",
+      "NO_PARSE",
+      "time"
+    ],
+    "seed": 3407,
+    "selection": "Within each subject rank all test IDs by SHA256(unseen-v1:3407:<ID>); take first30 passing frozen input-only exclusions",
+    "selection_uses_answers_or_outputs": false,
+    "split": "test",
+    "vllm": "0.11.0",
+    "window": 24
+  },
+  "effective_inference_parameters": {
+    "generation": {
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repetition_penalty": 1.0,
+      "presence_penalty": 1.5,
+      "seed": 3407,
+      "seed_policy": "per_sample_sha256_v1",
+      "max_new_tokens": 2048,
+      "num_beams": 1
+    },
+    "image": {
+      "min_pixels": 1003520,
+      "max_pixels": 4014080,
+      "resize_owner": "qwen_vl_utils",
+      "preprocessing": "qwen_vl_utils_0_0_14"
+    },
+    "dtype": "bfloat16",
+    "engine_seed": 3407,
+    "window": 24,
+    "max_num_seqs": 8,
+    "max_model_len": 12288,
+    "MP": 0,
+    "limit_mm_per_prompt_image": 5,
+    "source_bundle_sha256": "0bc1895db561eca1440e820bdbfb067d256ad7a847342e22c4e96f6ded56fb98"
+  },
+  "data_audit": {
+    "actual_training_n": 48,
+    "audit_unix": 1795081365.7924201,
+    "exclusion_counts": {
+      "reference_image_overlap": 56,
+      "reference_question_overlap": 61,
+      "selected_question_duplicate": 27
+    },
+    "gold_schema": "Official ground_truth copied unchanged; official question_type matches source",
+    "n": 900,
+    "official_answer_file_sha256": "45b639a937017d3d71f81f610df3a1471debe1887c5c1d24644fec1b33059d5c",
+    "overlap_after_exclusion": 0,
+    "prior_test_id_evidence": [],
+    "prior_test_ids": 0,
+    "protocol_sha256": "35737a759cc990a8d1d2130fcc011a3cbe2b3211702aa384cefa54bf0d3f90f8",
+    "question_types": {
+      "multiple-choice": 849,
+      "open": 51
+    },
+    "questions": 900,
+    "reference_synthetic_candidates": 48,
+    "selected_gold_sha256": "6c11dea5eee6c70fd92f2f16644cf611554c1fb52099017c3224784888600cd2",
+    "selected_inputs_sha256": "f238177efbf0da8f13a9b5ee212b46951a3dbf096bde6eee8508741abdce9156",
+    "selection_uses_gold_or_outputs": false,
+    "source": "Official pinned MMMU test, public labels, project-unseen. Pretraining exposure unknown.",
+    "subjects": {
+      "Accounting": 30,
+      "Agriculture": 30,
+      "Architecture_and_Engineering": 30,
+      "Art": 30,
+      "Art_Theory": 30,
+      "Basic_Medical_Science": 30,
+      "Biology": 30,
+      "Chemistry": 30,
+      "Clinical_Medicine": 30,
+      "Computer_Science": 30,
+      "Design": 30,
+      "Diagnostics_and_Laboratory_Medicine": 30,
+      "Economics": 30,
+      "Electronics": 30,
+      "Energy_and_Power": 30,
+      "Finance": 30,
+      "Geography": 30,
+      "History": 30,
+      "Literature": 30,
+      "Manage": 30,
+      "Marketing": 30,
+      "Materials": 30,
+      "Math": 30,
+      "Mechanical_Engineering": 30,
+      "Music": 30,
+      "Pharmacy": 30,
+      "Physics": 30,
+      "Psychology": 30,
+      "Public_Health": 30,
+      "Sociology": 30
+    },
+    "trained_on_this_holdout": false,
+    "validation_reference_images": 959
+  },
+  "selected_image_counts": {
+    "entries": 1036,
+    "unique_raw_hashes": 1004,
+    "reused_raw_images": 31
+  },
+  "overall": {
+    "n": 900,
+    "base": {
+      "n": 900,
+      "correct": 476,
+      "accuracy": 0.5288888888888889,
+      "mean_tokens": 869.2688888888889,
+      "median_tokens": 487.5,
+      "p90_tokens": 2048.0,
+      "p95_tokens": 2048.0,
+      "hit_cap": 222,
+      "hit_cap_rate": 0.24666666666666667,
+      "NO_PARSE": 225,
+      "parsed_wrong": 199,
+      "finish_reasons": {
+        "length": 222,
+        "stop": 678
+      },
+      "mean_literal_duplicate_character_fraction": 0.016809180059750257
+    },
+    "sft": {
+      "n": 900,
+      "correct": 470,
+      "accuracy": 0.5222222222222223,
+      "mean_tokens": 805.1877777777778,
+      "median_tokens": 435.0,
+      "p90_tokens": 2048.0,
+      "p95_tokens": 2048.0,
+      "hit_cap": 205,
+      "hit_cap_rate": 0.22777777777777777,
+      "NO_PARSE": 207,
+      "parsed_wrong": 223,
+      "finish_reasons": {
+        "stop": 695,
+        "length": 205
+      },
+      "mean_literal_duplicate_character_fraction": 0.018149357238724625
+    },
+    "group_sizes": {
+      "both_correct": 421,
+      "wrong_to_correct": 49,
+      "correct_to_wrong": 55,
+      "both_wrong": 375
+    },
+    "paired": {
+      "net_correct": -6,
+      "accuracy_difference_pp": -0.6666666666666667,
+      "paired_normal95CI_pp": [
+        -2.8883396092242593,
+        1.5550062758909258
+      ],
+      "McNemar_exact_p": 0.624143515844679,
+      "discordant_pairs": 104,
+      "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+    },
+    "base_correct_retention": 0.884453781512605
+  },
+  "engineering210": {
+    "n": 210,
+    "base": {
+      "n": 210,
+      "correct": 48,
+      "accuracy": 0.22857142857142856,
+      "mean_tokens": 1488.3904761904762,
+      "median_tokens": 2048.0,
+      "p90_tokens": 2048.0,
+      "p95_tokens": 2048.0,
+      "hit_cap": 125,
+      "hit_cap_rate": 0.5952380952380952,
+      "NO_PARSE": 127,
+      "parsed_wrong": 35,
+      "finish_reasons": {
+        "stop": 85,
+        "length": 125
+      },
+      "mean_literal_duplicate_character_fraction": 0.013324261797225347
+    },
+    "sft": {
+      "n": 210,
+      "correct": 56,
+      "accuracy": 0.26666666666666666,
+      "mean_tokens": 1418.2380952380952,
+      "median_tokens": 2048.0,
+      "p90_tokens": 2048.0,
+      "p95_tokens": 2048.0,
+      "hit_cap": 116,
+      "hit_cap_rate": 0.5523809523809524,
+      "NO_PARSE": 117,
+      "parsed_wrong": 37,
+      "finish_reasons": {
+        "stop": 94,
+        "length": 116
+      },
+      "mean_literal_duplicate_character_fraction": 0.018463703036205127
+    },
+    "group_sizes": {
+      "both_correct": 41,
+      "wrong_to_correct": 15,
+      "correct_to_wrong": 7,
+      "both_wrong": 147
+    },
+    "paired": {
+      "net_correct": 8,
+      "accuracy_difference_pp": 3.8095238095238098,
+      "paired_normal95CI_pp": [
+        -0.5480776821847139,
+        8.167125301232334
+      ],
+      "McNemar_exact_p": 0.13380050659179688,
+      "discordant_pairs": 22,
+      "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+    },
+    "base_correct_retention": 0.8541666666666666
+  },
+  "other690": {
+    "n": 690,
+    "base": {
+      "n": 690,
+      "correct": 428,
+      "accuracy": 0.6202898550724638,
+      "mean_tokens": 680.8405797101449,
+      "median_tokens": 384.5,
+      "p90_tokens": 2048.0,
+      "p95_tokens": 2048.0,
+      "hit_cap": 97,
+      "hit_cap_rate": 0.14057971014492754,
+      "NO_PARSE": 98,
+      "parsed_wrong": 164,
+      "finish_reasons": {
+        "length": 97,
+        "stop": 593
+      },
+      "mean_literal_duplicate_character_fraction": 0.01786980735704045
+    },
+    "sft": {
+      "n": 690,
+      "correct": 414,
+      "accuracy": 0.6,
+      "mean_tokens": 618.6072463768116,
+      "median_tokens": 365.5,
+      "p90_tokens": 2048.0,
+      "p95_tokens": 2048.0,
+      "hit_cap": 89,
+      "hit_cap_rate": 0.1289855072463768,
+      "NO_PARSE": 90,
+      "parsed_wrong": 186,
+      "finish_reasons": {
+        "stop": 601,
+        "length": 89
+      },
+      "mean_literal_duplicate_character_fraction": 0.018053686778621864
+    },
+    "group_sizes": {
+      "both_correct": 380,
+      "wrong_to_correct": 34,
+      "correct_to_wrong": 48,
+      "both_wrong": 228
+    },
+    "paired": {
+      "net_correct": -14,
+      "accuracy_difference_pp": -2.0289855072463765,
+      "paired_normal95CI_pp": [
+        -4.598596198363106,
+        0.5406251838703521
+      ],
+      "McNemar_exact_p": 0.15067520762630382,
+      "discordant_pairs": 82,
+      "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+    },
+    "base_correct_retention": 0.8878504672897196
+  },
+  "subjects": {
+    "Accounting": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 19,
+        "accuracy": 0.6333333333333333,
+        "mean_tokens": 1017.5666666666667,
+        "median_tokens": 727.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 9,
+        "hit_cap_rate": 0.3,
+        "NO_PARSE": 9,
+        "parsed_wrong": 2,
+        "finish_reasons": {
+          "length": 9,
+          "stop": 21
+        },
+        "mean_literal_duplicate_character_fraction": 0.007089291578074018
+      },
+      "sft": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 935.9,
+        "median_tokens": 599.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 8,
+        "hit_cap_rate": 0.26666666666666666,
+        "NO_PARSE": 8,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "stop": 22,
+          "length": 8
+        },
+        "mean_literal_duplicate_character_fraction": 0.0060242328803096455
+      },
+      "group_sizes": {
+        "both_correct": 17,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 2,
+        "both_wrong": 10
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -14.77851895709526,
+          8.111852290428596
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8947368421052632
+    },
+    "Agriculture": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 13,
+        "accuracy": 0.43333333333333335,
+        "mean_tokens": 242.66666666666666,
+        "median_tokens": 200.5,
+        "p90_tokens": 420.6,
+        "p95_tokens": 621.799999999999,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 17,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.0055734805830290855
+      },
+      "sft": {
+        "n": 30,
+        "correct": 15,
+        "accuracy": 0.5,
+        "mean_tokens": 177.8,
+        "median_tokens": 166.0,
+        "p90_tokens": 369.70000000000016,
+        "p95_tokens": 482.29999999999984,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 1,
+        "parsed_wrong": 14,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.0
+      },
+      "group_sizes": {
+        "both_correct": 12,
+        "wrong_to_correct": 3,
+        "correct_to_wrong": 1,
+        "both_wrong": 14
+      },
+      "paired": {
+        "net_correct": 2,
+        "accuracy_difference_pp": 6.666666666666667,
+        "paired_normal95CI_pp": [
+          -6.399759896933695,
+          19.73309323026703
+        ],
+        "McNemar_exact_p": 0.625,
+        "discordant_pairs": 4,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9230769230769231
+    },
+    "Architecture_and_Engineering": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 2,
+        "accuracy": 0.06666666666666667,
+        "mean_tokens": 1959.0666666666666,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 26,
+        "hit_cap_rate": 0.8666666666666667,
+        "NO_PARSE": 25,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "length": 26,
+          "stop": 4
+        },
+        "mean_literal_duplicate_character_fraction": 0.00833176470942142
+      },
+      "sft": {
+        "n": 30,
+        "correct": 2,
+        "accuracy": 0.06666666666666667,
+        "mean_tokens": 1934.8,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 27,
+        "hit_cap_rate": 0.9,
+        "NO_PARSE": 26,
+        "parsed_wrong": 2,
+        "finish_reasons": {
+          "length": 27,
+          "stop": 3
+        },
+        "mean_literal_duplicate_character_fraction": 0.026976577765076983
+      },
+      "group_sizes": {
+        "both_correct": 1,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 1,
+        "both_wrong": 27
+      },
+      "paired": {
+        "net_correct": 0,
+        "accuracy_difference_pp": 0.0,
+        "paired_normal95CI_pp": [
+          -9.397308028200227,
+          9.397308028200227
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 2,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.5
+    },
+    "Art": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 22,
+        "accuracy": 0.7333333333333333,
+        "mean_tokens": 266.1,
+        "median_tokens": 170.5,
+        "p90_tokens": 355.30000000000035,
+        "p95_tokens": 785.399999999999,
+        "hit_cap": 1,
+        "hit_cap_rate": 0.03333333333333333,
+        "NO_PARSE": 1,
+        "parsed_wrong": 7,
+        "finish_reasons": {
+          "stop": 29,
+          "length": 1
+        },
+        "mean_literal_duplicate_character_fraction": 0.025431521973287376
+      },
+      "sft": {
+        "n": 30,
+        "correct": 23,
+        "accuracy": 0.7666666666666667,
+        "mean_tokens": 155.03333333333333,
+        "median_tokens": 146.0,
+        "p90_tokens": 346.40000000000003,
+        "p95_tokens": 361.75,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 7,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.0005664488017429193
+      },
+      "group_sizes": {
+        "both_correct": 22,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 0,
+        "both_wrong": 7
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -3.1998799484668474,
+          9.866546615133515
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 1,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 1.0
+    },
+    "Art_Theory": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 22,
+        "accuracy": 0.7333333333333333,
+        "mean_tokens": 458.1666666666667,
+        "median_tokens": 234.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 4,
+        "hit_cap_rate": 0.13333333333333333,
+        "NO_PARSE": 3,
+        "parsed_wrong": 5,
+        "finish_reasons": {
+          "length": 4,
+          "stop": 26
+        },
+        "mean_literal_duplicate_character_fraction": 0.07613935188374274
+      },
+      "sft": {
+        "n": 30,
+        "correct": 23,
+        "accuracy": 0.7666666666666667,
+        "mean_tokens": 255.53333333333333,
+        "median_tokens": 18.5,
+        "p90_tokens": 447.4,
+        "p95_tokens": 1329.3499999999954,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 1,
+        "parsed_wrong": 6,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.039429813338023215
+      },
+      "group_sizes": {
+        "both_correct": 20,
+        "wrong_to_correct": 3,
+        "correct_to_wrong": 2,
+        "both_wrong": 5
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -11.475504302998669,
+          18.142170969665333
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 5,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9090909090909091
+    },
+    "Basic_Medical_Science": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 325.2,
+        "median_tokens": 271.5,
+        "p90_tokens": 493.30000000000007,
+        "p95_tokens": 658.1499999999994,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 12,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.012751658131775112
+      },
+      "sft": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 330,
+        "median_tokens": 252.0,
+        "p90_tokens": 751.4000000000001,
+        "p95_tokens": 996.2999999999988,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 12,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.008363438944387245
+      },
+      "group_sizes": {
+        "both_correct": 17,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 1,
+        "both_wrong": 11
+      },
+      "paired": {
+        "net_correct": 0,
+        "accuracy_difference_pp": 0.0,
+        "paired_normal95CI_pp": [
+          -9.397308028200227,
+          9.397308028200227
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 2,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9444444444444444
+    },
+    "Biology": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 19,
+        "accuracy": 0.6333333333333333,
+        "mean_tokens": 702.0666666666667,
+        "median_tokens": 372.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 5,
+        "hit_cap_rate": 0.16666666666666666,
+        "NO_PARSE": 3,
+        "parsed_wrong": 8,
+        "finish_reasons": {
+          "stop": 25,
+          "length": 5
+        },
+        "mean_literal_duplicate_character_fraction": 0.0050876253011804705
+      },
+      "sft": {
+        "n": 30,
+        "correct": 16,
+        "accuracy": 0.5333333333333333,
+        "mean_tokens": 734.3666666666667,
+        "median_tokens": 427.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 5,
+        "hit_cap_rate": 0.16666666666666666,
+        "NO_PARSE": 4,
+        "parsed_wrong": 10,
+        "finish_reasons": {
+          "stop": 25,
+          "length": 5
+        },
+        "mean_literal_duplicate_character_fraction": 0.02775147231709982
+      },
+      "group_sizes": {
+        "both_correct": 15,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 4,
+        "both_wrong": 10
+      },
+      "paired": {
+        "net_correct": -3,
+        "accuracy_difference_pp": -10.0,
+        "paired_normal95CI_pp": [
+          -24.40580041912492,
+          4.405800419124917
+        ],
+        "McNemar_exact_p": 0.375,
+        "discordant_pairs": 5,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.7894736842105263
+    },
+    "Chemistry": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 11,
+        "accuracy": 0.36666666666666664,
+        "mean_tokens": 1355.8666666666666,
+        "median_tokens": 1492.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 11,
+        "hit_cap_rate": 0.36666666666666664,
+        "NO_PARSE": 10,
+        "parsed_wrong": 9,
+        "finish_reasons": {
+          "stop": 19,
+          "length": 11
+        },
+        "mean_literal_duplicate_character_fraction": 0.027410332122826522
+      },
+      "sft": {
+        "n": 30,
+        "correct": 8,
+        "accuracy": 0.26666666666666666,
+        "mean_tokens": 1180.4333333333334,
+        "median_tokens": 986.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 9,
+        "hit_cap_rate": 0.3,
+        "NO_PARSE": 10,
+        "parsed_wrong": 12,
+        "finish_reasons": {
+          "stop": 21,
+          "length": 9
+        },
+        "mean_literal_duplicate_character_fraction": 0.028963122042530556
+      },
+      "group_sizes": {
+        "both_correct": 7,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 4,
+        "both_wrong": 18
+      },
+      "paired": {
+        "net_correct": -3,
+        "accuracy_difference_pp": -10.0,
+        "paired_normal95CI_pp": [
+          -24.40580041912492,
+          4.405800419124917
+        ],
+        "McNemar_exact_p": 0.375,
+        "discordant_pairs": 5,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.6363636363636364
+    },
+    "Clinical_Medicine": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 16,
+        "accuracy": 0.5333333333333333,
+        "mean_tokens": 533.9,
+        "median_tokens": 367.5,
+        "p90_tokens": 1110.8000000000004,
+        "p95_tokens": 1771.2499999999982,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 3,
+        "parsed_wrong": 11,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.012641996916970308
+      },
+      "sft": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 404.8333333333333,
+        "median_tokens": 321.5,
+        "p90_tokens": 781.4000000000001,
+        "p95_tokens": 809.5999999999999,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 1,
+        "parsed_wrong": 11,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.002972528068033406
+      },
+      "group_sizes": {
+        "both_correct": 15,
+        "wrong_to_correct": 3,
+        "correct_to_wrong": 1,
+        "both_wrong": 11
+      },
+      "paired": {
+        "net_correct": 2,
+        "accuracy_difference_pp": 6.666666666666667,
+        "paired_normal95CI_pp": [
+          -6.399759896933695,
+          19.73309323026703
+        ],
+        "McNemar_exact_p": 0.625,
+        "discordant_pairs": 4,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9375
+    },
+    "Computer_Science": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 12,
+        "accuracy": 0.4,
+        "mean_tokens": 1131.3333333333333,
+        "median_tokens": 1125.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 10,
+        "hit_cap_rate": 0.3333333333333333,
+        "NO_PARSE": 11,
+        "parsed_wrong": 7,
+        "finish_reasons": {
+          "stop": 20,
+          "length": 10
+        },
+        "mean_literal_duplicate_character_fraction": 0.006628701180670436
+      },
+      "sft": {
+        "n": 30,
+        "correct": 13,
+        "accuracy": 0.43333333333333335,
+        "mean_tokens": 1013.4333333333333,
+        "median_tokens": 656.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 8,
+        "hit_cap_rate": 0.26666666666666666,
+        "NO_PARSE": 7,
+        "parsed_wrong": 10,
+        "finish_reasons": {
+          "stop": 22,
+          "length": 8
+        },
+        "mean_literal_duplicate_character_fraction": 0.024618667124954162
+      },
+      "group_sizes": {
+        "both_correct": 10,
+        "wrong_to_correct": 3,
+        "correct_to_wrong": 2,
+        "both_wrong": 15
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -11.475504302998669,
+          18.142170969665333
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 5,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8333333333333334
+    },
+    "Design": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 20,
+        "accuracy": 0.6666666666666666,
+        "mean_tokens": 249.66666666666666,
+        "median_tokens": 180.5,
+        "p90_tokens": 365.40000000000003,
+        "p95_tokens": 596.3499999999989,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 10,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.010457826779161182
+      },
+      "sft": {
+        "n": 30,
+        "correct": 19,
+        "accuracy": 0.6333333333333333,
+        "mean_tokens": 231.46666666666667,
+        "median_tokens": 163.5,
+        "p90_tokens": 375.6,
+        "p95_tokens": 428.89999999999986,
+        "hit_cap": 1,
+        "hit_cap_rate": 0.03333333333333333,
+        "NO_PARSE": 0,
+        "parsed_wrong": 11,
+        "finish_reasons": {
+          "stop": 29,
+          "length": 1
+        },
+        "mean_literal_duplicate_character_fraction": 0.00919636790873561
+      },
+      "group_sizes": {
+        "both_correct": 18,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 2,
+        "both_wrong": 9
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -14.77851895709526,
+          8.111852290428596
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9
+    },
+    "Diagnostics_and_Laboratory_Medicine": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 12,
+        "accuracy": 0.4,
+        "mean_tokens": 600.9,
+        "median_tokens": 402.0,
+        "p90_tokens": 1513.6000000000004,
+        "p95_tokens": 1899.049999999999,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 1,
+        "parsed_wrong": 17,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.019986716529985196
+      },
+      "sft": {
+        "n": 30,
+        "correct": 11,
+        "accuracy": 0.36666666666666664,
+        "mean_tokens": 450.43333333333334,
+        "median_tokens": 360.0,
+        "p90_tokens": 760.2,
+        "p95_tokens": 824.3499999999997,
+        "hit_cap": 1,
+        "hit_cap_rate": 0.03333333333333333,
+        "NO_PARSE": 0,
+        "parsed_wrong": 19,
+        "finish_reasons": {
+          "stop": 29,
+          "length": 1
+        },
+        "mean_literal_duplicate_character_fraction": 0.003781578161952103
+      },
+      "group_sizes": {
+        "both_correct": 10,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 2,
+        "both_wrong": 17
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -14.77851895709526,
+          8.111852290428596
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8333333333333334
+    },
+    "Economics": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 25,
+        "accuracy": 0.8333333333333334,
+        "mean_tokens": 625,
+        "median_tokens": 418.5,
+        "p90_tokens": 1458.9000000000003,
+        "p95_tokens": 1887.799999999999,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 2,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.0132825539408774
+      },
+      "sft": {
+        "n": 30,
+        "correct": 22,
+        "accuracy": 0.7333333333333333,
+        "mean_tokens": 674.3,
+        "median_tokens": 484.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 4,
+        "hit_cap_rate": 0.13333333333333333,
+        "NO_PARSE": 5,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "stop": 26,
+          "length": 4
+        },
+        "mean_literal_duplicate_character_fraction": 0.015387638801397785
+      },
+      "group_sizes": {
+        "both_correct": 22,
+        "wrong_to_correct": 0,
+        "correct_to_wrong": 3,
+        "both_wrong": 5
+      },
+      "paired": {
+        "net_correct": -3,
+        "accuracy_difference_pp": -10.0,
+        "paired_normal95CI_pp": [
+          -20.918685247720223,
+          0.9186852477202218
+        ],
+        "McNemar_exact_p": 0.25,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.88
+    },
+    "Electronics": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 4,
+        "accuracy": 0.13333333333333333,
+        "mean_tokens": 1741.7,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 21,
+        "hit_cap_rate": 0.7,
+        "NO_PARSE": 24,
+        "parsed_wrong": 2,
+        "finish_reasons": {
+          "length": 21,
+          "stop": 9
+        },
+        "mean_literal_duplicate_character_fraction": 0.04683283452821211
+      },
+      "sft": {
+        "n": 30,
+        "correct": 4,
+        "accuracy": 0.13333333333333333,
+        "mean_tokens": 1697.0666666666666,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 21,
+        "hit_cap_rate": 0.7,
+        "NO_PARSE": 25,
+        "parsed_wrong": 1,
+        "finish_reasons": {
+          "length": 21,
+          "stop": 9
+        },
+        "mean_literal_duplicate_character_fraction": 0.013450251954728293
+      },
+      "group_sizes": {
+        "both_correct": 3,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 1,
+        "both_wrong": 25
+      },
+      "paired": {
+        "net_correct": 0,
+        "accuracy_difference_pp": 0.0,
+        "paired_normal95CI_pp": [
+          -9.397308028200227,
+          9.397308028200227
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 2,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.75
+    },
+    "Energy_and_Power": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 7,
+        "accuracy": 0.23333333333333334,
+        "mean_tokens": 1828.4666666666667,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 24,
+        "hit_cap_rate": 0.8,
+        "NO_PARSE": 22,
+        "parsed_wrong": 1,
+        "finish_reasons": {
+          "length": 24,
+          "stop": 6
+        },
+        "mean_literal_duplicate_character_fraction": 0.010525394063829217
+      },
+      "sft": {
+        "n": 30,
+        "correct": 9,
+        "accuracy": 0.3,
+        "mean_tokens": 1660.6,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 19,
+        "hit_cap_rate": 0.6333333333333333,
+        "NO_PARSE": 18,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "stop": 11,
+          "length": 19
+        },
+        "mean_literal_duplicate_character_fraction": 0.008677361206910678
+      },
+      "group_sizes": {
+        "both_correct": 7,
+        "wrong_to_correct": 2,
+        "correct_to_wrong": 0,
+        "both_wrong": 21
+      },
+      "paired": {
+        "net_correct": 2,
+        "accuracy_difference_pp": 6.666666666666667,
+        "paired_normal95CI_pp": [
+          -2.411995402442672,
+          15.745328735776004
+        ],
+        "McNemar_exact_p": 0.5,
+        "discordant_pairs": 2,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 1.0
+    },
+    "Finance": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 17,
+        "accuracy": 0.5666666666666667,
+        "mean_tokens": 876.1,
+        "median_tokens": 604.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 4,
+        "hit_cap_rate": 0.13333333333333333,
+        "NO_PARSE": 5,
+        "parsed_wrong": 8,
+        "finish_reasons": {
+          "stop": 26,
+          "length": 4
+        },
+        "mean_literal_duplicate_character_fraction": 0.0073887988946089635
+      },
+      "sft": {
+        "n": 30,
+        "correct": 19,
+        "accuracy": 0.6333333333333333,
+        "mean_tokens": 826.6333333333333,
+        "median_tokens": 588.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 5,
+        "hit_cap_rate": 0.16666666666666666,
+        "NO_PARSE": 5,
+        "parsed_wrong": 6,
+        "finish_reasons": {
+          "stop": 25,
+          "length": 5
+        },
+        "mean_literal_duplicate_character_fraction": 0.0117236692488243
+      },
+      "group_sizes": {
+        "both_correct": 15,
+        "wrong_to_correct": 4,
+        "correct_to_wrong": 2,
+        "both_wrong": 9
+      },
+      "paired": {
+        "net_correct": 2,
+        "accuracy_difference_pp": 6.666666666666667,
+        "paired_normal95CI_pp": [
+          -9.428080964745188,
+          22.76141429807852
+        ],
+        "McNemar_exact_p": 0.6875,
+        "discordant_pairs": 6,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8823529411764706
+    },
+    "Geography": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 22,
+        "accuracy": 0.7333333333333333,
+        "mean_tokens": 746.7333333333333,
+        "median_tokens": 466.0,
+        "p90_tokens": 2019.2,
+        "p95_tokens": 2043.95,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 3,
+        "parsed_wrong": 5,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.008989558690552563
+      },
+      "sft": {
+        "n": 30,
+        "correct": 19,
+        "accuracy": 0.6333333333333333,
+        "mean_tokens": 658.5333333333333,
+        "median_tokens": 381.0,
+        "p90_tokens": 1770.8000000000004,
+        "p95_tokens": 2048.0,
+        "hit_cap": 3,
+        "hit_cap_rate": 0.1,
+        "NO_PARSE": 5,
+        "parsed_wrong": 6,
+        "finish_reasons": {
+          "stop": 27,
+          "length": 3
+        },
+        "mean_literal_duplicate_character_fraction": 0.0051636200919507064
+      },
+      "group_sizes": {
+        "both_correct": 19,
+        "wrong_to_correct": 0,
+        "correct_to_wrong": 3,
+        "both_wrong": 8
+      },
+      "paired": {
+        "net_correct": -3,
+        "accuracy_difference_pp": -10.0,
+        "paired_normal95CI_pp": [
+          -20.918685247720223,
+          0.9186852477202218
+        ],
+        "McNemar_exact_p": 0.25,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8636363636363636
+    },
+    "History": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 22,
+        "accuracy": 0.7333333333333333,
+        "mean_tokens": 422.76666666666665,
+        "median_tokens": 395.0,
+        "p90_tokens": 603.2000000000002,
+        "p95_tokens": 721.25,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 8,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.012918594769876479
+      },
+      "sft": {
+        "n": 30,
+        "correct": 21,
+        "accuracy": 0.7,
+        "mean_tokens": 376,
+        "median_tokens": 386.0,
+        "p90_tokens": 586.9000000000001,
+        "p95_tokens": 622.0,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 0,
+        "parsed_wrong": 9,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.012569576659743337
+      },
+      "group_sizes": {
+        "both_correct": 21,
+        "wrong_to_correct": 0,
+        "correct_to_wrong": 1,
+        "both_wrong": 8
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -9.866546615133515,
+          3.1998799484668474
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 1,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9545454545454546
+    },
+    "Literature": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 23,
+        "accuracy": 0.7666666666666667,
+        "mean_tokens": 261.6666666666667,
+        "median_tokens": 224.5,
+        "p90_tokens": 397.4000000000001,
+        "p95_tokens": 486.89999999999986,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 1,
+        "parsed_wrong": 6,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.006814917639626988
+      },
+      "sft": {
+        "n": 30,
+        "correct": 23,
+        "accuracy": 0.7666666666666667,
+        "mean_tokens": 206.8,
+        "median_tokens": 202.0,
+        "p90_tokens": 346.2,
+        "p95_tokens": 355.69999999999993,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 1,
+        "parsed_wrong": 6,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.006102688672499876
+      },
+      "group_sizes": {
+        "both_correct": 20,
+        "wrong_to_correct": 3,
+        "correct_to_wrong": 3,
+        "both_wrong": 4
+      },
+      "paired": {
+        "net_correct": 0,
+        "accuracy_difference_pp": 0.0,
+        "paired_normal95CI_pp": [
+          -16.276614959217696,
+          16.276614959217696
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 6,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8695652173913043
+    },
+    "Manage": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 15,
+        "accuracy": 0.5,
+        "mean_tokens": 682.4333333333333,
+        "median_tokens": 429.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 4,
+        "hit_cap_rate": 0.13333333333333333,
+        "NO_PARSE": 4,
+        "parsed_wrong": 11,
+        "finish_reasons": {
+          "stop": 26,
+          "length": 4
+        },
+        "mean_literal_duplicate_character_fraction": 0.00469235886657739
+      },
+      "sft": {
+        "n": 30,
+        "correct": 16,
+        "accuracy": 0.5333333333333333,
+        "mean_tokens": 659.0333333333333,
+        "median_tokens": 423.5,
+        "p90_tokens": 2031.8,
+        "p95_tokens": 2048.0,
+        "hit_cap": 3,
+        "hit_cap_rate": 0.1,
+        "NO_PARSE": 2,
+        "parsed_wrong": 12,
+        "finish_reasons": {
+          "stop": 27,
+          "length": 3
+        },
+        "mean_literal_duplicate_character_fraction": 0.008393018474433727
+      },
+      "group_sizes": {
+        "both_correct": 15,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 0,
+        "both_wrong": 14
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -3.1998799484668474,
+          9.866546615133515
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 1,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 1.0
+    },
+    "Marketing": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 17,
+        "accuracy": 0.5666666666666667,
+        "mean_tokens": 1001.8666666666667,
+        "median_tokens": 632.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 10,
+        "hit_cap_rate": 0.3333333333333333,
+        "NO_PARSE": 10,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "stop": 20,
+          "length": 10
+        },
+        "mean_literal_duplicate_character_fraction": 0.0009316918831054738
+      },
+      "sft": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 956.7,
+        "median_tokens": 750.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 9,
+        "hit_cap_rate": 0.3,
+        "NO_PARSE": 8,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "stop": 21,
+          "length": 9
+        },
+        "mean_literal_duplicate_character_fraction": 0.0052442548766297396
+      },
+      "group_sizes": {
+        "both_correct": 16,
+        "wrong_to_correct": 2,
+        "correct_to_wrong": 1,
+        "both_wrong": 11
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -8.111852290428596,
+          14.77851895709526
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9411764705882353
+    },
+    "Materials": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 4,
+        "accuracy": 0.13333333333333333,
+        "mean_tokens": 1803.0666666666666,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 21,
+        "hit_cap_rate": 0.7,
+        "NO_PARSE": 22,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "length": 21,
+          "stop": 9
+        },
+        "mean_literal_duplicate_character_fraction": 0.0035633207129040383
+      },
+      "sft": {
+        "n": 30,
+        "correct": 5,
+        "accuracy": 0.16666666666666666,
+        "mean_tokens": 1790.0666666666666,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 21,
+        "hit_cap_rate": 0.7,
+        "NO_PARSE": 22,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "length": 21,
+          "stop": 9
+        },
+        "mean_literal_duplicate_character_fraction": 0.02162929110809135
+      },
+      "group_sizes": {
+        "both_correct": 3,
+        "wrong_to_correct": 2,
+        "correct_to_wrong": 1,
+        "both_wrong": 24
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -8.111852290428596,
+          14.77851895709526
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.75
+    },
+    "Math": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 14,
+        "accuracy": 0.4666666666666667,
+        "mean_tokens": 1271.9,
+        "median_tokens": 1205.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 12,
+        "hit_cap_rate": 0.4,
+        "NO_PARSE": 13,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "stop": 18,
+          "length": 12
+        },
+        "mean_literal_duplicate_character_fraction": 0.003881108003919327
+      },
+      "sft": {
+        "n": 30,
+        "correct": 12,
+        "accuracy": 0.4,
+        "mean_tokens": 1314.4666666666667,
+        "median_tokens": 1443.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 13,
+        "hit_cap_rate": 0.43333333333333335,
+        "NO_PARSE": 14,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "stop": 17,
+          "length": 13
+        },
+        "mean_literal_duplicate_character_fraction": 0.008421904758621349
+      },
+      "group_sizes": {
+        "both_correct": 10,
+        "wrong_to_correct": 2,
+        "correct_to_wrong": 4,
+        "both_wrong": 14
+      },
+      "paired": {
+        "net_correct": -2,
+        "accuracy_difference_pp": -6.666666666666667,
+        "paired_normal95CI_pp": [
+          -22.76141429807852,
+          9.428080964745188
+        ],
+        "McNemar_exact_p": 0.6875,
+        "discordant_pairs": 6,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.7142857142857143
+    },
+    "Mechanical_Engineering": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 6,
+        "accuracy": 0.2,
+        "mean_tokens": 1712.4333333333334,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 23,
+        "hit_cap_rate": 0.7666666666666667,
+        "NO_PARSE": 23,
+        "parsed_wrong": 1,
+        "finish_reasons": {
+          "stop": 7,
+          "length": 23
+        },
+        "mean_literal_duplicate_character_fraction": 0.01181433680251112
+      },
+      "sft": {
+        "n": 30,
+        "correct": 8,
+        "accuracy": 0.26666666666666666,
+        "mean_tokens": 1653.9,
+        "median_tokens": 2048.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 20,
+        "hit_cap_rate": 0.6666666666666666,
+        "NO_PARSE": 18,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "stop": 10,
+          "length": 20
+        },
+        "mean_literal_duplicate_character_fraction": 0.033893772093674425
+      },
+      "group_sizes": {
+        "both_correct": 5,
+        "wrong_to_correct": 3,
+        "correct_to_wrong": 1,
+        "both_wrong": 21
+      },
+      "paired": {
+        "net_correct": 2,
+        "accuracy_difference_pp": 6.666666666666667,
+        "paired_normal95CI_pp": [
+          -6.399759896933695,
+          19.73309323026703
+        ],
+        "McNemar_exact_p": 0.625,
+        "discordant_pairs": 4,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8333333333333334
+    },
+    "Music": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 8,
+        "accuracy": 0.26666666666666666,
+        "mean_tokens": 1325.2666666666667,
+        "median_tokens": 1881.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 15,
+        "hit_cap_rate": 0.5,
+        "NO_PARSE": 14,
+        "parsed_wrong": 8,
+        "finish_reasons": {
+          "stop": 15,
+          "length": 15
+        },
+        "mean_literal_duplicate_character_fraction": 0.12170322999442156
+      },
+      "sft": {
+        "n": 30,
+        "correct": 9,
+        "accuracy": 0.3,
+        "mean_tokens": 944.6666666666666,
+        "median_tokens": 649.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 11,
+        "hit_cap_rate": 0.36666666666666664,
+        "NO_PARSE": 11,
+        "parsed_wrong": 10,
+        "finish_reasons": {
+          "stop": 19,
+          "length": 11
+        },
+        "mean_literal_duplicate_character_fraction": 0.15748318975917153
+      },
+      "group_sizes": {
+        "both_correct": 5,
+        "wrong_to_correct": 4,
+        "correct_to_wrong": 3,
+        "both_wrong": 18
+      },
+      "paired": {
+        "net_correct": 1,
+        "accuracy_difference_pp": 3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -14.205511278445393,
+          20.872177945112057
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 7,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.625
+    },
+    "Pharmacy": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 20,
+        "accuracy": 0.6666666666666666,
+        "mean_tokens": 729.1,
+        "median_tokens": 504.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 4,
+        "hit_cap_rate": 0.13333333333333333,
+        "NO_PARSE": 5,
+        "parsed_wrong": 5,
+        "finish_reasons": {
+          "stop": 26,
+          "length": 4
+        },
+        "mean_literal_duplicate_character_fraction": 0.007401132915184476
+      },
+      "sft": {
+        "n": 30,
+        "correct": 19,
+        "accuracy": 0.6333333333333333,
+        "mean_tokens": 695.2,
+        "median_tokens": 437.0,
+        "p90_tokens": 1989.5,
+        "p95_tokens": 2048.0,
+        "hit_cap": 3,
+        "hit_cap_rate": 0.1,
+        "NO_PARSE": 4,
+        "parsed_wrong": 7,
+        "finish_reasons": {
+          "stop": 27,
+          "length": 3
+        },
+        "mean_literal_duplicate_character_fraction": 0.02299476179920337
+      },
+      "group_sizes": {
+        "both_correct": 18,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 2,
+        "both_wrong": 9
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -14.77851895709526,
+          8.111852290428596
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.9
+    },
+    "Physics": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 21,
+        "accuracy": 0.7,
+        "mean_tokens": 792.0666666666667,
+        "median_tokens": 526.5,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 6,
+        "hit_cap_rate": 0.2,
+        "NO_PARSE": 5,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "stop": 24,
+          "length": 6
+        },
+        "mean_literal_duplicate_character_fraction": 0.0022656092494530806
+      },
+      "sft": {
+        "n": 30,
+        "correct": 20,
+        "accuracy": 0.6666666666666666,
+        "mean_tokens": 896.9333333333333,
+        "median_tokens": 594.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 6,
+        "hit_cap_rate": 0.2,
+        "NO_PARSE": 6,
+        "parsed_wrong": 4,
+        "finish_reasons": {
+          "stop": 24,
+          "length": 6
+        },
+        "mean_literal_duplicate_character_fraction": 0.004564651988744162
+      },
+      "group_sizes": {
+        "both_correct": 18,
+        "wrong_to_correct": 2,
+        "correct_to_wrong": 3,
+        "both_wrong": 7
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -18.142170969665333,
+          11.475504302998669
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 5,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8571428571428571
+    },
+    "Psychology": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 25,
+        "accuracy": 0.8333333333333334,
+        "mean_tokens": 535.5333333333333,
+        "median_tokens": 394.5,
+        "p90_tokens": 779.0000000000006,
+        "p95_tokens": 1642.9999999999975,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 2,
+        "parsed_wrong": 3,
+        "finish_reasons": {
+          "length": 2,
+          "stop": 28
+        },
+        "mean_literal_duplicate_character_fraction": 0.016275237439703726
+      },
+      "sft": {
+        "n": 30,
+        "correct": 24,
+        "accuracy": 0.8,
+        "mean_tokens": 505.6,
+        "median_tokens": 374.0,
+        "p90_tokens": 694.900000000001,
+        "p95_tokens": 1734.349999999998,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 1,
+        "parsed_wrong": 5,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.01498004061451263
+      },
+      "group_sizes": {
+        "both_correct": 23,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 2,
+        "both_wrong": 4
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -3.3333333333333335,
+        "paired_normal95CI_pp": [
+          -14.77851895709526,
+          8.111852290428596
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 3,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.92
+    },
+    "Public_Health": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 22,
+        "accuracy": 0.7333333333333333,
+        "mean_tokens": 647.8333333333334,
+        "median_tokens": 524.5,
+        "p90_tokens": 1222.6000000000006,
+        "p95_tokens": 1816.6999999999985,
+        "hit_cap": 2,
+        "hit_cap_rate": 0.06666666666666667,
+        "NO_PARSE": 3,
+        "parsed_wrong": 5,
+        "finish_reasons": {
+          "stop": 28,
+          "length": 2
+        },
+        "mean_literal_duplicate_character_fraction": 0.0017929447148944257
+      },
+      "sft": {
+        "n": 30,
+        "correct": 20,
+        "accuracy": 0.6666666666666666,
+        "mean_tokens": 635.3666666666667,
+        "median_tokens": 424.0,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 4,
+        "hit_cap_rate": 0.13333333333333333,
+        "NO_PARSE": 3,
+        "parsed_wrong": 7,
+        "finish_reasons": {
+          "stop": 26,
+          "length": 4
+        },
+        "mean_literal_duplicate_character_fraction": 0.011189664476028299
+      },
+      "group_sizes": {
+        "both_correct": 19,
+        "wrong_to_correct": 1,
+        "correct_to_wrong": 3,
+        "both_wrong": 7
+      },
+      "paired": {
+        "net_correct": -2,
+        "accuracy_difference_pp": -6.666666666666667,
+        "paired_normal95CI_pp": [
+          -19.73309323026703,
+          6.399759896933695
+        ],
+        "McNemar_exact_p": 0.625,
+        "discordant_pairs": 4,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8636363636363636
+    },
+    "Sociology": {
+      "n": 30,
+      "base": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 231.63333333333333,
+        "median_tokens": 225.5,
+        "p90_tokens": 308.20000000000005,
+        "p95_tokens": 370.3999999999999,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 1,
+        "parsed_wrong": 11,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.005671510992125557
+      },
+      "sft": {
+        "n": 30,
+        "correct": 18,
+        "accuracy": 0.6,
+        "mean_tokens": 199.73333333333332,
+        "median_tokens": 173.5,
+        "p90_tokens": 372.90000000000003,
+        "p95_tokens": 397.4999999999999,
+        "hit_cap": 0,
+        "hit_cap_rate": 0.0,
+        "NO_PARSE": 1,
+        "parsed_wrong": 11,
+        "finish_reasons": {
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.00396711322372751
+      },
+      "group_sizes": {
+        "both_correct": 18,
+        "wrong_to_correct": 0,
+        "correct_to_wrong": 0,
+        "both_wrong": 12
+      },
+      "paired": {
+        "net_correct": 0,
+        "accuracy_difference_pp": 0.0,
+        "paired_normal95CI_pp": [
+          0.0,
+          0.0
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 0,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 1.0
+    }
+  },
+  "question_types": {
+    "multiple-choice": {
+      "n": 849,
+      "base": {
+        "n": 849,
+        "correct": 470,
+        "accuracy": 0.5535924617196702,
+        "mean_tokens": 843.680800942285,
+        "median_tokens": 454,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 201,
+        "hit_cap_rate": 0.23674911660777384,
+        "NO_PARSE": 201,
+        "parsed_wrong": 178,
+        "finish_reasons": {
+          "length": 201,
+          "stop": 648
+        },
+        "mean_literal_duplicate_character_fraction": 0.015994523116770163
+      },
+      "sft": {
+        "n": 849,
+        "correct": 465,
+        "accuracy": 0.5477031802120141,
+        "mean_tokens": 783.5159010600706,
+        "median_tokens": 410,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 187,
+        "hit_cap_rate": 0.22025912838633688,
+        "NO_PARSE": 184,
+        "parsed_wrong": 200,
+        "finish_reasons": {
+          "stop": 662,
+          "length": 187
+        },
+        "mean_literal_duplicate_character_fraction": 0.018268631850520717
+      },
+      "group_sizes": {
+        "both_correct": 418,
+        "wrong_to_correct": 47,
+        "correct_to_wrong": 52,
+        "both_wrong": 332
+      },
+      "paired": {
+        "net_correct": -5,
+        "accuracy_difference_pp": -0.5889281507656066,
+        "paired_normal95CI_pp": [
+          -2.8869244212624925,
+          1.7090681197312794
+        ],
+        "McNemar_exact_p": 0.6878853435796911,
+        "discordant_pairs": 99,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.8893617021276595
+    },
+    "open": {
+      "n": 51,
+      "base": {
+        "n": 51,
+        "correct": 6,
+        "accuracy": 0.11764705882352941,
+        "mean_tokens": 1295.235294117647,
+        "median_tokens": 1336,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 21,
+        "hit_cap_rate": 0.4117647058823529,
+        "NO_PARSE": 24,
+        "parsed_wrong": 21,
+        "finish_reasons": {
+          "length": 21,
+          "stop": 30
+        },
+        "mean_literal_duplicate_character_fraction": 0.03037082211053658
+      },
+      "sft": {
+        "n": 51,
+        "correct": 5,
+        "accuracy": 0.09803921568627451,
+        "mean_tokens": 1165.9607843137255,
+        "median_tokens": 879,
+        "p90_tokens": 2048.0,
+        "p95_tokens": 2048.0,
+        "hit_cap": 18,
+        "hit_cap_rate": 0.35294117647058826,
+        "NO_PARSE": 23,
+        "parsed_wrong": 23,
+        "finish_reasons": {
+          "stop": 33,
+          "length": 18
+        },
+        "mean_literal_duplicate_character_fraction": 0.016163785760001458
+      },
+      "group_sizes": {
+        "both_correct": 3,
+        "wrong_to_correct": 2,
+        "correct_to_wrong": 3,
+        "both_wrong": 43
+      },
+      "paired": {
+        "net_correct": -1,
+        "accuracy_difference_pp": -1.9607843137254901,
+        "paired_normal95CI_pp": [
+          -10.622616611280415,
+          6.701047983829435
+        ],
+        "McNemar_exact_p": 1.0,
+        "discordant_pairs": 5,
+        "interval_method": "normal approximation over paired item differences; excludes training/runtime variability and item/source dependence"
+      },
+      "base_correct_retention": 0.5
+    }
+  },
+  "all_four_group_ids": {
+    "both_correct": [
+      "test_Accounting_165",
+      "test_Accounting_185",
+      "test_Accounting_202",
+      "test_Accounting_213",
+      "test_Accounting_222",
+      "test_Accounting_272",
+      "test_Accounting_297",
+      "test_Accounting_301",
+      "test_Accounting_302",
+      "test_Accounting_373",
+      "test_Accounting_375",
+      "test_Accounting_46",
+      "test_Accounting_5",
+      "test_Accounting_62",
+      "test_Accounting_64",
+      "test_Accounting_90",
+      "test_Accounting_99",
+      "test_Agriculture_1",
+      "test_Agriculture_162",
+      "test_Agriculture_163",
+      "test_Agriculture_197",
+      "test_Agriculture_208",
+      "test_Agriculture_236",
+      "test_Agriculture_245",
+      "test_Agriculture_257",
+      "test_Agriculture_56",
+      "test_Agriculture_67",
+      "test_Agriculture_79",
+      "test_Agriculture_96",
+      "test_Architecture_and_Engineering_229",
+      "test_Art_102",
+      "test_Art_122",
+      "test_Art_131",
+      "test_Art_153",
+      "test_Art_177",
+      "test_Art_186",
+      "test_Art_19",
+      "test_Art_195",
+      "test_Art_204",
+      "test_Art_207",
+      "test_Art_223",
+      "test_Art_227",
+      "test_Art_25",
+      "test_Art_29",
+      "test_Art_33",
+      "test_Art_45",
+      "test_Art_46",
+      "test_Art_65",
+      "test_Art_69",
+      "test_Art_71",
+      "test_Art_86",
+      "test_Art_91",
+      "test_Art_Theory_151",
+      "test_Art_Theory_155",
+      "test_Art_Theory_158",
+      "test_Art_Theory_216",
+      "test_Art_Theory_272",
+      "test_Art_Theory_305",
+      "test_Art_Theory_317",
+      "test_Art_Theory_328",
+      "test_Art_Theory_330",
+      "test_Art_Theory_347",
+      "test_Art_Theory_374",
+      "test_Art_Theory_379",
+      "test_Art_Theory_38",
+      "test_Art_Theory_380",
+      "test_Art_Theory_417",
+      "test_Art_Theory_61",
+      "test_Art_Theory_65",
+      "test_Art_Theory_81",
+      "test_Art_Theory_84",
+      "test_Art_Theory_99",
+      "test_Basic_Medical_Science_106",
+      "test_Basic_Medical_Science_107",
+      "test_Basic_Medical_Science_118",
+      "test_Basic_Medical_Science_133",
+      "test_Basic_Medical_Science_136",
+      "test_Basic_Medical_Science_138",
+      "test_Basic_Medical_Science_16",
+      "test_Basic_Medical_Science_196",
+      "test_Basic_Medical_Science_199",
+      "test_Basic_Medical_Science_215",
+      "test_Basic_Medical_Science_25",
+      "test_Basic_Medical_Science_253",
+      "test_Basic_Medical_Science_264",
+      "test_Basic_Medical_Science_42",
+      "test_Basic_Medical_Science_57",
+      "test_Basic_Medical_Science_59",
+      "test_Basic_Medical_Science_92",
+      "test_Biology_104",
+      "test_Biology_115",
+      "test_Biology_123",
+      "test_Biology_128",
+      "test_Biology_152",
+      "test_Biology_19",
+      "test_Biology_201",
+      "test_Biology_220",
+      "test_Biology_226",
+      "test_Biology_240",
+      "test_Biology_244",
+      "test_Biology_50",
+      "test_Biology_6",
+      "test_Biology_81",
+      "test_Biology_87",
+      "test_Chemistry_150",
+      "test_Chemistry_256",
+      "test_Chemistry_285",
+      "test_Chemistry_355",
+      "test_Chemistry_423",
+      "test_Chemistry_510",
+      "test_Chemistry_583",
+      "test_Clinical_Medicine_12",
+      "test_Clinical_Medicine_141",
+      "test_Clinical_Medicine_16",
+      "test_Clinical_Medicine_162",
+      "test_Clinical_Medicine_21",
+      "test_Clinical_Medicine_229",
+      "test_Clinical_Medicine_246",
+      "test_Clinical_Medicine_247",
+      "test_Clinical_Medicine_263",
+      "test_Clinical_Medicine_270",
+      "test_Clinical_Medicine_286",
+      "test_Clinical_Medicine_316",
+      "test_Clinical_Medicine_47",
+      "test_Clinical_Medicine_81",
+      "test_Clinical_Medicine_86",
+      "test_Computer_Science_110",
+      "test_Computer_Science_120",
+      "test_Computer_Science_126",
+      "test_Computer_Science_128",
+      "test_Computer_Science_170",
+      "test_Computer_Science_244",
+      "test_Computer_Science_293",
+      "test_Computer_Science_344",
+      "test_Computer_Science_357",
+      "test_Computer_Science_358",
+      "test_Design_10",
+      "test_Design_107",
+      "test_Design_111",
+      "test_Design_129",
+      "test_Design_131",
+      "test_Design_139",
+      "test_Design_143",
+      "test_Design_146",
+      "test_Design_149",
+      "test_Design_153",
+      "test_Design_158",
+      "test_Design_29",
+      "test_Design_37",
+      "test_Design_42",
+      "test_Design_54",
+      "test_Design_64",
+      "test_Design_72",
+      "test_Design_75",
+      "test_Diagnostics_and_Laboratory_Medicine_128",
+      "test_Diagnostics_and_Laboratory_Medicine_147",
+      "test_Diagnostics_and_Laboratory_Medicine_15",
+      "test_Diagnostics_and_Laboratory_Medicine_156",
+      "test_Diagnostics_and_Laboratory_Medicine_38",
+      "test_Diagnostics_and_Laboratory_Medicine_4",
+      "test_Diagnostics_and_Laboratory_Medicine_45",
+      "test_Diagnostics_and_Laboratory_Medicine_69",
+      "test_Diagnostics_and_Laboratory_Medicine_90",
+      "test_Diagnostics_and_Laboratory_Medicine_94",
+      "test_Economics_100",
+      "test_Economics_112",
+      "test_Economics_115",
+      "test_Economics_128",
+      "test_Economics_142",
+      "test_Economics_145",
+      "test_Economics_17",
+      "test_Economics_176",
+      "test_Economics_177",
+      "test_Economics_193",
+      "test_Economics_202",
+      "test_Economics_204",
+      "test_Economics_211",
+      "test_Economics_215",
+      "test_Economics_228",
+      "test_Economics_231",
+      "test_Economics_239",
+      "test_Economics_250",
+      "test_Economics_263",
+      "test_Economics_40",
+      "test_Economics_53",
+      "test_Economics_79",
+      "test_Electronics_122",
+      "test_Electronics_125",
+      "test_Electronics_213",
+      "test_Energy_and_Power_123",
+      "test_Energy_and_Power_200",
+      "test_Energy_and_Power_305",
+      "test_Energy_and_Power_315",
+      "test_Energy_and_Power_388",
+      "test_Energy_and_Power_408",
+      "test_Energy_and_Power_41",
+      "test_Finance_138",
+      "test_Finance_148",
+      "test_Finance_15",
+      "test_Finance_152",
+      "test_Finance_163",
+      "test_Finance_191",
+      "test_Finance_300",
+      "test_Finance_36",
+      "test_Finance_4",
+      "test_Finance_43",
+      "test_Finance_62",
+      "test_Finance_74",
+      "test_Finance_85",
+      "test_Finance_86",
+      "test_Finance_9",
+      "test_Geography_21",
+      "test_Geography_214",
+      "test_Geography_223",
+      "test_Geography_25",
+      "test_Geography_251",
+      "test_Geography_26",
+      "test_Geography_324",
+      "test_Geography_35",
+      "test_Geography_351",
+      "test_Geography_390",
+      "test_Geography_413",
+      "test_Geography_441",
+      "test_Geography_470",
+      "test_Geography_482",
+      "test_Geography_485",
+      "test_Geography_490",
+      "test_Geography_493",
+      "test_Geography_541",
+      "test_Geography_549",
+      "test_History_11",
+      "test_History_112",
+      "test_History_134",
+      "test_History_154",
+      "test_History_16",
+      "test_History_164",
+      "test_History_17",
+      "test_History_20",
+      "test_History_208",
+      "test_History_223",
+      "test_History_228",
+      "test_History_24",
+      "test_History_250",
+      "test_History_258",
+      "test_History_261",
+      "test_History_52",
+      "test_History_61",
+      "test_History_79",
+      "test_History_83",
+      "test_History_91",
+      "test_History_96",
+      "test_Literature_10",
+      "test_Literature_101",
+      "test_Literature_102",
+      "test_Literature_16",
+      "test_Literature_25",
+      "test_Literature_28",
+      "test_Literature_33",
+      "test_Literature_35",
+      "test_Literature_36",
+      "test_Literature_53",
+      "test_Literature_6",
+      "test_Literature_65",
+      "test_Literature_66",
+      "test_Literature_67",
+      "test_Literature_74",
+      "test_Literature_77",
+      "test_Literature_80",
+      "test_Literature_90",
+      "test_Literature_94",
+      "test_Literature_96",
+      "test_Manage_124",
+      "test_Manage_149",
+      "test_Manage_153",
+      "test_Manage_160",
+      "test_Manage_167",
+      "test_Manage_216",
+      "test_Manage_221",
+      "test_Manage_224",
+      "test_Manage_232",
+      "test_Manage_27",
+      "test_Manage_29",
+      "test_Manage_37",
+      "test_Manage_51",
+      "test_Manage_81",
+      "test_Manage_96",
+      "test_Marketing_100",
+      "test_Marketing_102",
+      "test_Marketing_139",
+      "test_Marketing_143",
+      "test_Marketing_147",
+      "test_Marketing_155",
+      "test_Marketing_160",
+      "test_Marketing_171",
+      "test_Marketing_177",
+      "test_Marketing_41",
+      "test_Marketing_44",
+      "test_Marketing_55",
+      "test_Marketing_64",
+      "test_Marketing_73",
+      "test_Marketing_8",
+      "test_Marketing_87",
+      "test_Materials_31",
+      "test_Materials_54",
+      "test_Materials_78",
+      "test_Math_100",
+      "test_Math_115",
+      "test_Math_155",
+      "test_Math_204",
+      "test_Math_229",
+      "test_Math_255",
+      "test_Math_32",
+      "test_Math_490",
+      "test_Math_491",
+      "test_Math_57",
+      "test_Mechanical_Engineering_121",
+      "test_Mechanical_Engineering_195",
+      "test_Mechanical_Engineering_239",
+      "test_Mechanical_Engineering_367",
+      "test_Mechanical_Engineering_60",
+      "test_Music_218",
+      "test_Music_243",
+      "test_Music_268",
+      "test_Music_316",
+      "test_Music_85",
+      "test_Pharmacy_142",
+      "test_Pharmacy_151",
+      "test_Pharmacy_199",
+      "test_Pharmacy_20",
+      "test_Pharmacy_210",
+      "test_Pharmacy_233",
+      "test_Pharmacy_237",
+      "test_Pharmacy_307",
+      "test_Pharmacy_321",
+      "test_Pharmacy_394",
+      "test_Pharmacy_398",
+      "test_Pharmacy_405",
+      "test_Pharmacy_424",
+      "test_Pharmacy_44",
+      "test_Pharmacy_70",
+      "test_Pharmacy_78",
+      "test_Pharmacy_8",
+      "test_Pharmacy_97",
+      "test_Physics_106",
+      "test_Physics_121",
+      "test_Physics_135",
+      "test_Physics_172",
+      "test_Physics_193",
+      "test_Physics_206",
+      "test_Physics_223",
+      "test_Physics_224",
+      "test_Physics_23",
+      "test_Physics_25",
+      "test_Physics_267",
+      "test_Physics_354",
+      "test_Physics_364",
+      "test_Physics_383",
+      "test_Physics_393",
+      "test_Physics_402",
+      "test_Physics_50",
+      "test_Physics_57",
+      "test_Psychology_1",
+      "test_Psychology_11",
+      "test_Psychology_110",
+      "test_Psychology_135",
+      "test_Psychology_169",
+      "test_Psychology_183",
+      "test_Psychology_2",
+      "test_Psychology_209",
+      "test_Psychology_230",
+      "test_Psychology_238",
+      "test_Psychology_247",
+      "test_Psychology_251",
+      "test_Psychology_252",
+      "test_Psychology_259",
+      "test_Psychology_265",
+      "test_Psychology_32",
+      "test_Psychology_51",
+      "test_Psychology_60",
+      "test_Psychology_67",
+      "test_Psychology_72",
+      "test_Psychology_75",
+      "test_Psychology_90",
+      "test_Psychology_91",
+      "test_Public_Health_185",
+      "test_Public_Health_215",
+      "test_Public_Health_220",
+      "test_Public_Health_24",
+      "test_Public_Health_240",
+      "test_Public_Health_279",
+      "test_Public_Health_29",
+      "test_Public_Health_298",
+      "test_Public_Health_32",
+      "test_Public_Health_346",
+      "test_Public_Health_349",
+      "test_Public_Health_379",
+      "test_Public_Health_381",
+      "test_Public_Health_389",
+      "test_Public_Health_436",
+      "test_Public_Health_474",
+      "test_Public_Health_478",
+      "test_Public_Health_53",
+      "test_Public_Health_59",
+      "test_Sociology_106",
+      "test_Sociology_112",
+      "test_Sociology_120",
+      "test_Sociology_128",
+      "test_Sociology_136",
+      "test_Sociology_147",
+      "test_Sociology_159",
+      "test_Sociology_160",
+      "test_Sociology_170",
+      "test_Sociology_212",
+      "test_Sociology_233",
+      "test_Sociology_235",
+      "test_Sociology_241",
+      "test_Sociology_35",
+      "test_Sociology_67",
+      "test_Sociology_74",
+      "test_Sociology_79",
+      "test_Sociology_96"
+    ],
+    "wrong_to_correct": [
+      "test_Accounting_162",
+      "test_Agriculture_222",
+      "test_Agriculture_251",
+      "test_Agriculture_48",
+      "test_Architecture_and_Engineering_291",
+      "test_Art_12",
+      "test_Art_Theory_121",
+      "test_Art_Theory_195",
+      "test_Art_Theory_315",
+      "test_Basic_Medical_Science_126",
+      "test_Biology_110",
+      "test_Chemistry_186",
+      "test_Clinical_Medicine_294",
+      "test_Clinical_Medicine_312",
+      "test_Clinical_Medicine_36",
+      "test_Computer_Science_175",
+      "test_Computer_Science_28",
+      "test_Computer_Science_329",
+      "test_Design_121",
+      "test_Diagnostics_and_Laboratory_Medicine_120",
+      "test_Electronics_38",
+      "test_Energy_and_Power_51",
+      "test_Energy_and_Power_78",
+      "test_Finance_3",
+      "test_Finance_57",
+      "test_Finance_6",
+      "test_Finance_76",
+      "test_Literature_3",
+      "test_Literature_59",
+      "test_Literature_95",
+      "test_Manage_233",
+      "test_Marketing_81",
+      "test_Marketing_94",
+      "test_Materials_263",
+      "test_Materials_311",
+      "test_Math_267",
+      "test_Math_351",
+      "test_Mechanical_Engineering_362",
+      "test_Mechanical_Engineering_54",
+      "test_Mechanical_Engineering_78",
+      "test_Music_136",
+      "test_Music_168",
+      "test_Music_227",
+      "test_Music_245",
+      "test_Pharmacy_411",
+      "test_Physics_405",
+      "test_Physics_47",
+      "test_Psychology_117",
+      "test_Public_Health_507"
+    ],
+    "correct_to_wrong": [
+      "test_Accounting_231",
+      "test_Accounting_298",
+      "test_Agriculture_237",
+      "test_Architecture_and_Engineering_387",
+      "test_Art_Theory_273",
+      "test_Art_Theory_72",
+      "test_Basic_Medical_Science_29",
+      "test_Biology_131",
+      "test_Biology_156",
+      "test_Biology_192",
+      "test_Biology_278",
+      "test_Chemistry_199",
+      "test_Chemistry_337",
+      "test_Chemistry_475",
+      "test_Chemistry_540",
+      "test_Clinical_Medicine_122",
+      "test_Computer_Science_242",
+      "test_Computer_Science_76",
+      "test_Design_126",
+      "test_Design_52",
+      "test_Diagnostics_and_Laboratory_Medicine_153",
+      "test_Diagnostics_and_Laboratory_Medicine_39",
+      "test_Economics_101",
+      "test_Economics_225",
+      "test_Economics_44",
+      "test_Electronics_214",
+      "test_Finance_184",
+      "test_Finance_347",
+      "test_Geography_174",
+      "test_Geography_262",
+      "test_Geography_273",
+      "test_History_67",
+      "test_Literature_57",
+      "test_Literature_64",
+      "test_Literature_91",
+      "test_Marketing_5",
+      "test_Materials_444",
+      "test_Math_20",
+      "test_Math_222",
+      "test_Math_387",
+      "test_Math_404",
+      "test_Mechanical_Engineering_135",
+      "test_Music_1",
+      "test_Music_205",
+      "test_Music_270",
+      "test_Pharmacy_182",
+      "test_Pharmacy_392",
+      "test_Physics_254",
+      "test_Physics_374",
+      "test_Physics_76",
+      "test_Psychology_222",
+      "test_Psychology_241",
+      "test_Public_Health_166",
+      "test_Public_Health_352",
+      "test_Public_Health_435"
+    ],
+    "both_wrong": [
+      "test_Accounting_143",
+      "test_Accounting_154",
+      "test_Accounting_174",
+      "test_Accounting_203",
+      "test_Accounting_212",
+      "test_Accounting_275",
+      "test_Accounting_289",
+      "test_Accounting_334",
+      "test_Accounting_366",
+      "test_Accounting_9",
+      "test_Agriculture_143",
+      "test_Agriculture_16",
+      "test_Agriculture_173",
+      "test_Agriculture_181",
+      "test_Agriculture_184",
+      "test_Agriculture_188",
+      "test_Agriculture_230",
+      "test_Agriculture_284",
+      "test_Agriculture_29",
+      "test_Agriculture_52",
+      "test_Agriculture_54",
+      "test_Agriculture_55",
+      "test_Agriculture_93",
+      "test_Agriculture_95",
+      "test_Architecture_and_Engineering_122",
+      "test_Architecture_and_Engineering_164",
+      "test_Architecture_and_Engineering_225",
+      "test_Architecture_and_Engineering_24",
+      "test_Architecture_and_Engineering_272",
+      "test_Architecture_and_Engineering_298",
+      "test_Architecture_and_Engineering_319",
+      "test_Architecture_and_Engineering_329",
+      "test_Architecture_and_Engineering_333",
+      "test_Architecture_and_Engineering_34",
+      "test_Architecture_and_Engineering_346",
+      "test_Architecture_and_Engineering_409",
+      "test_Architecture_and_Engineering_411",
+      "test_Architecture_and_Engineering_415",
+      "test_Architecture_and_Engineering_416",
+      "test_Architecture_and_Engineering_425",
+      "test_Architecture_and_Engineering_428",
+      "test_Architecture_and_Engineering_450",
+      "test_Architecture_and_Engineering_453",
+      "test_Architecture_and_Engineering_5",
+      "test_Architecture_and_Engineering_500",
+      "test_Architecture_and_Engineering_514",
+      "test_Architecture_and_Engineering_518",
+      "test_Architecture_and_Engineering_535",
+      "test_Architecture_and_Engineering_65",
+      "test_Architecture_and_Engineering_68",
+      "test_Architecture_and_Engineering_84",
+      "test_Art_134",
+      "test_Art_166",
+      "test_Art_167",
+      "test_Art_178",
+      "test_Art_192",
+      "test_Art_51",
+      "test_Art_80",
+      "test_Art_Theory_210",
+      "test_Art_Theory_221",
+      "test_Art_Theory_240",
+      "test_Art_Theory_63",
+      "test_Art_Theory_68",
+      "test_Basic_Medical_Science_145",
+      "test_Basic_Medical_Science_19",
+      "test_Basic_Medical_Science_226",
+      "test_Basic_Medical_Science_228",
+      "test_Basic_Medical_Science_24",
+      "test_Basic_Medical_Science_250",
+      "test_Basic_Medical_Science_260",
+      "test_Basic_Medical_Science_273",
+      "test_Basic_Medical_Science_90",
+      "test_Basic_Medical_Science_91",
+      "test_Basic_Medical_Science_94",
+      "test_Biology_116",
+      "test_Biology_175",
+      "test_Biology_186",
+      "test_Biology_188",
+      "test_Biology_189",
+      "test_Biology_27",
+      "test_Biology_281",
+      "test_Biology_286",
+      "test_Biology_51",
+      "test_Biology_67",
+      "test_Chemistry_161",
+      "test_Chemistry_167",
+      "test_Chemistry_19",
+      "test_Chemistry_219",
+      "test_Chemistry_27",
+      "test_Chemistry_28",
+      "test_Chemistry_292",
+      "test_Chemistry_315",
+      "test_Chemistry_344",
+      "test_Chemistry_35",
+      "test_Chemistry_364",
+      "test_Chemistry_396",
+      "test_Chemistry_411",
+      "test_Chemistry_463",
+      "test_Chemistry_465",
+      "test_Chemistry_536",
+      "test_Chemistry_559",
+      "test_Chemistry_92",
+      "test_Clinical_Medicine_153",
+      "test_Clinical_Medicine_211",
+      "test_Clinical_Medicine_224",
+      "test_Clinical_Medicine_259",
+      "test_Clinical_Medicine_29",
+      "test_Clinical_Medicine_295",
+      "test_Clinical_Medicine_304",
+      "test_Clinical_Medicine_308",
+      "test_Clinical_Medicine_42",
+      "test_Clinical_Medicine_48",
+      "test_Clinical_Medicine_90",
+      "test_Computer_Science_141",
+      "test_Computer_Science_182",
+      "test_Computer_Science_193",
+      "test_Computer_Science_247",
+      "test_Computer_Science_263",
+      "test_Computer_Science_265",
+      "test_Computer_Science_281",
+      "test_Computer_Science_284",
+      "test_Computer_Science_294",
+      "test_Computer_Science_317",
+      "test_Computer_Science_341",
+      "test_Computer_Science_40",
+      "test_Computer_Science_56",
+      "test_Computer_Science_74",
+      "test_Computer_Science_98",
+      "test_Design_11",
+      "test_Design_114",
+      "test_Design_13",
+      "test_Design_134",
+      "test_Design_144",
+      "test_Design_31",
+      "test_Design_4",
+      "test_Design_46",
+      "test_Design_7",
+      "test_Diagnostics_and_Laboratory_Medicine_110",
+      "test_Diagnostics_and_Laboratory_Medicine_117",
+      "test_Diagnostics_and_Laboratory_Medicine_135",
+      "test_Diagnostics_and_Laboratory_Medicine_143",
+      "test_Diagnostics_and_Laboratory_Medicine_146",
+      "test_Diagnostics_and_Laboratory_Medicine_155",
+      "test_Diagnostics_and_Laboratory_Medicine_157",
+      "test_Diagnostics_and_Laboratory_Medicine_159",
+      "test_Diagnostics_and_Laboratory_Medicine_18",
+      "test_Diagnostics_and_Laboratory_Medicine_47",
+      "test_Diagnostics_and_Laboratory_Medicine_5",
+      "test_Diagnostics_and_Laboratory_Medicine_61",
+      "test_Diagnostics_and_Laboratory_Medicine_63",
+      "test_Diagnostics_and_Laboratory_Medicine_71",
+      "test_Diagnostics_and_Laboratory_Medicine_88",
+      "test_Diagnostics_and_Laboratory_Medicine_89",
+      "test_Diagnostics_and_Laboratory_Medicine_91",
+      "test_Economics_161",
+      "test_Economics_165",
+      "test_Economics_261",
+      "test_Economics_51",
+      "test_Economics_93",
+      "test_Electronics_106",
+      "test_Electronics_107",
+      "test_Electronics_117",
+      "test_Electronics_14",
+      "test_Electronics_144",
+      "test_Electronics_149",
+      "test_Electronics_15",
+      "test_Electronics_151",
+      "test_Electronics_161",
+      "test_Electronics_165",
+      "test_Electronics_182",
+      "test_Electronics_187",
+      "test_Electronics_2",
+      "test_Electronics_206",
+      "test_Electronics_21",
+      "test_Electronics_218",
+      "test_Electronics_223",
+      "test_Electronics_224",
+      "test_Electronics_234",
+      "test_Electronics_5",
+      "test_Electronics_51",
+      "test_Electronics_56",
+      "test_Electronics_70",
+      "test_Electronics_92",
+      "test_Electronics_95",
+      "test_Energy_and_Power_101",
+      "test_Energy_and_Power_109",
+      "test_Energy_and_Power_116",
+      "test_Energy_and_Power_119",
+      "test_Energy_and_Power_138",
+      "test_Energy_and_Power_183",
+      "test_Energy_and_Power_188",
+      "test_Energy_and_Power_191",
+      "test_Energy_and_Power_202",
+      "test_Energy_and_Power_220",
+      "test_Energy_and_Power_227",
+      "test_Energy_and_Power_250",
+      "test_Energy_and_Power_284",
+      "test_Energy_and_Power_378",
+      "test_Energy_and_Power_38",
+      "test_Energy_and_Power_39",
+      "test_Energy_and_Power_392",
+      "test_Energy_and_Power_47",
+      "test_Energy_and_Power_81",
+      "test_Energy_and_Power_82",
+      "test_Energy_and_Power_9",
+      "test_Finance_116",
+      "test_Finance_124",
+      "test_Finance_17",
+      "test_Finance_172",
+      "test_Finance_189",
+      "test_Finance_231",
+      "test_Finance_319",
+      "test_Finance_337",
+      "test_Finance_65",
+      "test_Geography_140",
+      "test_Geography_230",
+      "test_Geography_311",
+      "test_Geography_329",
+      "test_Geography_331",
+      "test_Geography_346",
+      "test_Geography_365",
+      "test_Geography_60",
+      "test_History_117",
+      "test_History_214",
+      "test_History_220",
+      "test_History_233",
+      "test_History_249",
+      "test_History_28",
+      "test_History_4",
+      "test_History_62",
+      "test_Literature_19",
+      "test_Literature_32",
+      "test_Literature_40",
+      "test_Literature_86",
+      "test_Manage_125",
+      "test_Manage_170",
+      "test_Manage_184",
+      "test_Manage_188",
+      "test_Manage_202",
+      "test_Manage_215",
+      "test_Manage_220",
+      "test_Manage_227",
+      "test_Manage_34",
+      "test_Manage_48",
+      "test_Manage_57",
+      "test_Manage_59",
+      "test_Manage_74",
+      "test_Manage_92",
+      "test_Marketing_104",
+      "test_Marketing_115",
+      "test_Marketing_136",
+      "test_Marketing_138",
+      "test_Marketing_152",
+      "test_Marketing_18",
+      "test_Marketing_19",
+      "test_Marketing_39",
+      "test_Marketing_40",
+      "test_Marketing_72",
+      "test_Marketing_76",
+      "test_Materials_107",
+      "test_Materials_110",
+      "test_Materials_138",
+      "test_Materials_170",
+      "test_Materials_172",
+      "test_Materials_176",
+      "test_Materials_177",
+      "test_Materials_212",
+      "test_Materials_22",
+      "test_Materials_229",
+      "test_Materials_252",
+      "test_Materials_261",
+      "test_Materials_28",
+      "test_Materials_292",
+      "test_Materials_300",
+      "test_Materials_301",
+      "test_Materials_323",
+      "test_Materials_370",
+      "test_Materials_404",
+      "test_Materials_434",
+      "test_Materials_60",
+      "test_Materials_69",
+      "test_Materials_74",
+      "test_Materials_95",
+      "test_Math_102",
+      "test_Math_104",
+      "test_Math_111",
+      "test_Math_142",
+      "test_Math_179",
+      "test_Math_202",
+      "test_Math_208",
+      "test_Math_243",
+      "test_Math_266",
+      "test_Math_302",
+      "test_Math_434",
+      "test_Math_437",
+      "test_Math_503",
+      "test_Math_78",
+      "test_Mechanical_Engineering_1",
+      "test_Mechanical_Engineering_161",
+      "test_Mechanical_Engineering_164",
+      "test_Mechanical_Engineering_169",
+      "test_Mechanical_Engineering_215",
+      "test_Mechanical_Engineering_222",
+      "test_Mechanical_Engineering_226",
+      "test_Mechanical_Engineering_234",
+      "test_Mechanical_Engineering_237",
+      "test_Mechanical_Engineering_242",
+      "test_Mechanical_Engineering_252",
+      "test_Mechanical_Engineering_255",
+      "test_Mechanical_Engineering_270",
+      "test_Mechanical_Engineering_271",
+      "test_Mechanical_Engineering_280",
+      "test_Mechanical_Engineering_302",
+      "test_Mechanical_Engineering_307",
+      "test_Mechanical_Engineering_332",
+      "test_Mechanical_Engineering_338",
+      "test_Mechanical_Engineering_370",
+      "test_Mechanical_Engineering_9",
+      "test_Music_118",
+      "test_Music_13",
+      "test_Music_130",
+      "test_Music_141",
+      "test_Music_165",
+      "test_Music_184",
+      "test_Music_188",
+      "test_Music_202",
+      "test_Music_240",
+      "test_Music_267",
+      "test_Music_271",
+      "test_Music_320",
+      "test_Music_51",
+      "test_Music_52",
+      "test_Music_68",
+      "test_Music_88",
+      "test_Music_98",
+      "test_Music_99",
+      "test_Pharmacy_132",
+      "test_Pharmacy_143",
+      "test_Pharmacy_191",
+      "test_Pharmacy_303",
+      "test_Pharmacy_324",
+      "test_Pharmacy_33",
+      "test_Pharmacy_335",
+      "test_Pharmacy_54",
+      "test_Pharmacy_63",
+      "test_Physics_136",
+      "test_Physics_192",
+      "test_Physics_243",
+      "test_Physics_260",
+      "test_Physics_391",
+      "test_Physics_87",
+      "test_Physics_88",
+      "test_Psychology_186",
+      "test_Psychology_215",
+      "test_Psychology_225",
+      "test_Psychology_275",
+      "test_Public_Health_22",
+      "test_Public_Health_229",
+      "test_Public_Health_282",
+      "test_Public_Health_297",
+      "test_Public_Health_304",
+      "test_Public_Health_335",
+      "test_Public_Health_7",
+      "test_Sociology_1",
+      "test_Sociology_100",
+      "test_Sociology_103",
+      "test_Sociology_132",
+      "test_Sociology_194",
+      "test_Sociology_200",
+      "test_Sociology_248",
+      "test_Sociology_252",
+      "test_Sociology_33",
+      "test_Sociology_38",
+      "test_Sociology_40",
+      "test_Sociology_49"
+    ]
+  },
+  "outcome_transitions": {
+    "all": {
+      "NO_PARSE_at_cap → parsed_wrong": 27,
+      "parsed_wrong → parsed_wrong": 159,
+      "NO_PARSE_at_cap → correct": 23,
+      "correct → correct": 421,
+      "NO_PARSE_at_cap → NO_PARSE_at_cap": 158,
+      "correct → parsed_wrong": 33,
+      "correct → NO_PARSE_at_cap": 20,
+      "parsed_wrong → correct": 22,
+      "parsed_wrong → NO_PARSE_stopped": 6,
+      "parsed_wrong → NO_PARSE_at_cap": 12,
+      "NO_PARSE_stopped → parsed_wrong": 4,
+      "NO_PARSE_stopped → NO_PARSE_stopped": 8,
+      "NO_PARSE_at_cap → NO_PARSE_stopped": 1,
+      "correct → NO_PARSE_stopped": 2,
+      "NO_PARSE_stopped → correct": 4
+    },
+    "gain49": {
+      "NO_PARSE_at_cap": 23,
+      "parsed_wrong": 22,
+      "NO_PARSE_stopped": 4
+    },
+    "loss55": {
+      "parsed_wrong": 33,
+      "NO_PARSE_at_cap": 20,
+      "NO_PARSE_stopped": 2
+    },
+    "noneng_loss48": {
+      "parsed_wrong": 30,
+      "NO_PARSE_at_cap": 16,
+      "NO_PARSE_stopped": 2
+    }
+  },
+  "outcome_transition_scope": "Automatic from frozen V8 parse/correct/finish fields. Does not establish whether an unparsed raw answer was present or whether parsed answers follow valid reasoning.",
+  "historical_validation900_subjects": {
+    "Accounting": {
+      "n": 30,
+      "base": 15,
+      "sft": 16,
+      "gain": 3,
+      "loss": 2,
+      "delta": 1
+    },
+    "Agriculture": {
+      "n": 30,
+      "base": 13,
+      "sft": 17,
+      "gain": 4,
+      "loss": 0,
+      "delta": 4
+    },
+    "Architecture_and_Engineering": {
+      "n": 30,
+      "base": 4,
+      "sft": 5,
+      "gain": 1,
+      "loss": 0,
+      "delta": 1
+    },
+    "Art": {
+      "n": 30,
+      "base": 19,
+      "sft": 18,
+      "gain": 0,
+      "loss": 1,
+      "delta": -1
+    },
+    "Art_Theory": {
+      "n": 30,
+      "base": 25,
+      "sft": 25,
+      "gain": 1,
+      "loss": 1,
+      "delta": 0
+    },
+    "Basic_Medical_Science": {
+      "n": 30,
+      "base": 20,
+      "sft": 21,
+      "gain": 2,
+      "loss": 1,
+      "delta": 1
+    },
+    "Biology": {
+      "n": 30,
+      "base": 15,
+      "sft": 17,
+      "gain": 4,
+      "loss": 2,
+      "delta": 2
+    },
+    "Chemistry": {
+      "n": 30,
+      "base": 9,
+      "sft": 9,
+      "gain": 2,
+      "loss": 2,
+      "delta": 0
+    },
+    "Clinical_Medicine": {
+      "n": 30,
+      "base": 22,
+      "sft": 20,
+      "gain": 2,
+      "loss": 4,
+      "delta": -2
+    },
+    "Computer_Science": {
+      "n": 30,
+      "base": 16,
+      "sft": 13,
+      "gain": 1,
+      "loss": 4,
+      "delta": -3
+    },
+    "Design": {
+      "n": 30,
+      "base": 22,
+      "sft": 24,
+      "gain": 2,
+      "loss": 0,
+      "delta": 2
+    },
+    "Diagnostics_and_Laboratory_Medicine": {
+      "n": 30,
+      "base": 10,
+      "sft": 9,
+      "gain": 1,
+      "loss": 2,
+      "delta": -1
+    },
+    "Economics": {
+      "n": 30,
+      "base": 25,
+      "sft": 22,
+      "gain": 0,
+      "loss": 3,
+      "delta": -3
+    },
+    "Electronics": {
+      "n": 30,
+      "base": 6,
+      "sft": 7,
+      "gain": 1,
+      "loss": 0,
+      "delta": 1
+    },
+    "Energy_and_Power": {
+      "n": 30,
+      "base": 5,
+      "sft": 8,
+      "gain": 4,
+      "loss": 1,
+      "delta": 3
+    },
+    "Finance": {
+      "n": 30,
+      "base": 18,
+      "sft": 18,
+      "gain": 1,
+      "loss": 1,
+      "delta": 0
+    },
+    "Geography": {
+      "n": 30,
+      "base": 15,
+      "sft": 14,
+      "gain": 2,
+      "loss": 3,
+      "delta": -1
+    },
+    "History": {
+      "n": 30,
+      "base": 21,
+      "sft": 21,
+      "gain": 2,
+      "loss": 2,
+      "delta": 0
+    },
+    "Literature": {
+      "n": 30,
+      "base": 24,
+      "sft": 24,
+      "gain": 0,
+      "loss": 0,
+      "delta": 0
+    },
+    "Manage": {
+      "n": 30,
+      "base": 17,
+      "sft": 16,
+      "gain": 0,
+      "loss": 1,
+      "delta": -1
+    },
+    "Marketing": {
+      "n": 30,
+      "base": 22,
+      "sft": 24,
+      "gain": 4,
+      "loss": 2,
+      "delta": 2
+    },
+    "Materials": {
+      "n": 30,
+      "base": 7,
+      "sft": 7,
+      "gain": 3,
+      "loss": 3,
+      "delta": 0
+    },
+    "Math": {
+      "n": 30,
+      "base": 14,
+      "sft": 14,
+      "gain": 1,
+      "loss": 1,
+      "delta": 0
+    },
+    "Mechanical_Engineering": {
+      "n": 30,
+      "base": 5,
+      "sft": 6,
+      "gain": 4,
+      "loss": 3,
+      "delta": 1
+    },
+    "Music": {
+      "n": 30,
+      "base": 4,
+      "sft": 4,
+      "gain": 1,
+      "loss": 1,
+      "delta": 0
+    },
+    "Pharmacy": {
+      "n": 30,
+      "base": 18,
+      "sft": 21,
+      "gain": 5,
+      "loss": 2,
+      "delta": 3
+    },
+    "Physics": {
+      "n": 30,
+      "base": 21,
+      "sft": 21,
+      "gain": 2,
+      "loss": 2,
+      "delta": 0
+    },
+    "Psychology": {
+      "n": 30,
+      "base": 23,
+      "sft": 24,
+      "gain": 1,
+      "loss": 0,
+      "delta": 1
+    },
+    "Public_Health": {
+      "n": 30,
+      "base": 24,
+      "sft": 24,
+      "gain": 0,
+      "loss": 0,
+      "delta": 0
+    },
+    "Sociology": {
+      "n": 30,
+      "base": 19,
+      "sft": 18,
+      "gain": 2,
+      "loss": 3,
+      "delta": -1
+    }
+  },
+  "generation_wall_seconds": {
+    "base": 7066.023396683998,
+    "sft": 6578.086189909001
+  },
+  "verification": {
+    "unique_ids_per_arm": 900,
+    "missing": 0,
+    "duplicates": 0,
+    "errors": 0,
+    "local_independent_V8_regrades": 1800,
+    "input_identity_pairs": 900,
+    "scorer_file_sha256": "2beb1230283cb882f47d6e8af72b01180847fd7aa4b7ac640a5173e391f3f891",
+    "scoring_source_manifest": {
+      "parser": "team-final-answer-v8",
+      "comparison_policy": "single-final-mmmu-round2-v1",
+      "scoring_sha256": "b80a28a4b66906d5c4f1ece046bd7c4be2b447445da4b072144e52ce7ee047fa",
+      "files": [
+        {
+          "path": "src/mmdl/evaluation/final_answer_parser.py",
+          "bytes": 17739,
+          "sha256": "fc2c6a757ce7361efae13be9f22f8bedcc9c35d66373124b8815b8528b2e31a0"
+        },
+        {
+          "path": "src/mmdl/evaluation/final_answer_parser_v8.py",
+          "bytes": 26466,
+          "sha256": "2beb1230283cb882f47d6e8af72b01180847fd7aa4b7ac640a5173e391f3f891"
+        },
+        {
+          "path": "src/mmdl/evaluation/parsers.py",
+          "bytes": 6569,
+          "sha256": "1bfdabe251d5cbf14b6554f2c979492ec18207de5fb826a0045dd2d93ca3e221"
+        },
+        {
+          "path": "third_party/mmmu/eval_utils.py",
+          "bytes": 8992,
+          "sha256": "cc1a89b4a27f697702d340bc6a7578b5237135754ddaa9ef105239a3d9847367"
+        }
+      ]
+    }
+  },
+  "restored_adapter_identity": {
+    "adapter_sha256": "90f0afaf72f22c622fd7e533514b02efd0b650d07589ff5773f6864b952188f8",
+    "tensor_count": 144,
+    "all_tensors_match": true,
+    "merged_weight_hashes": {
+      "model-00002-of-00002.safetensors": "d32cd4368a9b3014757fa73bc4b8fb44a84353e5faaa274f682f78ca74af7ca9",
+      "model-00001-of-00002.safetensors": "41dee31a228af44672c16686dc90c8e7d2900cc8578f280c78e4a9467198b107"
+    },
+    "merged_weight_bytes_match_previous": true,
+    "new_training_updates": 0
+  },
+  "backup_verification": {
+    "archives": [
+      {
+        "sequence": 1,
+        "stage": "prepared",
+        "bytes": 111097,
+        "sha256": "ac07ce0f3aba043a8f36bad55afabe0b20e9e3f083f61ad6e1761902e317d87c"
+      },
+      {
+        "sequence": 2,
+        "stage": "base_006",
+        "bytes": 351201,
+        "sha256": "aeffbd33c19711744ed08a58fb54139ddb78f870e7098eb85ddd735e896a7fcc"
+      },
+      {
+        "sequence": 3,
+        "stage": "base_012",
+        "bytes": 366181,
+        "sha256": "69ddd22be287e16b7c1bc7ab06af3be4f50fa50d32c8b0ddf046475dcc02cc26"
+      },
+      {
+        "sequence": 4,
+        "stage": "base_018",
+        "bytes": 403085,
+        "sha256": "6b7d419fac3de1f7c88198830e9c3c1aef27757764d8809c439a1db7d854ce7a"
+      },
+      {
+        "sequence": 5,
+        "stage": "base_024",
+        "bytes": 358530,
+        "sha256": "b3674e564bf3cae780982e1803fba8b4db487938ce5761669a67182476d8561e"
+      },
+      {
+        "sequence": 6,
+        "stage": "base_030",
+        "bytes": 531679,
+        "sha256": "97ae93465d3daaacdc9a4755d15b39e141928dd5b39e610af69dad303d3af302"
+      },
+      {
+        "sequence": 7,
+        "stage": "base_036",
+        "bytes": 382811,
+        "sha256": "f239ae1297d2aae7eaa2c81aed183c5eb38d36abd63b98a604985acd84b49d32"
+      },
+      {
+        "sequence": 8,
+        "stage": "base_038",
+        "bytes": 59260,
+        "sha256": "d0235347d45a7390a8f6cf393090cbe16597c66355a6d6256a778b6188ccdc79"
+      },
+      {
+        "sequence": 9,
+        "stage": "sft_006",
+        "bytes": 317957,
+        "sha256": "903a7b597a3848a2d29b7ac8fad4839898a2d6ba698992666e5af85b55fa580a"
+      },
+      {
+        "sequence": 10,
+        "stage": "sft_012",
+        "bytes": 327534,
+        "sha256": "65507a32522a9aeec0cffb8ef970fc1637ac80038ffc59659b145a5c0433db24"
+      },
+      {
+        "sequence": 11,
+        "stage": "sft_018",
+        "bytes": 378819,
+        "sha256": "58163baeba76218d5df2c026a404141209532f1eddb01a3ab7be337121b50241"
+      },
+      {
+        "sequence": 12,
+        "stage": "sft_024",
+        "bytes": 322759,
+        "sha256": "11325b2514c50900e7ffeb2b11a73a2ea5620fb91ac40ee25e904be15cf5644c"
+      },
+      {
+        "sequence": 13,
+        "stage": "sft_030",
+        "bytes": 511749,
+        "sha256": "8116d96b212b5ff73638e140286cfbef58b77bc59f2df799ff870453677a80f5"
+      },
+      {
+        "sequence": 14,
+        "stage": "sft_036",
+        "bytes": 351580,
+        "sha256": "c3ea6de83af267bc575f7b00f4abb1f7286bfb176257b24442c9c236cb97309c"
+      },
+      {
+        "sequence": 15,
+        "stage": "sft_038",
+        "bytes": 50224,
+        "sha256": "e433b8d6f65b2164a88eb108f41802125ace0ef70ede44a5db7d193c5e58cf95"
+      },
+      {
+        "sequence": 16,
+        "stage": "comparison",
+        "bytes": 5598,
+        "sha256": "b39b86091095fd26b082fcc2a1f4ad55fee29abfe44d06dfb5d57d43789c4fd0"
+      },
+      {
+        "sequence": 17,
+        "stage": "final",
+        "bytes": 1436,
+        "sha256": "5f9c00303700fcfb6dd62f9866f91fc29cf2a6b64ce4d2578f947a537493cb07"
+      }
+    ],
+    "archive_count": 17,
+    "all_actual_Drive_roundtrips_verified": true,
+    "CRC_and_all_member_SHA_pass": true,
+    "latest_sealed_artifact_files": 121,
+    "receipt_continuity_count": 16,
+    "final_ready_scope": "Actual emitted server receipt observed, uploaded to ownDrive and fetched as identical bytes; final ready is necessarily after final ZIP and not covered by a later ZIP.",
+    "GPU_release_confirmed": true,
+    "final_active_sessions_observed": 0,
+    "final_CU_rate_observed": 0
+  },
+  "resource_observations": {
+    "runner_wall_seconds_including_preparation_and_backup_wait": 16426.810839414597,
+    "initial_display_CU_balance": 25.64,
+    "final_display_CU_balance": 16.13,
+    "display_CU_decrease": 9.51,
+    "scope": "Observed account display balance, rounded, includes failed preparation attempt/install/download/preprocessing/loading/backup waits; not isolated model-inference consumption or monetary cost.",
+    "failed_pre_generation_attempt": {
+      "generated_responses": 0,
+      "observed_display_CU_decrease": 0.49
+    }
+  },
+  "source_fingerprints": {
+    "evaluation_source_sha256": "cae8cdc912b4f2f3bb1ac0ecaebb74f42296f65037c45d6152ea896e9755ebdb",
+    "holdout_bundle_sha256": "f9098ba9c769223258c1f2f657134f5711c17b2679040c976cc871d66674ed0d",
+    "selection_input_sha256": "f238177efbf0da8f13a9b5ee212b46951a3dbf096bde6eee8508741abdce9156",
+    "runtime_input_lock_sha256": "bc75d26ba7c9945149e6c02bbcea71cf87c08a2c07ba67fbbb24f46eb5143613",
+    "private_local_comparison_sha256": "e12307adafc89dba8ea931f3a6defbb40506307315295bb63b3d9956a74020aa",
+    "private_per_question_comparison_sha256": "300e1b42b72f5b4653cdf1a2e1dd6df943345b5d10a5b6e904e7a27fb746dbbb",
+    "private_backup_seal_sha256": "712217f7ec4958775a4f00b68d1e4596c6726ab674b7b083008fe4b4dc0e4393",
+    "fixed_training_bundle_sha256": "0bc1895db561eca1440e820bdbfb067d256ad7a847342e22c4e96f6ded56fb98",
+    "training_manifest_sha256": "1ca52b224f3c03dfae2d3297d9bfc8a0e563936afc117293e9d5f2e65cc09070"
+  },
+  "manual_reasoning_review": {
+    "published_scope": "Six selected illustrative pairs; not a full manual audit",
+    "n": 6
+  },
+  "reproducibility": {
+    "confirmed": [
+      "Strict_auto independent training A/B: inputs, initial state, 24 updates and all 144 final tensors/adapter bytes equal",
+      "Fixed 24-item A/B inference: raw response, token IDs and finish reason equal; both score13/24",
+      "Existing validation900: fixed SFT adapter evaluated once and scored487/900",
+      "This different test900: same fixed adapter identity, no new training, one fresh process per arm, 900 IDs and inputs matched, 1800 V8 regrades agree"
+    ],
+    "not_confirmed": [
+      "Whole existing validation900 repeated inference with this adapter and repeated487 score",
+      "Whole new test900 repeated inference",
+      "Exact recovery of historical493 adapter",
+      "Cross-GPU/version/driver/batch invariance",
+      "Consistent overall accuracy improvement, complete semantic decontamination, or Qwen pretraining exposure exclusion"
+    ]
+  },
+  "publication_scope": "Derived counts, IDs, hashes and documentation only. No official question/options/gold/raw response/token IDs/images, model binaries, credentials, private Drive IDs, or private download URLs. Raw evidence and this new test runner source remain in the local/ownDrive evidence archive; this commit is not an all-experiment one-click runner release."
+}
